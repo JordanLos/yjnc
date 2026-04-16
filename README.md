@@ -110,4 +110,4 @@ The full specification is in [SPEC.md](SPEC.md). It uses RFC 2119 conformance la
 
 ## License
 
-The YJNC specification is released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No rights reserved. Implement it however you want.
+The YJNC specification is © Jordan Scales and released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may use, implement, and adapt the spec freely, with attribution. Derivatives must carry attribution and use the same license. The canonical specification is maintained at [github.com/JordanLos/yjnc](https://github.com/JordanLos/yjnc).
