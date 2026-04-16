@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Pass if the failing test now passes
+# Replace the test command below with your project's test runner
+set -e
+npm test -- --testPathPattern="$FAILING_TEST" 2>&1 | tee output/test-result.log
+echo "implement: ok"

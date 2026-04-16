@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Pass if output/failure.log exists and is non-empty
+set -e
+[ -s output/failure.log ] || { echo "output/failure.log missing or empty"; exit 1; }
+echo "fetch: ok"

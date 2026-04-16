@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Pass if root cause summary exists and is non-empty
+set -e
+[ -s output/root-cause.md ] || { echo "output/root-cause.md missing or empty"; exit 1; }
+echo "analyze: ok"

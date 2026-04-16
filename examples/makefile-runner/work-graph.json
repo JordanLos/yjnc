@@ -1,0 +1,30 @@
+{
+  "yjnc": "1.0",
+  "units": {
+    "fetch": {
+      "depends": []
+    },
+    "analyze": {
+      "depends": ["fetch"],
+      "context_from": ["fetch/output"]
+    },
+    "implement": {
+      "depends": ["analyze"],
+      "context_from": ["analyze/output"]
+    },
+    "verify": {
+      "depends": ["implement"]
+    }
+  },
+  "policy": {
+    "on_failure": "halt",
+    "retry": 0,
+    "sampling": 1
+  },
+  "state": {
+    "fetch": "pending",
+    "analyze": "pending",
+    "implement": "pending",
+    "verify": "pending"
+  }
+}

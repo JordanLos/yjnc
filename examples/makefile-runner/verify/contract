@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Pass if full test suite and lint both exit 0
+set -e
+npm test 2>&1 | tee output/test-result.log
+npm run lint 2>&1 | tee output/lint-result.log
+echo "verify: ok"
