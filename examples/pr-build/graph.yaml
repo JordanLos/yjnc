@@ -1,0 +1,18 @@
+juc: "2.0"
+
+config:
+  concurrency: 2
+  cache: content-addressed
+  secrets:
+    - ANTHROPIC_API_KEY
+
+checks:
+  standard: &standard [lint, vitest]
+
+research:
+  retries: 3
+
+implement:
+  depends: [research]
+  verify: *standard
+  retries: infinite
