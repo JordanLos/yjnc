@@ -1,18 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://yjnc.dev/schema/graph.schema.json",
-  "title": "YJNC Graph",
-  "description": "Schema for graph.yaml — the YJNC project graph definition",
+  "$id": "https://juc.dev/schema/graph.schema.json",
+  "title": "JUC Graph",
+  "description": "Schema for graph.yaml — the JUC project graph definition",
   "type": "object",
-  "required": ["yjnc"],
+  "required": ["juc"],
   "additionalProperties": {
     "$ref": "#/$defs/unit"
   },
   "properties": {
-    "yjnc": {
+    "juc": {
       "type": "string",
       "const": "2.0",
-      "description": "YJNC specification version"
+      "description": "JUC specification version"
     },
     "config": {
       "$ref": "#/$defs/config"

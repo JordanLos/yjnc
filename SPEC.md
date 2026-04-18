@@ -1,15 +1,15 @@
-# YJNC Specification
+# JUC Specification
 ## Version 2.0
 
 ---
 
 ### Abstract
 
-YJNC (You Just Need Claude) is a minimum viable specification for Claude-native agentic orchestration. It defines a file-based structure for units of agent work, a directed acyclic graph model for composing those units, and a deterministic execution contract that bounds stochastic agent behavior.
+JUC (Just Use Claude) is a minimum viable specification for Claude-native agentic orchestration. It defines a file-based structure for units of agent work, a directed acyclic graph model for composing those units, and a deterministic execution contract that bounds stochastic agent behavior.
 
-YJNC is not a framework. It specifies the minimum constraints required for correct, auditable, Claude-native agentic orchestration. Everything above that is developer expression.
+JUC is not a framework. It specifies the minimum constraints required for correct, auditable, Claude-native agentic orchestration. Everything above that is developer expression.
 
-YJNC is a build system. The build steps are stochastic agents instead of deterministic scripts. Everything else — DAGs, artifacts, checks, retries, parallelism, hooks — is solved build infrastructure.
+JUC is a build system. The build steps are stochastic agents instead of deterministic scripts. Everything else — DAGs, artifacts, checks, retries, parallelism, hooks — is solved build infrastructure.
 
 ---
 
@@ -19,9 +19,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **Unit** — A directory containing a bounded piece of agent work: an agent definition (agent.md), optional human-provided input (context/), and recorded output (output/).
 
-**Root** — The top-level directory of a YJNC project. Contains graph.yaml, optional shared checks, and zero or more units.
+**Root** — The top-level directory of a JUC project. Contains graph.yaml, optional shared checks, and zero or more units.
 
-**Runner** — The `yjnc` CLI. Reads graph.yaml, validates it against the schema, and orchestrates unit execution.
+**Runner** — The `juc` CLI. Reads graph.yaml, validates it against the schema, and orchestrates unit execution.
 
 **Graph** — A directed acyclic graph (DAG) of units expressed in graph.yaml, where edges encode ordering and artifact flow.
 
@@ -39,7 +39,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### Design Principles
 
-YJNC makes one architectural bet: Claude Code is the only dependency worth taking. Code-based orchestration frameworks bake prompts into control flow, creating maintenance burden and implementation lock-in as the underlying model platform evolves. Anthropic's own surface area — skills, agents, plugins, CLAUDE.md — is consistently text-file-first. YJNC extends that pattern down to the unit of work.
+JUC makes one architectural bet: Claude Code is the only dependency worth taking. Code-based orchestration frameworks bake prompts into control flow, creating maintenance burden and implementation lock-in as the underlying model platform evolves. Anthropic's own surface area — skills, agents, plugins, CLAUDE.md — is consistently text-file-first. JUC extends that pattern down to the unit of work.
 
 **The top level is deterministic. Every leaf node is an agent.**
 
@@ -49,7 +49,7 @@ The runner owns the graph: ordering, state, retry, sampling, checkpoints, and ar
 
 Everything else — checks, context, output, logs — is either optional or runner-managed. A unit with only agent.md is a valid, executable unit.
 
-**YJNC gives you five trust properties:**
+**JUC gives you five trust properties:**
 
 1. **Pre-run legibility** — The entire plan is auditable before a single agent executes. agent.md and graph.yaml are human-readable by design.
 2. **Execution guarantee** — The deterministic layer guarantees the graph runs as specified. Agents are always bounded by checks.
@@ -61,13 +61,13 @@ Everything else — checks, context, output, logs — is either optional or runn
 
 ## 1. Spec Version
 
-A YJNC project declares its specification version in graph.yaml via the `yjnc` field.
+A JUC project declares its specification version in graph.yaml via the `juc` field.
 
 ```yaml
-yjnc: "2.0"
+juc: "2.0"
 ```
 
-The `yjnc` field MUST be present. The runner MUST reject graph.yaml files missing this field or declaring an unsupported version.
+The `juc` field MUST be present. The runner MUST reject graph.yaml files missing this field or declaring an unsupported version.
 
 ---
 
@@ -124,10 +124,10 @@ The runner MUST create output/ before invoking the agent. The agent writes its a
 
 ### 3.1 graph.yaml
 
-graph.yaml is the authoritative machine-readable representation of the project. It MUST be located in the root directory. It MUST conform to the YJNC graph schema.
+graph.yaml is the authoritative machine-readable representation of the project. It MUST be located in the root directory. It MUST conform to the JUC graph schema.
 
 ```yaml
-yjnc: "2.0"
+juc: "2.0"
 
 config:
   concurrency: 4
@@ -153,7 +153,7 @@ review:
   verify: [screenshot, *standard]
 ```
 
-Top-level keys are either reserved words (`yjnc`, `config`, `checks`) or unit identities. Any key not matching a reserved word is treated as a unit definition.
+Top-level keys are either reserved words (`juc`, `config`, `checks`) or unit identities. Any key not matching a reserved word is treated as a unit definition.
 
 ### 3.2 config
 
@@ -162,7 +162,7 @@ OPTIONAL. Runner-level configuration applied to the entire graph.
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
 | `concurrency` | integer | 4 | Maximum units executing concurrently |
-| `logging` | `"jsonl"` \| `"none"` | `"jsonl"` | Log format written to `.yjnc/logs/` |
+| `logging` | `"jsonl"` \| `"none"` | `"jsonl"` | Log format written to `.juc/logs/` |
 | `cache` | `"content-addressed"` \| `"mtime"` \| `"none"` | `"mtime"` | Cache strategy for skipping completed units |
 | `secrets` | string[] | `[]` | Secret names required by this graph |
 | `hooks` | object | — | Runner-level lifecycle hooks (see §5) |
@@ -261,8 +261,8 @@ A non-zero hook exit MUST halt execution with an error, except `on_failure` hook
 
 Before execution begins, the runner MUST:
 
-1. Parse graph.yaml and verify the `yjnc` field is present and the version is supported
-2. Validate graph.yaml against the YJNC schema
+1. Parse graph.yaml and verify the `juc` field is present and the version is supported
+2. Validate graph.yaml against the JUC schema
 3. Validate the graph is a DAG — detect and reject cycles
 4. Verify all declared unit directories exist on disk
 
@@ -311,7 +311,7 @@ When a unit is invalidated, all transitively dependent units MUST also be invali
 
 ### 6.7 State
 
-The runner MUST track unit state and persist it to `.yjnc/state.json` after each transition.
+The runner MUST track unit state and persist it to `.juc/state.json` after each transition.
 
 Valid states: `pending`, `running`, `passed`, `failed`.
 
@@ -325,7 +325,7 @@ pending → running → passed
 
 ## 7. Logging
 
-The runner MUST write structured logs to `.yjnc/logs/<unit>/run-<n>.jsonl`. Log files are runner-managed and invisible to unit authors.
+The runner MUST write structured logs to `.juc/logs/<unit>/run-<n>.jsonl`. Log files are runner-managed and invisible to unit authors.
 
 Each line is a newline-delimited JSON object. Two event types are defined:
 
@@ -360,17 +360,17 @@ Each line is a newline-delimited JSON object. Two event types are defined:
 
 ## 8. Runner CLI
 
-The runner is the `yjnc` CLI. It MUST be invocable from any directory containing a graph.yaml.
+The runner is the `juc` CLI. It MUST be invocable from any directory containing a graph.yaml.
 
 ### 8.1 Commands
 
 | Command | Description |
 |---------|-------------|
-| `yjnc run` | Execute the full graph |
-| `yjnc run <unit>` | Execute a single unit and its dependencies |
-| `yjnc status` | Print current state of all units |
-| `yjnc logs <unit>` | Stream logs for a unit |
-| `yjnc export --github-actions` | Generate a GitHub Actions workflow |
+| `juc run` | Execute the full graph |
+| `juc run <unit>` | Execute a single unit and its dependencies |
+| `juc status` | Print current state of all units |
+| `juc logs <unit>` | Stream logs for a unit |
+| `juc export --github-actions` | Generate a GitHub Actions workflow |
 
 ### 8.2 Secrets
 
@@ -380,7 +380,7 @@ Secrets declared in `config.secrets` are read from the environment or a `.env` f
 
 ## 9. GitHub Actions Export
 
-`yjnc export --github-actions` generates a `.github/workflows/yjnc.yml` from the current graph.
+`juc export --github-actions` generates a `.github/workflows/juc.yml` from the current graph.
 
 The exporter MUST:
 - Map each unit to a GitHub Actions job
@@ -399,7 +399,7 @@ The generated workflow MUST NOT be committed automatically. The operator reviews
 
 ## 10. Conformance
 
-An implementation conforms to YJNC 2.0 if it satisfies all MUST and MUST NOT requirements in this specification.
+An implementation conforms to JUC 2.0 if it satisfies all MUST and MUST NOT requirements in this specification.
 
 **A conforming runner MUST:**
 - Parse and validate graph.yaml before execution, including version check, schema validation, and cycle detection
@@ -412,8 +412,8 @@ An implementation conforms to YJNC 2.0 if it satisfies all MUST and MUST NOT req
 - Halt graph execution on unrecovered failure
 - Skip units whose cache is valid
 - Invalidate a unit and its transitive dependents when cache is invalidated
-- Write state transitions to `.yjnc/state.json`
-- Write logs to `.yjnc/logs/<unit>/run-<n>.jsonl`
+- Write state transitions to `.juc/state.json`
+- Write logs to `.juc/logs/<unit>/run-<n>.jsonl`
 - Error before execution if any declared secret is missing
 
 **A conforming runner SHOULD:**
@@ -457,7 +457,7 @@ agent.md is owned entirely by Claude Code. This specification does not constrain
   review/
     agent.md
     output/
-  .yjnc/
+  .juc/
     state.json
     logs/
       research/
@@ -475,7 +475,7 @@ agent.md is owned entirely by Claude Code. This specification does not constrain
 A four-unit pipeline with parallel research streams, shared checks, sampling, and hooks:
 
 ```yaml
-yjnc: "2.0"
+juc: "2.0"
 
 config:
   concurrency: 4
