@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yjnc.dev/schema/graph.schema.json",
+  "title": "YJNC Graph",
+  "description": "Schema for graph.yaml — the YJNC project graph definition",
+  "type": "object",
+  "required": ["yjnc"],
+  "additionalProperties": {
+    "$ref": "#/$defs/unit"
+  },
+  "properties": {
+    "yjnc": {
+      "type": "string",
+      "const": "2.0",
+      "description": "YJNC specification version"
+    },
+    "config": {
+      "$ref": "#/$defs/config"
+    },
+    "checks": {
+      "type": "object",
+      "description": "Named check groups, reusable via YAML anchors",
+      "additionalProperties": {
+        "$ref": "#/$defs/checkList"
+      }
+    }
+  },
+  "$defs": {
+    "config": {
+      "type": "object",
+      "description": "Runner-level configuration",
+      "additionalProperties": false,
+      "properties": {
+        "concurrency": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 4,
+          "description": "Maximum units executing concurrently"
+        },
+        "logging": {
+          "type": "string",
+          "enum": ["jsonl", "none"],
+          "default": "jsonl",
+          "description": "Log format written to .yjnc/logs/"
+        },
+        "cache": {
+          "type": "string",
+          "enum": ["content-addressed", "mtime", "none"],
+          "default": "mtime",
+          "description": "Cache strategy for skipping completed units"
+        },
+        "secrets": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Secret names required by this graph"
+        },
+        "hooks": {
+          "$ref": "#/$defs/runnerHooks"
+        }
+      }
+    },
+    "unit": {
+      "type": "object",
+      "description": "A unit of agent work",
+      "additionalProperties": false,
+      "properties": {
+        "depends": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Unit identities that must pass before this unit runs"
+        },
+        "verify": {
+          "$ref": "#/$defs/checkList",
+          "description": "Checks to run after agent completes"
+        },
+        "retries": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string", "const": "infinite" }
+          ],
+          "default": 0,
+          "description": "Retry attempts on check failure"
+        },
+        "samples": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "Number of times to run the agent"
+        },
+        "consistency": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": ["majority", "all", "any"],
+              "description": "Built-in consistency strategy"
+            },
+            {
+              "type": "string",
+              "pattern": "^\\./",
+              "description": "Path to a custom consistency script"
+            }
+          ],
+          "default": "any",
+          "description": "Consistency strategy across samples"
+        },
+        "timeout": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Seconds before the agent is terminated"
+        },
+        "hooks": {
+          "$ref": "#/$defs/unitHooks"
+        }
+      }
+    },
+    "checkList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Check name (resolves from checks/) or path (./relative)"
+      }
+    },
+    "runnerHooks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "before_run": {
+          "type": "string",
+          "description": "Command to run once before any unit begins"
+        },
+        "after_run": {
+          "type": "string",
+          "description": "Command to run once after all units complete"
+        },
+        "on_failure": {
+          "type": "string",
+          "description": "Command to run when any unit reaches failed state"
+        }
+      }
+    },
+    "unitHooks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "before": {
+          "type": "string",
+          "description": "Command to run before the agent runs"
+        },
+        "after": {
+          "type": "string",
+          "description": "Command to run after all checks pass"
+        },
+        "on_failure": {
+          "type": "string",
+          "description": "Command to run when checks fail (does not affect state)"
+        }
+      }
+    }
+  }
+}

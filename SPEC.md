@@ -1,5 +1,5 @@
 # YJNC Specification
-## Version 1.0
+## Version 2.0
 
 ---
 
@@ -9,27 +9,29 @@ YJNC (You Just Need Claude) is a minimum viable specification for Claude-native 
 
 YJNC is not a framework. It specifies the minimum constraints required for correct, auditable, Claude-native agentic orchestration. Everything above that is developer expression.
 
+YJNC is a build system. The build steps are stochastic agents instead of deterministic scripts. Everything else — DAGs, artifacts, checks, retries, parallelism, hooks — is solved build infrastructure.
+
 ---
 
 ### Terminology
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119).
 
-**Unit** — A directory containing a bounded piece of agent work: a specification (todo.md), an agent definition (agent.md), a verifier (contract), pre-collected input (context/), and recorded output (output/).
+**Unit** — A directory containing a bounded piece of agent work: an agent definition (agent.md), optional human-provided input (context/), and recorded output (output/).
 
-**Root** — The top-level directory of a YJNC project. Contains the work graph, runner, and zero or more units.
+**Root** — The top-level directory of a YJNC project. Contains graph.yaml, optional shared checks, and zero or more units.
 
-**Runner** — Any executable that reads work-graph.json and orchestrates unit execution according to this specification.
+**Runner** — The `yjnc` CLI. Reads graph.yaml, validates it against the schema, and orchestrates unit execution.
 
-**Work Graph** — A directed acyclic graph (DAG) of units, expressed in work-graph.json, where edges encode ordering and data flow constraints.
+**Graph** — A directed acyclic graph (DAG) of units expressed in graph.yaml, where edges encode ordering and artifact flow.
 
-**Contract** — Any executable within a unit that verifies the unit's output deterministically. The contract is the boundary between the deterministic runner layer and the stochastic agent layer.
-
-**Preflight** — An optional preparation phase in which context is collected and populated into unit context/ directories before execution begins.
-
-**Checkpoint** — A pause point in graph execution requiring human intervention before the runner may proceed.
+**Check** — Any executable that verifies a unit's output deterministically. Checks exit 0 (pass) or non-zero (fail). Multiple checks may be composed per unit.
 
 **Sampling** — Running a unit N times to collect multiple outputs for self-consistency evaluation.
+
+**Consistency** — A strategy for evaluating agreement across samples: `majority`, `all`, `any`, or a custom script.
+
+**Hook** — A shell command or script invoked at a defined lifecycle point in runner or unit execution.
 
 **Unit Identity** — The canonical path of a unit directory relative to root, using `/` as separator, with no leading slash.
 
@@ -37,33 +39,35 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### Design Principles
 
-YJNC makes one architectural bet: Claude Code is the only dependency worth taking. Code-based orchestration frameworks bake prompts into control flow, creating maintenance burden and implementation lock-in as the underlying model platform evolves. Anthropic's own surface area — skills, agents, plugins, managed teams, CLAUDE.md — is consistently text-file-first. YJNC extends that pattern down to the unit of work.
+YJNC makes one architectural bet: Claude Code is the only dependency worth taking. Code-based orchestration frameworks bake prompts into control flow, creating maintenance burden and implementation lock-in as the underlying model platform evolves. Anthropic's own surface area — skills, agents, plugins, CLAUDE.md — is consistently text-file-first. YJNC extends that pattern down to the unit of work.
 
 **The top level is deterministic. Every leaf node is an agent.**
 
-The runner owns the graph: ordering, state, retry, sampling, checkpoints, and context propagation. Agents own the work inside each unit. These layers do not cross.
+The runner owns the graph: ordering, state, retry, sampling, checkpoints, and artifact propagation. Agents own the work inside each unit. These layers do not cross.
+
+**The only file you must write is agent.md.**
+
+Everything else — checks, context, output, logs — is either optional or runner-managed. A unit with only agent.md is a valid, executable unit.
 
 **YJNC gives you five trust properties:**
 
-1. **Pre-run legibility** — The entire plan is auditable in plain English before a single agent executes. todo.md, agent.md, and context/ are human-readable by design.
-2. **Execution guarantee** — The deterministic layer guarantees the graph runs as specified. Agents are always bounded by a contract.
-3. **Post-run auditability** — Logs, patches, and contract results record exactly what happened at each node. The output is always derivable from the current spec.
+1. **Pre-run legibility** — The entire plan is auditable before a single agent executes. agent.md and graph.yaml are human-readable by design.
+2. **Execution guarantee** — The deterministic layer guarantees the graph runs as specified. Agents are always bounded by checks.
+3. **Post-run auditability** — Logs record exactly what happened at each node.
 4. **Resilience to platform change** — No framework to maintain. When Claude Code ships new capabilities, implementations use them immediately.
-5. **Implementation freedom** — The runner is any executable, in any language. The spec defines what; you define how.
+5. **Implementation freedom** — graph.yaml is the interface. The runner honors it; exports target it.
 
 ---
 
 ## 1. Spec Version
 
-A YJNC project declares its specification version in work-graph.json via the `yjnc` field.
+A YJNC project declares its specification version in graph.yaml via the `yjnc` field.
 
-```json
-{
-  "yjnc": "1.0"
-}
+```yaml
+yjnc: "2.0"
 ```
 
-The `yjnc` field MUST be present in work-graph.json. Runners MUST reject work-graph.json files that are missing this field or declare an unsupported version.
+The `yjnc` field MUST be present. The runner MUST reject graph.yaml files missing this field or declaring an unsupported version.
 
 ---
 
@@ -73,64 +77,259 @@ A unit is a directory containing the following entries:
 
 ```
 <unit>/
-  todo.md       REQUIRED
   agent.md      REQUIRED
-  contract      REQUIRED
   context/      OPTIONAL
-  output/       OPTIONAL
+  output/       RUNNER-MANAGED
 ```
 
-### 2.1 todo.md
+### 2.1 agent.md
 
-todo.md is a Markdown file containing a checklist of work items for this unit, written in plain English. It MAY contain wikilinks to other unit todo.md files using `[[<unit-identity>/todo]]` syntax to express the work graph for human readers.
+agent.md is a Claude Code subagent definition: YAML frontmatter followed by a Markdown system prompt body. Its schema is defined and owned by Claude Code. This specification does not constrain its fields.
 
-todo.md MUST be written before the unit executes. It is the human-readable specification of the unit's work.
+```markdown
+---
+model: claude-sonnet-4-6
+tools: [Read, Grep, Glob, Edit]
+mcp: [playwright]
+---
 
-Wikilinks are informational. The authoritative machine-readable graph is work-graph.json.
+# Task
 
-### 2.2 agent.md
+Implement the changes documented in `../research/output/findings.md`.
 
-agent.md is a Claude Code subagent definition file: YAML frontmatter followed by a Markdown system prompt body. Its schema is defined and owned by Claude Code. This specification does not constrain its fields beyond its role as the agent definition for a unit.
+## Output
 
-The system prompt SHOULD reference the unit's todo.md and context/ as its primary inputs.
+Write a PR description to `output/pr-body.md`.
+```
 
-### 2.3 contract
+agent.md is the complete specification of the unit. It contains the task, the tools, and the constraints. No other file is required.
 
-contract is an executable file. The runner MUST execute contract after the agent completes and MUST interpret the exit code as follows:
+### 2.2 context/
 
-| Exit code | Meaning |
-|-----------|---------|
-| `0` | Pass — unit output is verified complete |
-| `1` | Fail — unit output did not meet requirements |
-| `2` | Checkpoint — execution pauses for human intervention |
+context/ is a directory of human-provided input files made available to the agent before it runs. Seed data, reference documents, and examples belong here.
 
-Any other exit code MUST be treated as `1` (fail).
-
-contract MAY be any executable: a shell script, a compiled binary, a test suite invocation, a lint check, a database query, a CLI call, or any combination thereof. The only interface this specification defines is the exit code.
-
-stdout and stderr from contract SHOULD be captured and appended to the unit's log.
-
-### 2.4 context/
-
-context/ is a directory of input files made available to the agent before it runs. If preflight is implemented, the runner SHOULD populate context/ before invoking the agent.
+context/ is for files that do not come from another unit. Artifact flow between units is declared via `depends` in graph.yaml and staged automatically by the runner.
 
 context/ MUST NOT be modified during or after agent execution.
 
-### 2.5 output/
+### 2.3 output/
 
-output/ records the artifacts and events produced by unit execution. Its contents are written by the runner and by agent hooks during the run.
+output/ records the artifacts produced by unit execution. It is created and managed by the runner.
 
-#### 2.5.1 output/patches/
+The runner MUST create output/ before invoking the agent. The agent writes its artifacts here. Downstream units receive declared output files as staged context.
 
-When the agent runs in an isolated worktree (via `isolation: worktree` in agent.md), the runner SHOULD write the resulting diff as a standard git patch file to output/patches/.
+---
 
-Patch files record what changed. They are not applied automatically. The patch is the record.
+## 3. Graph
 
-#### 2.5.2 output/log.jsonl
+### 3.1 graph.yaml
 
-Each line of output/log.jsonl is a newline-delimited JSON object recording one event from the agent's execution. Two event types are defined by this specification:
+graph.yaml is the authoritative machine-readable representation of the project. It MUST be located in the root directory. It MUST conform to the YJNC graph schema.
 
-**tool_call** — records a tool the agent invoked:
+```yaml
+yjnc: "2.0"
+
+config:
+  concurrency: 4
+  logging: jsonl
+  secrets:
+    - ANTHROPIC_API_KEY
+
+checks:
+  standard: &standard [lint, vitest]
+
+research:
+  retries: 3
+
+implement:
+  depends: [research]
+  verify: *standard
+  retries: infinite
+
+review:
+  depends: [implement]
+  samples: 3
+  consistency: majority
+  verify: [screenshot, *standard]
+```
+
+Top-level keys are either reserved words (`yjnc`, `config`, `checks`) or unit identities. Any key not matching a reserved word is treated as a unit definition.
+
+### 3.2 config
+
+OPTIONAL. Runner-level configuration applied to the entire graph.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `concurrency` | integer | 4 | Maximum units executing concurrently |
+| `logging` | `"jsonl"` \| `"none"` | `"jsonl"` | Log format written to `.yjnc/logs/` |
+| `cache` | `"content-addressed"` \| `"mtime"` \| `"none"` | `"mtime"` | Cache strategy for skipping completed units |
+| `secrets` | string[] | `[]` | Secret names required by this graph |
+| `hooks` | object | — | Runner-level lifecycle hooks (see §5) |
+
+### 3.3 checks
+
+OPTIONAL. Named check groups, defined once and referenced by multiple units. Uses standard YAML anchor/alias syntax.
+
+```yaml
+checks:
+  standard: &standard [lint, vitest]
+  full: &full [lint, vitest, screenshot]
+```
+
+Named checks resolve to executable files in the root `checks/` directory. Path-prefixed values (`./verify.sh`) resolve relative to the unit.
+
+### 3.4 Unit Definition
+
+Each unit key maps to a unit configuration object.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `depends` | string[] | `[]` | Units that must pass before this unit runs |
+| `verify` | string[] | `[]` | Checks to run after agent completes |
+| `retries` | integer \| `"infinite"` | `0` | Retry attempts on check failure |
+| `samples` | integer | `1` | Number of times to run the agent |
+| `consistency` | string | `"any"` | Consistency strategy across samples |
+| `timeout` | integer | — | Seconds before the agent is terminated |
+| `hooks` | object | — | Unit-level lifecycle hooks (see §5) |
+
+### 3.5 Graph Rules
+
+The graph MUST be a directed acyclic graph. The runner MUST validate for cycles before execution begins and MUST halt with an error if any cycle is detected.
+
+Units with no `depends` entries MAY begin execution immediately. Units with no path between them in the DAG MAY execute concurrently up to `config.concurrency`. Units connected by a `depends` edge MUST execute in dependency order.
+
+Fan-in is supported: a unit MAY declare multiple `depends` entries. The runner MUST wait for all declared dependencies to pass before beginning the dependent unit.
+
+---
+
+## 4. Checks
+
+### 4.1 checks/ Directory
+
+The root MAY contain a `checks/` directory of shared executable check scripts. Named checks in unit `verify` fields resolve here.
+
+```
+<root>/
+  checks/
+    lint.sh
+    vitest.sh
+    screenshot.sh
+```
+
+Each check is an executable that exits 0 on success and non-zero on failure. Checks receive the unit's output directory as `$1`.
+
+### 4.2 Composition
+
+A unit's `verify` field is an ordered list. The runner MUST execute all listed checks in order. If any check exits non-zero, the unit fails. All checks MUST pass for the unit to pass.
+
+### 4.3 Default Check
+
+If a unit declares no `verify` checks, the runner MUST apply a default check: the unit's `output/` directory exists and contains at least one non-empty file.
+
+---
+
+## 5. Hooks
+
+Hooks are shell commands or script paths executed at defined lifecycle points. They run as subprocesses of the runner.
+
+### 5.1 Runner Hooks (config.hooks)
+
+| Hook | Fires |
+|------|-------|
+| `before_run` | Once, before any unit begins |
+| `after_run` | Once, after all units complete |
+| `on_failure` | When any unit reaches state `failed` |
+
+### 5.2 Unit Hooks (unit.hooks)
+
+| Hook | Fires |
+|------|-------|
+| `before` | Before the agent runs for this unit |
+| `after` | After all checks pass for this unit |
+| `on_failure` | When this unit's checks fail |
+
+Hooks receive the unit identity as `$1`. Runner hooks receive no arguments.
+
+A non-zero hook exit MUST halt execution with an error, except `on_failure` hooks, which MUST NOT affect graph execution state.
+
+---
+
+## 6. Execution Model
+
+### 6.1 Validation
+
+Before execution begins, the runner MUST:
+
+1. Parse graph.yaml and verify the `yjnc` field is present and the version is supported
+2. Validate graph.yaml against the YJNC schema
+3. Validate the graph is a DAG — detect and reject cycles
+4. Verify all declared unit directories exist on disk
+
+### 6.2 Artifact Staging
+
+Before executing a unit, the runner MUST copy the output files of each declared dependency into the unit's context/ directory. This MUST occur after all depends have passed.
+
+Artifact flow is explicit. The runner MUST NOT move output between units unless declared via `depends`. There is no implicit data flow.
+
+### 6.3 Execution Order
+
+The runner MUST NOT begin a unit until all units in its `depends` list have passed. The runner MAY execute independent units concurrently up to `config.concurrency`.
+
+### 6.4 Checks and Retry
+
+After the agent completes, the runner executes the unit's checks in order. If all checks pass, the unit transitions to `passed`.
+
+If any check fails and `retries` is greater than `0`, the runner re-executes the agent and re-runs all checks. This repeats until checks pass or retry attempts are exhausted.
+
+If `retries` is `"infinite"`, the runner retries without limit until checks pass.
+
+If retries are exhausted, the unit transitions to `failed` and graph execution halts.
+
+### 6.5 Sampling
+
+When `samples` is greater than `1`, the runner MUST execute the agent N times, storing each run's output in `output/sample-<n>/`. After all samples are collected, the runner evaluates consistency.
+
+**Consistency strategies:**
+
+| Strategy | Behavior |
+|----------|----------|
+| `any` | First passing sample wins |
+| `majority` | More than half of samples must produce passing checks |
+| `all` | All samples must produce passing checks |
+| `<path>` | Custom script receives all sample output directories as arguments |
+
+Samples with no path between them MAY execute concurrently.
+
+### 6.6 Idempotency
+
+A unit whose output is cached MUST NOT be re-executed unless invalidated.
+
+When `cache` is `"content-addressed"`, a unit is cached by hashing its agent.md and all staged context files. When `cache` is `"mtime"`, a unit is skipped if its output directory is newer than its inputs. When `cache` is `"none"`, units always execute.
+
+When a unit is invalidated, all transitively dependent units MUST also be invalidated.
+
+### 6.7 State
+
+The runner MUST track unit state and persist it to `.yjnc/state.json` after each transition.
+
+Valid states: `pending`, `running`, `passed`, `failed`.
+
+```
+pending → running → passed
+                 ↘ failed → [retry] → running
+                          → [halt]
+```
+
+---
+
+## 7. Logging
+
+The runner MUST write structured logs to `.yjnc/logs/<unit>/run-<n>.jsonl`. Log files are runner-managed and invisible to unit authors.
+
+Each line is a newline-delimited JSON object. Two event types are defined:
+
+**tool_call:**
 ```json
 {
   "type": "tool_call",
@@ -142,235 +341,95 @@ Each line of output/log.jsonl is a newline-delimited JSON object recording one e
 }
 ```
 
-**side_effect** — records a filesystem or external change:
+**check_result:**
 ```json
 {
-  "type": "side_effect",
+  "type": "check_result",
   "timestamp": "<ISO 8601>",
   "unit": "<unit-identity>",
-  "effect": "<effect-type>",
-  "path": "<affected-path>"
+  "check": "<check-name>",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
 }
 ```
 
-`type`, `timestamp`, and `unit` are REQUIRED on every log entry. All other fields are RECOMMENDED.
-
-Implementations MAY add additional event types and fields. Conforming readers MUST ignore unknown fields and event types.
-
-log.jsonl SHOULD be written by a Claude Code PostToolUse hook.
+`type`, `timestamp`, and `unit` are REQUIRED on every entry. All other fields are RECOMMENDED. Implementations MAY add additional event types. Conforming readers MUST ignore unknown fields.
 
 ---
 
-## 3. Work Graph
+## 8. Runner CLI
 
-### 3.1 work-graph.json
+The runner is the `yjnc` CLI. It MUST be invocable from any directory containing a graph.yaml.
 
-work-graph.json is the authoritative machine-readable representation of the project. It MUST be located in the root directory.
+### 8.1 Commands
 
-```json
-{
-  "yjnc": "1.0",
-  "units": {
-    "<unit-identity>": {
-      "depends": ["<unit-identity>"],
-      "context_from": ["<path>"]
-    }
-  },
-  "policy": {
-    "on_failure": "halt",
-    "retry": 0,
-    "sampling": 1
-  },
-  "state": {
-    "<unit-identity>": "pending"
-  }
-}
-```
+| Command | Description |
+|---------|-------------|
+| `yjnc run` | Execute the full graph |
+| `yjnc run <unit>` | Execute a single unit and its dependencies |
+| `yjnc status` | Print current state of all units |
+| `yjnc logs <unit>` | Stream logs for a unit |
+| `yjnc export --github-actions` | Generate a GitHub Actions workflow |
 
-#### 3.1.1 units
+### 8.2 Secrets
 
-REQUIRED. An object mapping unit identities to their graph configuration.
-
-**units.\<id\>.depends** — REQUIRED (MAY be an empty array). Unit identities that MUST reach state `passed` before this unit may execute.
-
-**units.\<id\>.context_from** — OPTIONAL. Paths relative to root whose contents the runner MUST copy into this unit's context/ directory before the agent runs. Evaluated after all depends have passed.
-
-#### 3.1.2 policy
-
-OPTIONAL. Execution policy applied to all units.
-
-**policy.on_failure** — `"halt"` (default) or `"retry"`. Behavior when a contract exits `1`.
-
-**policy.retry** — Integer. Maximum retry attempts when on_failure is `"retry"`. Default: `0`.
-
-**policy.sampling** — Integer. Number of times to run each unit. Default: `1`.
-
-#### 3.1.3 state
-
-REQUIRED. An object mapping unit identities to their current execution state. The runner MUST update this field as execution proceeds and MUST persist it to disk after each transition.
-
-Valid states: `pending`, `running`, `passed`, `failed`, `checkpoint`.
-
-### 3.2 Graph Rules
-
-The work graph MUST be a directed acyclic graph. The runner MUST validate the graph for cycles before execution begins. If a cycle is detected, the runner MUST halt with an error before executing any unit.
-
-Units with an empty `depends` array MAY begin execution immediately.
-
-Units with no path between them in the DAG MAY execute concurrently. Units connected by a `depends` edge MUST execute in dependency order.
-
-Fan-in is supported: a unit MAY declare multiple entries in `depends`. The runner MUST wait for all declared dependencies to reach state `passed` before beginning the dependent unit.
-
-### 3.3 Unit Identity
-
-A unit's identity is its directory path relative to root, using `/` as the separator, with no leading slash.
-
-| Unit directory | Identity |
-|----------------|----------|
-| `<root>/fetch/` | `fetch` |
-| `<root>/phase-1/implement/` | `phase-1/implement` |
-
-### 3.4 Wikilink Resolution
-
-Wikilinks in todo.md files resolve relative to root. `[[analyze/todo]]` resolves to `<root>/analyze/todo.md`.
-
-Wikilinks are informational. Runners are not required to parse them.
+Secrets declared in `config.secrets` are read from the environment or a `.env` file at root. The runner MUST error before execution if any declared secret is missing.
 
 ---
 
-## 4. Root
+## 9. GitHub Actions Export
 
-The root is the top-level directory of a YJNC project.
+`yjnc export --github-actions` generates a `.github/workflows/yjnc.yml` from the current graph.
 
-```
-<root>/
-  work-graph.json   REQUIRED
-  runner            REQUIRED
-  todo.md           RECOMMENDED
-  context/          OPTIONAL
-  output/           OPTIONAL
-  <unit>/           ZERO OR MORE
-```
+The exporter MUST:
+- Map each unit to a GitHub Actions job
+- Map `depends` to `needs`
+- Inline agent.md content as the prompt input to `claude-code-action`
+- Translate agent.md frontmatter fields to `claude_args`
+- Inject `actions/upload-artifact` after each unit's checks pass
+- Inject `actions/download-artifact` before each unit with declared dependencies
+- Map `config.secrets` to `${{ secrets.* }}` references
+- Map `samples` to a `strategy: matrix` on the job
+- Map named checks to equivalent job steps
 
-The root MUST NOT contain an agent.md. The root is the deterministic layer. Agents exist only inside units.
-
-### 4.1 runner
-
-runner is any executable that reads work-graph.json and orchestrates execution according to this specification. Its implementation language, runtime, and internal architecture are not constrained by this specification.
-
-A Makefile, shell script, Go binary, or any other executable MAY serve as the runner, provided it satisfies all MUST requirements in Section 5.
-
-### 4.2 Shared Context
-
-The root MAY contain a context/ directory. Its contents are available to the runner for any purpose, including populating unit context/ directories via context_from edges.
+The generated workflow MUST NOT be committed automatically. The operator reviews and commits it.
 
 ---
 
-## 5. Execution Model
+## 10. Conformance
 
-### 5.1 Validation
-
-Before execution begins, the runner MUST:
-
-1. Parse work-graph.json and verify the `yjnc` field is present and the version is supported
-2. Validate the graph is a DAG — detect and reject cycles
-3. Verify all declared unit directories exist on disk
-4. Re-evaluate contracts for units in state `passed` to confirm they still pass (idempotency)
-
-### 5.2 Preflight
-
-Before executing any unit, the runner SHOULD walk the full graph, collect relevant context, and populate each unit's context/ directory.
-
-Preflight is RECOMMENDED. Implementations that omit preflight still conform to this specification.
-
-### 5.3 Execution Order
-
-The runner MUST NOT begin a unit until all units in its `depends` list have reached state `passed`.
-
-The runner MAY execute independent units concurrently.
-
-### 5.4 Context Propagation
-
-When a unit declares `context_from`, the runner MUST copy the contents of each declared path into the unit's context/ directory before invoking the agent. This MUST occur after all depends have passed.
-
-Context propagation is explicit. The runner MUST NOT move output between units unless explicitly declared via `context_from`. There is no implicit data flow.
-
-### 5.5 Idempotency
-
-A unit in state `passed` MUST NOT be re-executed unless explicitly invalidated.
-
-A unit is invalidated when its agent.md is modified. When a unit is invalidated, all transitively dependent units MUST also be invalidated. Invalidated units return to state `pending`.
-
-### 5.6 State Transitions
-
-```
-pending → running → passed
-                 ↘ failed → [retry] → running
-                          → [halt]  → (graph halts)
-                 ↘ checkpoint → [human approves] → re-evaluate contract
-                              → [human aborts]   → failed
-```
-
-The runner MUST write each state transition to work-graph.json before proceeding.
-
-### 5.7 Retry
-
-When a contract exits `1` and policy.on_failure is `"retry"`, the runner MUST re-execute the unit's agent and contract up to policy.retry times. If the contract continues to exit `1` after all retries are exhausted, the unit transitions to state `failed` and graph execution halts.
-
-When policy.on_failure is `"halt"`, a contract exit of `1` immediately transitions the unit to `failed` and halts graph execution.
-
-### 5.8 Checkpoint
-
-When a contract exits `2`, the runner MUST:
-
-1. Transition the unit to state `checkpoint` in work-graph.json
-2. Halt execution of all dependent units
-3. Surface the checkpoint to the operator for review
-
-The runner MUST NOT proceed past a checkpoint without an explicit resume signal. The mechanism for signaling resume is implementation-defined.
-
-On resume, the runner MUST re-evaluate the unit's contract. If it exits `0`, the unit transitions to `passed` and execution continues. If it exits `1` or `2`, the appropriate behavior repeats.
-
-### 5.9 Sampling
-
-When policy.sampling is greater than `1`, the runner MUST execute the unit's agent N times, storing each run's output in output/samples/\<n\>/. The contract is evaluated once after all samples are collected. Self-consistency logic is implementation-defined.
-
----
-
-## 6. Conformance
-
-An implementation conforms to YJNC 1.0 if it satisfies all MUST and MUST NOT requirements in this specification.
+An implementation conforms to YJNC 2.0 if it satisfies all MUST and MUST NOT requirements in this specification.
 
 **A conforming runner MUST:**
-- Parse and validate work-graph.json before execution, including version check and cycle detection
+- Parse and validate graph.yaml before execution, including version check, schema validation, and cycle detection
 - Reject graphs containing cycles
 - Respect `depends` ordering
-- Propagate `context_from` when declared, and only when declared
-- Implement the contract exit code interface: `0` (pass), `1` (fail), `2` (checkpoint)
-- Persist state transitions to work-graph.json after each transition
+- Stage dependency artifacts before dependent units execute
+- Execute default check when no `verify` checks are declared
+- Execute declared checks in order; fail unit if any check fails
+- Retry up to `retries` times on check failure; retry without limit when `retries` is `"infinite"`
 - Halt graph execution on unrecovered failure
-- Skip units in state `passed` (idempotency)
-- Invalidate a unit and its transitive dependents when agent.md is modified
+- Skip units whose cache is valid
+- Invalidate a unit and its transitive dependents when cache is invalidated
+- Write state transitions to `.yjnc/state.json`
+- Write logs to `.yjnc/logs/<unit>/run-<n>.jsonl`
+- Error before execution if any declared secret is missing
 
 **A conforming runner SHOULD:**
 - Execute independent units concurrently
-- Implement preflight context collection
-- Implement retry (policy.retry)
-- Implement checkpoint with resume (exit code `2`)
-- Implement sampling (policy.sampling)
-- Capture contract stdout/stderr in the unit log
-- Write output/log.jsonl via PostToolUse hooks
-- Write output/patches/ for worktree-isolated agents
+- Implement sampling and consistency evaluation
+- Implement hooks
 
 ---
 
-## 7. Extensions
+## 11. Extensions
 
-This specification does not define an extension mechanism. Implementations MAY add files, directories, work-graph.json fields, log event types, and behaviors not defined here, provided they do not conflict with any MUST or MUST NOT requirement.
+This specification does not define an extension mechanism. Implementations MAY add graph.yaml fields, log event types, CLI commands, and behaviors not defined here, provided they do not conflict with any MUST or MUST NOT requirement.
 
 Implementations MUST NOT require extensions for basic conformance.
 
-Conforming runners MUST preserve unknown fields in work-graph.json and MUST ignore fields they do not recognize.
+Conforming runners MUST preserve unknown fields in graph.yaml and MUST ignore fields they do not recognize.
 
 agent.md is owned entirely by Claude Code. This specification does not constrain its schema or behavior beyond its role as the agent definition for a unit.
 
@@ -380,117 +439,98 @@ agent.md is owned entirely by Claude Code. This specification does not constrain
 
 ```
 <root>/
-  work-graph.json
-  runner
-  todo.md
-  context/
-  output/
-  fetch/
-    todo.md
+  graph.yaml
+  checks/
+    lint.sh
+    vitest.sh
+    screenshot.sh
+  research/
     agent.md
-    contract
     context/
     output/
-      patches/
-      log.jsonl
-  analyze/
-    todo.md
-    agent.md
-    contract
-    context/
-    output/
-      patches/
-      log.jsonl
+      findings.md
   implement/
-    todo.md
     agent.md
-    contract
     context/
     output/
-      patches/
-      log.jsonl
-  verify/
-    todo.md
+      pr-body.md
+  review/
     agent.md
-    contract
-    context/
     output/
-      patches/
-      log.jsonl
+  .yjnc/
+    state.json
+    logs/
+      research/
+        run-1.jsonl
+      implement/
+        run-1.jsonl
+      review/
+        run-1.jsonl
 ```
 
 ---
 
-## Appendix B: work-graph.json Example
+## Appendix B: graph.yaml Example
 
-A four-unit pipeline where fetch and a parallel research stream converge before implementation, with a human checkpoint before final verification:
+A four-unit pipeline with parallel research streams, shared checks, sampling, and hooks:
 
-```json
-{
-  "yjnc": "1.0",
-  "units": {
-    "fetch": {
-      "depends": []
-    },
-    "research": {
-      "depends": []
-    },
-    "analyze": {
-      "depends": ["fetch", "research"],
-      "context_from": ["fetch/output", "research/output"]
-    },
-    "implement": {
-      "depends": ["analyze"],
-      "context_from": ["analyze/output"]
-    },
-    "verify": {
-      "depends": ["implement"]
-    }
-  },
-  "policy": {
-    "on_failure": "retry",
-    "retry": 2,
-    "sampling": 1
-  },
-  "state": {
-    "fetch":     "passed",
-    "research":  "passed",
-    "analyze":   "passed",
-    "implement": "checkpoint",
-    "verify":    "pending"
-  }
-}
-```
+```yaml
+yjnc: "2.0"
 
-`fetch` and `research` have no dependencies and run concurrently. `analyze` is a fan-in node that waits for both. `implement` is in `checkpoint` state — a human is reviewing output before verify proceeds.
+config:
+  concurrency: 4
+  logging: jsonl
+  cache: content-addressed
+  secrets:
+    - ANTHROPIC_API_KEY
+  hooks:
+    before_run: ./scripts/setup.sh
+    on_failure: ./scripts/notify.sh
 
----
-
-## Appendix C: Minimal Makefile Runner
-
-A Makefile is a conforming minimal runner for projects that do not require retry, sampling, or checkpoint support.
-
-```makefile
-.PHONY: all fetch analyze implement verify
-
-all: verify
-
-verify: implement
-	./verify/contract
-
-implement: analyze
-	claude --agent implement/agent.md
-	./implement/contract
-
-analyze: fetch
-	claude --agent analyze/agent.md
-	./analyze/contract
+checks:
+  standard: &standard [lint, vitest]
+  full: &full [lint, vitest, screenshot]
 
 fetch:
-	claude --agent fetch/agent.md
-	./fetch/contract
+  retries: 3
+
+research:
+  retries: 3
+
+analyze:
+  depends: [fetch, research]
+  verify: *standard
+  retries: infinite
+
+implement:
+  depends: [analyze]
+  verify: *full
+  retries: infinite
+  hooks:
+    before: ./scripts/branch.sh
+
+review:
+  depends: [implement]
+  samples: 3
+  consistency: majority
+  verify: [screenshot]
 ```
 
-Run with `make -j` to execute independent targets concurrently.
+`fetch` and `research` have no dependencies and run concurrently. `analyze` is a fan-in node. `implement` retries until all checks pass. `review` runs three samples and requires majority consistency.
 
-A full conforming runner implementing retry, checkpoint, sampling, and state persistence in work-graph.json requires additional tooling beyond Make's native capabilities.
+---
+
+## Appendix C: agent.md Frontmatter
+
+agent.md frontmatter is defined and owned by Claude Code. Common fields:
+
+```yaml
+---
+model: claude-sonnet-4-6
+tools: [Read, Grep, Glob, Edit, Bash]
+mcp: [playwright, github]
+isolation: worktree
+---
+```
+
+Refer to Claude Code documentation for the authoritative field reference. This specification does not constrain or extend the agent.md schema.
