@@ -180,11 +180,18 @@ var initCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		graphPath := filepath.Join(cwd, "graph.yaml")
-		if _, err := os.Stat(graphPath); err == nil {
+		if _, err := os.Stat(filepath.Join(cwd, "graph.yaml")); err == nil {
 			return fmt.Errorf("graph.yaml already exists")
 		}
-		content := `juc: "2.0"
+
+		scaffold := []struct {
+			path    string
+			content string
+			dir     bool
+		}{
+			{
+				path: "graph.yaml",
+				content: `juc: "2.0"
 
 config:
   concurrency: 4
@@ -197,13 +204,61 @@ config:
 #   depends: [research]
 #   verify: [lint]
 #   retries: infinite
-`
-		if err := os.WriteFile(graphPath, []byte(content), 0644); err != nil {
+`,
+			},
+			{path: "checks/", dir: true},
+			{path: ".claude/hooks/", dir: true},
+			{
+				path: ".claude/settings.json",
+				content: `{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh .claude/hooks/juc-log.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+`,
+			},
+			{
+				path: ".claude/hooks/juc-log.sh",
+				content: `#!/bin/sh
+# Appends Claude Code tool use events to .juc/logs/$JUC_UNIT/run-$JUC_RUN.jsonl
+# JUC_UNIT and JUC_RUN are set by the juc runner.
+[ -z "$JUC_UNIT" ] && exit 0
+mkdir -p ".juc/logs/$JUC_UNIT"
+cat >> ".juc/logs/$JUC_UNIT/run-${JUC_RUN:-1}.jsonl"
+`,
+			},
+		}
+
+		for _, s := range scaffold {
+			if s.dir {
+				os.MkdirAll(filepath.Join(cwd, s.path), 0755)
+				fmt.Printf("  created %s\n", s.path)
+				continue
+			}
+			if err := os.MkdirAll(filepath.Dir(filepath.Join(cwd, s.path)), 0755); err != nil {
+				return err
+			}
+			if err := os.WriteFile(filepath.Join(cwd, s.path), []byte(s.content), 0644); err != nil {
+				return err
+			}
+			fmt.Printf("  created %s\n", s.path)
+		}
+		if err := os.Chmod(filepath.Join(cwd, ".claude/hooks/juc-log.sh"), 0755); err != nil {
 			return err
 		}
-		os.MkdirAll(filepath.Join(cwd, "checks"), 0755)
-		fmt.Println("created graph.yaml")
-		fmt.Println("created checks/")
+		fmt.Println("\njuc project ready. Next:")
+		fmt.Println("  juc add <unit>    scaffold your first unit")
+		fmt.Println("  juc run           execute the graph")
 		return nil
 	},
 }

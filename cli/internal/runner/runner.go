@@ -136,7 +136,7 @@ func (r *Runner) runUnit(id string) error {
 		fmt.Printf("  → %s (attempt %d)\n", id, attempt)
 		log.AgentStart(id)
 
-		if err := r.runAgent(id); err != nil {
+		if err := r.runAgent(id, attempt); err != nil {
 			log.Event(id, fmt.Sprintf("agent error: %v", err))
 			log.Close()
 		} else {
@@ -162,12 +162,16 @@ func (r *Runner) runUnit(id string) error {
 	}
 }
 
-func (r *Runner) runAgent(id string) error {
+func (r *Runner) runAgent(id string, attempt int) error {
 	agentPath := filepath.Join(r.Root, id, "agent.md")
 	cmd := exec.Command("claude", "--agent", agentPath)
 	cmd.Dir = r.Root
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
+	cmd.Env = append(os.Environ(),
+		"JUC_UNIT="+id,
+		fmt.Sprintf("JUC_RUN=%d", attempt),
+	)
 	return cmd.Run()
 }
 
