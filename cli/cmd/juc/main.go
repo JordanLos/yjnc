@@ -11,6 +11,7 @@ import (
 
 	"github.com/JordanLos/just-use-claude/internal/graph"
 	"github.com/JordanLos/just-use-claude/internal/runner"
+	"github.com/JordanLos/just-use-claude/internal/spec"
 	"github.com/JordanLos/just-use-claude/internal/state"
 	"github.com/spf13/cobra"
 )
@@ -428,8 +429,76 @@ func init() {
 	logsCmd.Flags().Bool("all", false, "show all runs")
 }
 
+var installCmd = &cobra.Command{
+	Use:   "install",
+	Short: "Install juc into Claude Code globally (~/.claude)",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if err := writeJucSkill(); err != nil {
+			return err
+		}
+		if err := patchClaudeMD(); err != nil {
+			return err
+		}
+		home, _ := os.UserHomeDir()
+		fmt.Printf("juc installed into Claude Code.\n")
+		fmt.Printf("  skill:  %s/.claude/skills/juc-spec.md\n", home)
+		fmt.Printf("  claude: %s/.claude/CLAUDE.md\n", home)
+		fmt.Println("\nIn any Claude Code session, invoke /juc-spec to load the specification.")
+		return nil
+	},
+}
+
+var upgradeCmd = &cobra.Command{
+	Use:   "upgrade",
+	Short: "Update the juc Claude Code skill to the current version",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if err := writeJucSkill(); err != nil {
+			return err
+		}
+		home, _ := os.UserHomeDir()
+		fmt.Printf("juc skill updated: %s/.claude/skills/juc-spec.md\n", home)
+		return nil
+	},
+}
+
+func writeJucSkill() error {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return err
+	}
+	skillsDir := filepath.Join(home, ".claude", "skills")
+	if err := os.MkdirAll(skillsDir, 0755); err != nil {
+		return err
+	}
+	content := "---\ndescription: Full JUC 2.0 specification and CLI reference. Read this before creating, modifying, or running any juc project.\n---\n\n" + string(spec.Content)
+	return os.WriteFile(filepath.Join(skillsDir, "juc-spec.md"), []byte(content), 0644)
+}
+
+func patchClaudeMD() error {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return err
+	}
+	claudeMD := filepath.Join(home, ".claude", "CLAUDE.md")
+
+	existing, err := os.ReadFile(claudeMD)
+	if err == nil && strings.Contains(string(existing), "## juc") {
+		fmt.Println("  (CLAUDE.md already contains juc entry, skipping)")
+		return nil
+	}
+
+	stub := "\n## juc\n\njuc (Just Use Claude) is installed. Before working with any juc project, invoke the `/juc-spec` skill to load the full specification and CLI reference.\n"
+	f, err := os.OpenFile(claudeMD, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	_, err = f.WriteString(stub)
+	return err
+}
+
 func main() {
-	root.AddCommand(runCmd, statusCmd, validateCmd, cleanCmd, initCmd, addCmd, logsCmd)
+	root.AddCommand(runCmd, statusCmd, validateCmd, cleanCmd, initCmd, addCmd, logsCmd, installCmd, upgradeCmd)
 	if err := root.Execute(); err != nil {
 		os.Exit(1)
 	}
