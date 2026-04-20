@@ -1,11 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/JordanLos/just-use-claude/internal/graph"
 	"github.com/JordanLos/just-use-claude/internal/runner"
@@ -302,8 +304,132 @@ Write results to the output/ directory.
 	},
 }
 
+var logsCmd = &cobra.Command{
+	Use:   "logs <unit>",
+	Short: "Display logs for a unit",
+	Args:  cobra.ExactArgs(1),
+	RunE: func(cmd *cobra.Command, args []string) error {
+		root, err := findRoot()
+		if err != nil {
+			return err
+		}
+		unit := args[0]
+		runFlag, _ := cmd.Flags().GetInt("run")
+		allFlag, _ := cmd.Flags().GetBool("all")
+
+		logsDir := filepath.Join(root, ".juc", "logs", unit)
+		entries, err := os.ReadDir(logsDir)
+		if os.IsNotExist(err) {
+			return fmt.Errorf("no logs found for unit %q", unit)
+		}
+		if err != nil {
+			return err
+		}
+
+		var runs []string
+		for _, e := range entries {
+			if strings.HasPrefix(e.Name(), "run-") && strings.HasSuffix(e.Name(), ".jsonl") {
+				runs = append(runs, e.Name())
+			}
+		}
+		sort.Strings(runs)
+		if len(runs) == 0 {
+			return fmt.Errorf("no runs found for unit %q", unit)
+		}
+
+		var toShow []string
+		switch {
+		case allFlag:
+			toShow = runs
+		case runFlag > 0:
+			name := fmt.Sprintf("run-%d.jsonl", runFlag)
+			if _, err := os.Stat(filepath.Join(logsDir, name)); err != nil {
+				return fmt.Errorf("run %d not found for unit %q", runFlag, unit)
+			}
+			toShow = []string{name}
+		default:
+			toShow = []string{runs[len(runs)-1]}
+		}
+
+		for _, run := range toShow {
+			fmt.Printf("\n%s/%s\n", unit, run)
+			if err := printLog(filepath.Join(logsDir, run)); err != nil {
+				return err
+			}
+		}
+		return nil
+	},
+}
+
+type logEntry struct {
+	Type      string `json:"type"`
+	Timestamp string `json:"timestamp"`
+	Unit      string `json:"unit"`
+	Message   string `json:"message"`
+	Check     string `json:"check"`
+	ExitCode  *int   `json:"exit_code"`
+	Stdout    string `json:"stdout"`
+	Stderr    string `json:"stderr"`
+	Tool      string `json:"tool"`
+}
+
+func printLog(path string) error {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	for _, line := range strings.Split(strings.TrimSpace(string(data)), "\n") {
+		if line == "" {
+			continue
+		}
+		var e logEntry
+		if err := json.Unmarshal([]byte(line), &e); err != nil {
+			fmt.Printf("  [raw] %s\n", line)
+			continue
+		}
+		ts := ""
+		if t, err := time.Parse(time.RFC3339, e.Timestamp); err == nil {
+			ts = t.Local().Format("15:04:05")
+		}
+		switch e.Type {
+		case "agent_start":
+			fmt.Printf("  %s  → agent started\n", ts)
+		case "agent_end":
+			fmt.Printf("  %s  ✓ agent completed\n", ts)
+		case "check_result":
+			if e.ExitCode != nil && *e.ExitCode == 0 {
+				fmt.Printf("  %s  ✓ check %-12s exit 0\n", ts, e.Check)
+			} else {
+				code := -1
+				if e.ExitCode != nil {
+					code = *e.ExitCode
+				}
+				fmt.Printf("  %s  ✗ check %-12s exit %d\n", ts, e.Check, code)
+				if e.Stdout != "" {
+					fmt.Printf("    stdout: %s\n", strings.TrimSpace(e.Stdout))
+				}
+				if e.Stderr != "" {
+					fmt.Printf("    stderr: %s\n", strings.TrimSpace(e.Stderr))
+				}
+			}
+		case "event":
+			fmt.Printf("  %s  ! %s\n", ts, e.Message)
+		case "tool_call":
+			fmt.Printf("  %s  [%s]\n", ts, e.Tool)
+		default:
+			fmt.Printf("  %s  %s\n", ts, e.Type)
+		}
+	}
+	return nil
+}
+
+func init() {
+	logsCmd.Flags().Int("run", 0, "show a specific run number")
+	logsCmd.Flags().Bool("all", false, "show all runs")
+}
+
 func main() {
-	root.AddCommand(runCmd, statusCmd, validateCmd, cleanCmd, initCmd, addCmd)
+	root.AddCommand(runCmd, statusCmd, validateCmd, cleanCmd, initCmd, addCmd, logsCmd)
 	if err := root.Execute(); err != nil {
 		os.Exit(1)
 	}
