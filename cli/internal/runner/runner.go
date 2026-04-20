@@ -14,14 +14,35 @@ import (
 	"github.com/JordanLos/just-use-claude/internal/state"
 )
 
+// Agent executes a unit's agent.md. Injected so the runner is testable.
+type Agent interface {
+	Execute(root, id, agentPath string, attempt int) error
+}
+
+// CLIAgent invokes the claude CLI.
+type CLIAgent struct{}
+
+func (c *CLIAgent) Execute(root, id, agentPath string, attempt int) error {
+	cmd := exec.Command("claude", "--agent", agentPath)
+	cmd.Dir = root
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Env = append(os.Environ(),
+		"JUC_UNIT="+id,
+		fmt.Sprintf("JUC_RUN=%d", attempt),
+	)
+	return cmd.Run()
+}
+
 type Runner struct {
 	Root  string
 	Graph *graph.Graph
 	State *state.State
+	Agent Agent
 }
 
 func New(root string, g *graph.Graph, s *state.State) *Runner {
-	return &Runner{Root: root, Graph: g, State: s}
+	return &Runner{Root: root, Graph: g, State: s, Agent: &CLIAgent{}}
 }
 
 func (r *Runner) Run(only string) error {
@@ -56,9 +77,7 @@ func (r *Runner) Run(only string) error {
 			break
 		}
 		if len(toRun) == 0 {
-			// Wait for something to finish
 			wg.Wait()
-			// Check for errors
 			select {
 			case err := <-errCh:
 				return err
@@ -113,12 +132,9 @@ func (r *Runner) runUnit(id string) error {
 	if err := r.State.Set(id, state.Running); err != nil {
 		return err
 	}
-
-	// Stage dependency artifacts into context/
 	if err := r.stageContext(id); err != nil {
 		return fmt.Errorf("staging context: %w", err)
 	}
-
 	if err := os.MkdirAll(filepath.Join(r.Root, id, "output"), 0755); err != nil {
 		return err
 	}
@@ -136,7 +152,8 @@ func (r *Runner) runUnit(id string) error {
 		fmt.Printf("  → %s (attempt %d)\n", id, attempt)
 		log.AgentStart(id)
 
-		if err := r.runAgent(id, attempt); err != nil {
+		agentPath := filepath.Join(r.Root, id, "agent.md")
+		if err := r.Agent.Execute(r.Root, id, agentPath, attempt); err != nil {
 			log.Event(id, fmt.Sprintf("agent error: %v", err))
 			log.Close()
 		} else {
@@ -162,25 +179,10 @@ func (r *Runner) runUnit(id string) error {
 	}
 }
 
-func (r *Runner) runAgent(id string, attempt int) error {
-	agentPath := filepath.Join(r.Root, id, "agent.md")
-	cmd := exec.Command("claude", "--agent", agentPath)
-	cmd.Dir = r.Root
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	cmd.Env = append(os.Environ(),
-		"JUC_UNIT="+id,
-		fmt.Sprintf("JUC_RUN=%d", attempt),
-	)
-	return cmd.Run()
-}
-
 func (r *Runner) runChecks(id string, log *logger.Logger) error {
 	u := r.Graph.Units[id]
-	checks := u.Verify
 
-	// Default check: output/ non-empty
-	if len(checks) == 0 {
+	if len(u.Verify) == 0 {
 		outputDir := filepath.Join(r.Root, id, "output")
 		entries, err := os.ReadDir(outputDir)
 		if err != nil || len(entries) == 0 {
@@ -189,7 +191,7 @@ func (r *Runner) runChecks(id string, log *logger.Logger) error {
 		return nil
 	}
 
-	for _, check := range checks {
+	for _, check := range u.Verify {
 		path := r.resolveCheck(check)
 		stdout, stderr, exitCode, err := r.execCheck(path, filepath.Join(r.Root, id, "output"))
 		log.CheckResult(id, check, exitCode, stdout, stderr)
@@ -204,7 +206,6 @@ func (r *Runner) resolveCheck(check string) string {
 	if strings.HasPrefix(check, "./") || strings.HasPrefix(check, "/") {
 		return check
 	}
-	// Named check: resolve from checks/
 	return filepath.Join(r.Root, "checks", check+".sh")
 }
 
