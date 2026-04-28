@@ -183,4 +183,4 @@ Schema for graph.yaml: [schema/graph.schema.json](schema/graph.schema.json)
 
 ## License
 
-The JUC specification is © Jordan Scales and released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may use, implement, and adapt the spec freely, with attribution. Derivatives must carry attribution and use the same license. The canonical specification is maintained at [github.com/JordanLos/yjnc](https://github.com/JordanLos/yjnc).
+The JUC specification is © Jordan Scales and released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may use, implement, and adapt the spec freely, with attribution. Derivatives must carry attribution and use the same license. The canonical specification is maintained at [github.com/JordanLos/just-use-claude](https://github.com/JordanLos/just-use-claude).
