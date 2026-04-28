@@ -1,0 +1,20 @@
+FAIL test/Stats.test.js
+
+  ● Stats › should generate stats with module reasons
+
+    RangeError: Maximum call stack size exceeded
+
+      1240 |   seal(callback) {
+      1241 |     this.hooks.seal.call();
+    > 1242 |     this._sortModules(this.modules);
+           |          ^
+      1243 |     this.hooks.afterOptimizeModules.call(this.modules);
+
+      at Compilation._sortModules (lib/Compilation.js:1242:8)
+      at Compilation._sortModules (lib/Compilation.js:1248:12)
+      at Compilation._sortModules (lib/Compilation.js:1248:12)
+      at Compilation.seal (lib/Compilation.js:1241:5)
+      at Compiler.compile (lib/Compiler.js:456:16)
+
+Test Suites: 1 failed, 29 passed, 30 total
+Tests:       1 failed, 418 passed, 419 total

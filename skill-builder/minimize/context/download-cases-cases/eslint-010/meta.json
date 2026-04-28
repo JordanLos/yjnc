@@ -1,0 +1,7 @@
+{
+  "id": "eslint-010",
+  "repo": "eslint/eslint",
+  "split": "training",
+  "fix_file": "Makefile.js",
+  "error_type": "ReferenceError"
+}

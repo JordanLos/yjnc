@@ -1,0 +1,7 @@
+{
+  "id": "case_babel_001",
+  "repo": "babel/babel",
+  "split": "training",
+  "fix_file": "packages/babel-parser/src/parser/statement.js",
+  "error_type": "TypeError"
+}

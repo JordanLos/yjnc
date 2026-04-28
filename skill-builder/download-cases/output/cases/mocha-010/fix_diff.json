@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/utils.js"
+  ],
+  "patch": "--- a/lib/utils.js\n+++ b/lib/utils.js\n@@ -12,7 +12,7 @@ var path = require(\"node:path\");\n var util = require(\"node:util\");\n var he = require(\"he\");\n var pc = require(\"picocolors\");\n-var isUnicodeSupported = require(\"is-unicode-supported\").default();\n+var isUnicodeSupported = require(\"is-unicode-supported\")();\n \n const MOCHA_ID_PROP_NAME = \"__mocha_id__\";\n "
+}

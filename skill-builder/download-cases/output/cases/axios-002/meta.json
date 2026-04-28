@@ -1,0 +1,7 @@
+{
+  "id": "axios-002",
+  "repo": "axios/axios",
+  "split": "held-out",
+  "fix_file": "lib/env/data.js",
+  "error_type": "AssertionError"
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/print/flow.js"
+  ],
+  "patch": "--- a/src/language-js/print/flow.js\n+++ b/src/language-js/print/flow.js\n@@ -214,9 +214,9 @@ function printFlow(path, options, print, args) {\n       return [\"?\", print(\"typeAnnotation\")];\n     case \"Variance\": {\n       const varianceKinds = {\n-        \"plus\": \"+\",\n-        \"minus\": \"-\",\n-        \"readonly\": \"readonly \",\n+        plus: \"+\",\n+        minus: \"-\",\n+        readonly: \"readonly \",\n       };\n       const { kind } = node;\n       assert.ok(kind in varianceKinds);"
+}

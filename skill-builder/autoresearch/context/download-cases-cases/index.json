@@ -1,0 +1,242 @@
+[
+  {
+    "id": "mocha-001",
+    "split": "training"
+  },
+  {
+    "id": "sinon-001",
+    "split": "training"
+  },
+  {
+    "id": "eslint-001",
+    "split": "training"
+  },
+  {
+    "id": "axios-001",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-001",
+    "split": "training"
+  },
+  {
+    "id": "undici-001",
+    "split": "training"
+  },
+  {
+    "id": "mocha-002",
+    "split": "training"
+  },
+  {
+    "id": "sinon-002",
+    "split": "training"
+  },
+  {
+    "id": "eslint-002",
+    "split": "training"
+  },
+  {
+    "id": "axios-002",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-002",
+    "split": "training"
+  },
+  {
+    "id": "mocha-003",
+    "split": "training"
+  },
+  {
+    "id": "sinon-003",
+    "split": "training"
+  },
+  {
+    "id": "eslint-003",
+    "split": "training"
+  },
+  {
+    "id": "axios-003",
+    "split": "training"
+  },
+  {
+    "id": "prettier-003",
+    "split": "held-out"
+  },
+  {
+    "id": "mocha-004",
+    "split": "training"
+  },
+  {
+    "id": "sinon-004",
+    "split": "training"
+  },
+  {
+    "id": "eslint-004",
+    "split": "training"
+  },
+  {
+    "id": "prettier-004",
+    "split": "training"
+  },
+  {
+    "id": "mocha-005",
+    "split": "training"
+  },
+  {
+    "id": "eslint-005",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-005",
+    "split": "training"
+  },
+  {
+    "id": "mocha-006",
+    "split": "training"
+  },
+  {
+    "id": "eslint-006",
+    "split": "training"
+  },
+  {
+    "id": "prettier-006",
+    "split": "training"
+  },
+  {
+    "id": "mocha-007",
+    "split": "training"
+  },
+  {
+    "id": "eslint-007",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-007",
+    "split": "training"
+  },
+  {
+    "id": "mocha-008",
+    "split": "training"
+  },
+  {
+    "id": "eslint-008",
+    "split": "training"
+  },
+  {
+    "id": "prettier-008",
+    "split": "training"
+  },
+  {
+    "id": "mocha-009",
+    "split": "training"
+  },
+  {
+    "id": "eslint-009",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-009",
+    "split": "training"
+  },
+  {
+    "id": "mocha-010",
+    "split": "training"
+  },
+  {
+    "id": "eslint-010",
+    "split": "training"
+  },
+  {
+    "id": "prettier-010",
+    "split": "training"
+  },
+  {
+    "id": "mocha-011",
+    "split": "training"
+  },
+  {
+    "id": "eslint-011",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-011",
+    "split": "training"
+  },
+  {
+    "id": "mocha-012",
+    "split": "training"
+  },
+  {
+    "id": "eslint-012",
+    "split": "training"
+  },
+  {
+    "id": "prettier-012",
+    "split": "training"
+  },
+  {
+    "id": "mocha-013",
+    "split": "training"
+  },
+  {
+    "id": "prettier-013",
+    "split": "held-out"
+  },
+  {
+    "id": "mocha-014",
+    "split": "training"
+  },
+  {
+    "id": "prettier-014",
+    "split": "training"
+  },
+  {
+    "id": "prettier-015",
+    "split": "training"
+  },
+  {
+    "id": "prettier-016",
+    "split": "training"
+  },
+  {
+    "id": "prettier-017",
+    "split": "training"
+  },
+  {
+    "id": "prettier-018",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-019",
+    "split": "training"
+  },
+  {
+    "id": "prettier-020",
+    "split": "training"
+  },
+  {
+    "id": "prettier-021",
+    "split": "training"
+  },
+  {
+    "id": "prettier-022",
+    "split": "training"
+  },
+  {
+    "id": "prettier-023",
+    "split": "training"
+  },
+  {
+    "id": "prettier-024",
+    "split": "held-out"
+  },
+  {
+    "id": "prettier-025",
+    "split": "training"
+  },
+  {
+    "id": "prettier-026",
+    "split": "training"
+  }
+]

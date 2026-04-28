@@ -1,0 +1,7 @@
+{
+  "id": "mocha-003",
+  "repo": "mochajs/mocha",
+  "split": "training",
+  "fix_file": "lib/nodejs/esm-utils.js",
+  "error_type": "Error"
+}

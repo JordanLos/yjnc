@@ -1,0 +1,25 @@
+FAIL tests/format/js/arrow-function/__snapshots__/jsfmt.spec.js.snap
+
+  ● format › js › arrow-function/multiple_returns.js
+
+    expect(received).toMatchSnapshot()
+
+    Snapshot name: `format js arrow-function/multiple_returns.js 1`
+
+    - Snapshot  - 5
+    + Received  + 3
+
+    AssertionError [ERR_ASSERTION]: Output does not match snapshot
+
+      1232 |   const result = formatAST(ast, opts);
+      1233 |   const output = result.formatted;
+    > 1234 |   assert.strictEqual(output, expected);
+           |          ^
+      1235 | }
+
+      at src/language-js/printer.js:1234:10
+      at Array.forEach (<anonymous>)
+      at printArrowFunction (src/language-js/printer.js:1198:14)
+
+Test Suites: 1 failed, 88 passed, 89 total
+Tests:       1 failed, 1204 passed, 1205 total

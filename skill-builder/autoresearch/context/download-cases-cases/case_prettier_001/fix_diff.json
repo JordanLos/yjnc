@@ -1,0 +1,4 @@
+{
+  "files": ["src/language-js/printer.js"],
+  "patch": "--- a/src/language-js/printer.js\n+++ b/src/language-js/printer.js\n@@ -1195,7 +1195,10 @@\n function printArrowFunction(path, opts, print) {\n-  const body = path.call(print, 'body');\n+  const body = path.call(print, 'body');\n+  if (opts.trailingComma === 'all' && shouldAddTrailingComma(path)) {\n+    return concat([body, ',']);\n+  }\n   return body;\n }"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "mocha-008",
+  "repo": "mochajs/mocha",
+  "split": "training",
+  "fix_file": "mocha.mjs",
+  "error_type": "Error"
+}

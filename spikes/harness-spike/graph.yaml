@@ -1,0 +1,17 @@
+juc: "2.0"
+
+config:
+  concurrency: 3
+  cache: content-addressed
+
+pi:
+  retries: 1
+
+opencode:
+  retries: 1
+
+goose:
+  retries: 1
+
+compare:
+  depends: [pi, opencode, goose]

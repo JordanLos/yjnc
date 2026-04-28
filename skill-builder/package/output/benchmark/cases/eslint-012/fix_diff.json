@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/rules/utils/unicode/is-combining-character.js"
+  ],
+  "patch": "--- a/lib/rules/utils/unicode/is-combining-character.js\n+++ b/lib/rules/utils/unicode/is-combining-character.js\n@@ -9,5 +9,5 @@\n  * @returns {boolean} `true` if the character has the General Category of Combining Mark (M), consisting of `Mc`, `Me`, and `Mn`.\n  */\n module.exports = function isCombiningCharacter(codePoint) {\n-\treturn /^[\\p{M}]$/u.test(String.fromCodePoint(codePoint));\n+\treturn /^\\p{M}$/u.test(String.fromCodePoint(codePoint));\n };"
+}

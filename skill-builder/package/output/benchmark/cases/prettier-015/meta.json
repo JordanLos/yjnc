@@ -1,0 +1,7 @@
+{
+  "id": "prettier-015",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/parse/utilities/source-types.js",
+  "error_type": "Error"
+}

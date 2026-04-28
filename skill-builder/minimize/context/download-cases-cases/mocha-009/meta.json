@@ -1,0 +1,7 @@
+{
+  "id": "mocha-009",
+  "repo": "mochajs/mocha",
+  "split": "training",
+  "fix_file": "lib/nodejs/parallel-buffered-runner.js",
+  "error_type": "Error"
+}

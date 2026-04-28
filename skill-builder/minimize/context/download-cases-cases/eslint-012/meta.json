@@ -1,0 +1,7 @@
+{
+  "id": "eslint-012",
+  "repo": "eslint/eslint",
+  "split": "training",
+  "fix_file": "lib/rules/utils/unicode/is-combining-character.js",
+  "error_type": "Error"
+}

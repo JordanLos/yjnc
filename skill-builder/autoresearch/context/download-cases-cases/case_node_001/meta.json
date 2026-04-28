@@ -1,0 +1,7 @@
+{
+  "id": "case_node_001",
+  "repo": "nodejs/node",
+  "split": "held-out",
+  "fix_file": "lib/internal/http.js",
+  "error_type": "ReferenceError"
+}

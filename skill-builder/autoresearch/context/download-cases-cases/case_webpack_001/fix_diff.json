@@ -1,0 +1,4 @@
+{
+  "files": ["lib/Compilation.js"],
+  "patch": "--- a/lib/Compilation.js\n+++ b/lib/Compilation.js\n@@ -1239,8 +1239,12 @@\n   _sortModules(modules) {\n-    modules.sort((a, b) => this._sortModules(a.dependencies) - this._sortModules(b.dependencies));\n+    modules.sort((a, b) => {\n+      if (a.index2 < b.index2) return -1;\n+      if (a.index2 > b.index2) return 1;\n+      return 0;\n+    });\n   }"
+}

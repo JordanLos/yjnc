@@ -1,0 +1,12 @@
+{
+  "total": 60,
+  "included": 37,
+  "excluded": 23,
+  "excluded_by_reason": {
+    "fix_diff has 2 production files": 5,
+    "no identifiable stack trace": 10,
+    "fix_diff has 3 production files": 3,
+    "fix_diff has 12 production files": 1,
+    "fix_diff has 5 production files": 4
+  }
+}

@@ -1,0 +1,3 @@
+{"type":"agent_start","timestamp":"2026-04-24T20:35:08Z","unit":"minimize"}
+{"type":"agent_end","timestamp":"2026-04-24T20:40:58Z","unit":"minimize"}
+{"type":"check_result","timestamp":"2026-04-24T20:40:59Z","unit":"minimize","exit_code":1,"check":"minimize-plateau","stderr":"Minimized: 806 → 704 tokens (F1 held at 0.9194)\n"}

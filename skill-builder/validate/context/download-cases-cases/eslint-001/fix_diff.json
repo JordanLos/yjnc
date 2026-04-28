@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/config/config.js"
+  ],
+  "patch": "--- a/lib/config/config.js\n+++ b/lib/config/config.js\n@@ -768,7 +768,7 @@ class Config {\n \t\t\t\t\tconst messageForTest = validateRule.errors\n \t\t\t\t\t\t.map(formatError)\n \t\t\t\t\t\t.join(\"\");\n-\t\t\t\t\t\t\n+\n \t\t\t\t\tconst fullMessage = `Key \"rules\": Key \"${ruleId}\":\\n${messageForTest}`;\n \n \t\t\t\t\tthrow new SchemaValidationError("
+}

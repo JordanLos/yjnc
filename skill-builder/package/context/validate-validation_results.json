@@ -1,0 +1,8 @@
+{
+  "training_f1": 0.9194,
+  "validation_f1": 0.5,
+  "token_count": 81,
+  "n_training": 50,
+  "n_held_out": 10,
+  "gap": 0.4194
+}

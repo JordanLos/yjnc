@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/pending.js"
+  ],
+  "patch": "--- a/lib/pending.js\n+++ b/lib/pending.js\n@@ -12,7 +12,7 @@\n class PendingError extends Error {\n   constructor(message) {\n     super(message);\n-    this.name = 'PendingError';\n+    this.name = \"PendingError\";\n   }\n }\n "
+}

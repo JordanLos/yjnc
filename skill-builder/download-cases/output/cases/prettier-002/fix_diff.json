@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-markdown/print/children.js"
+  ],
+  "patch": "--- a/src/language-markdown/print/children.js\n+++ b/src/language-markdown/print/children.js\n@@ -91,8 +91,8 @@ function shouldPrePrintDoubleHardline(path, options) {\n       (node.type === \"list\" &&\n         parent.type === \"listItem\" &&\n         (previous.type === \"code\" ||\n-           // Preserve blank line before nested list within listItem (issue #17746)\n-           previous.type === \"paragraph\") &&\n+          // Preserve blank line before nested list within listItem (issue #17746)\n+          previous.type === \"paragraph\") &&\n         previous.position.end.line + 1 < node.position.start.line)\n     ) {\n       return true;"
+}

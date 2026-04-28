@@ -1,0 +1,150 @@
+[36;1m  if command -v jq >/dev/null; then[0m
+[36;1m    jq -r ".inputs.payload | fromjson | .$1 // ${DEFAULT_VALUE}" ${TEST_GITHUB_EVENT_PATH:-${GITHUB_EVENT_PATH}}[0m
+[36;1m  else[0m
+[36;1m    echo "::error::jq not installed on system!"[0m
+[36;1m    exit 1[0m
+[36;1m  fi[0m
+[36;1m}[0m
+[36;1m[0m
+[36;1m# Every inputs.field should be referenced as INPUT_FIELD later in the action. This allows[0m
+[36;1m# the field to be set either as an argument to the github action or via inputs.json.[0m
+[36;1mif [[ "all" == "payload" ]]; then[0m
+[36;1m[0m
+[36;1m  INPUT_GITHUB_TOKEN=$(payload githubToken)[0m
+[36;1m  INPUT_TRUNK_TOKEN=$(payload trunkToken)[0m
+[36;1m  echo "::add-mask::${INPUT_GITHUB_TOKEN}"[0m
+[36;1m  echo "::add-mask::${INPUT_TRUNK_TOKEN}"[0m
+[36;1m[0m
+[36;1m  cat >>$GITHUB_ENV <<EOF[0m
+[36;1mINPUT_GITHUB_TOKEN=${INPUT_GITHUB_TOKEN}[0m
+[36;1mINPUT_TRUNK_TOKEN=${INPUT_TRUNK_TOKEN}[0m
+[36;1mTRUNK_TOKEN=${INPUT_TRUNK_TOKEN}[0m
+[36;1m[0m
+[36;1mTRUNK_API_ADDRESS=$(payload trunkApiAddress)[0m
+[36;1m[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_BASE_REPO_OWNER=$(payload pullRequest.base.repo.owner.login)[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_BASE_REPO_NAME=$(payload pullRequest.base.repo.name)[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_BASE_SHA=$(payload pullRequest.base.sha)[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK=$(payload pullRequest.head.repo.fork)[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_HEAD_SHA=$(payload pullRequest.head.sha)[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_NUMBER=$(payload pullRequest.number)[0m
+[36;1mINPUT_ARGUMENTS=$(payload arguments)[0m
+[36;1mINPUT_CACHE=$(payload cache)[0m
+[36;1mINPUT_CACHE_KEY=$(payload cacheKey)[0m
+[36;1mINPUT_CACHE_PATH=$(payload cachePath)[0m
+[36;1mINPUT_CHECK_ALL_MODE=$(payload checkAllMode)[0m
+[36;1mINPUT_CHECK_MODE=$(payload checkMode)[0m
+[36;1mINPUT_CHECK_RUN_ID=$(payload checkRunId)[0m
+[36;1mINPUT_DEBUG=$(payload debug)[0m
+[36;1mINPUT_GITHUB_REF_NAME=$(payload targetRefName)[0m
+[36;1mINPUT_LABEL=$(payload label)[0m
+[36;1mINPUT_SETUP_CACHE_KEY=$(payload setupCacheKey)[0m
+[36;1mINPUT_SETUP_DEPS=$(payload setupDeps)[0m
+[36;1mINPUT_TARGET_CHECKOUT=$(payload targetCheckout)[0m
+[36;1mINPUT_TARGET_CHECKOUT_REF=$(payload targetCheckoutRef)[0m
+[36;1mINPUT_TRUNK_PATH=$(payload trunkPath)[0m
+[36;1mINPUT_UPLOAD_LANDING_STATE=$(payload uploadLandingState)[0m
+[36;1mINPUT_UPLOAD_SERIES=$(payload uploadSeries)[0m
+[36;1mINPUT_UPLOAD_ID=$(payload uploadId)[0m
+[36;1mINPUT_AUTOFIX_AND_PUSH=$(payload autofixAndPush)[0m
+[36;1mINPUT_LFS_CHECKOUT=$(payload lfsCheckout true)[0m
+[36;1mEOF[0m
+[36;1m[0m
+[36;1melse[0m
+[36;1m[0m
+[36;1m  cat >>$GITHUB_ENV <<EOF[0m
+[36;1mINPUT_GITHUB_TOKEN=[0m
+[36;1mINPUT_TRUNK_TOKEN=[0m
+[36;1mTRUNK_TOKEN=[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_BASE_SHA=ee9ff31cee13712d2be2a6b5c0a4a54449fe9fe1[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK=false[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_HEAD_SHA=4684dd397b68f13dff584a9c0f5f940235070d7f[0m
+[36;1mGITHUB_EVENT_PULL_REQUEST_NUMBER=20571[0m
+[36;1mGITHUB_REF_NAME=20571/merge[0m
+[36;1mINPUT_ARGUMENTS=--ignore=docs/** --filter=eslint[0m
+[36;1mINPUT_CACHE=true[0m
+[36;1mINPUT_CACHE_KEY=trunk--Linux-e005c011d81f504f00580071bebe358471cd756a758662a4b32e836a8642e8db[0m
+[36;1mINPUT_CACHE_PATH=~/.cache/trunk[0m
+[36;1mINPUT_CAT_TRUNK_DEBUG_LOGS=false[0m
+[36;1mINPUT_CHECK_ALL_MODE=[0m
+[36;1mINPUT_CHECK_MODE=all[0m
+[36;1mINPUT_CHECK_RUN_ID=[0m
+[36;1mINPUT_DEBUG=false[0m
+[36;1mINPUT_GITHUB_REF_NAME=20571/merge[0m
+[36;1mINPUT_LABEL=[0m
+[36;1mINPUT_SETUP_CACHE_KEY=[0m
+[36;1mINPUT_SETUP_DEPS=false[0m
+[36;1mINPUT_TARGET_CHECKOUT=[0m
+[36;1mINPUT_TARGET_CHECKOUT_REF=[0m
+[36;1mINPUT_TIMEOUT_SECONDS=0[0m
+[36;1mINPUT_TRUNK_PATH=[0m
+[36;1mINPUT_UPLOAD_LANDING_STATE=false[0m
+[36;1mINPUT_UPLOAD_SERIES=[0m
+[36;1mINPUT_UPLOAD_ID=[0m
+[36;1mINPUT_AUTOFIX_AND_PUSH=[0m
+[36;1mINPUT_LFS_CHECKOUT=true[0m
+[36;1mEOF[0m
+[36;1m[0m
+[36;1mfi[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+##[endgroup]
+##[group]Run ${GITHUB_ACTION_PATH}/setup/locate_trunk.sh
+[36;1m${GITHUB_ACTION_PATH}/setup/locate_trunk.sh[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+env:
+  GITHUB_TOKEN: ***
+  TRUNK_LAUNCHER_QUIET: false
+  INPUT_GITHUB_TOKEN: 
+  INPUT_TRUNK_TOKEN: 
+  TRUNK_TOKEN: 
+  GITHUB_EVENT_PULL_REQUEST_BASE_SHA: ee9ff31cee13712d2be2a6b5c0a4a54449fe9fe1
+  GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK: false
+  GITHUB_EVENT_PULL_REQUEST_HEAD_SHA: 4684dd397b68f13dff584a9c0f5f940235070d7f
+  GITHUB_EVENT_PULL_REQUEST_NUMBER: 20571
+  GITHUB_REF_NAME: 20571/merge
+  INPUT_ARGUMENTS: --ignore=docs/** --filter=eslint
+  INPUT_CACHE: true
+  INPUT_CACHE_KEY: trunk--Linux-e005c011d81f504f00580071bebe358471cd756a758662a4b32e836a8642e8db
+  INPUT_CACHE_PATH: ~/.cache/trunk
+  INPUT_CAT_TRUNK_DEBUG_LOGS: false
+  INPUT_CHECK_ALL_MODE: 
+  INPUT_CHECK_MODE: all
+  INPUT_CHECK_RUN_ID: 
+  INPUT_DEBUG: false
+  INPUT_GITHUB_REF_NAME: 20571/merge
+  INPUT_LABEL: 
+  INPUT_SETUP_CACHE_KEY: 
+  INPUT_SETUP_DEPS: false
+  INPUT_TARGET_CHECKOUT: 
+  INPUT_TARGET_CHECKOUT_REF: 
+  INPUT_TIMEOUT_SECONDS: 0
+  INPUT_TRUNK_PATH: 
+  INPUT_UPLOAD_LANDING_STATE: false
+  INPUT_UPLOAD_SERIES: 
+  INPUT_UPLOAD_ID: 
+  INPUT_AUTOFIX_AND_PUSH: 
+  INPUT_LFS_CHECKOUT: true
+##[endgroup]
+⡿ Downloading Trunk 1.22.12...
+[1F[0K⡿ Downloading Trunk 1.22.12...
+[1F[0K⢿ Downloading Trunk 1.22.12...
+[1F[0K⣻ Downloading Trunk 1.22.12...
+[1F[0K⣽ Downloading Trunk 1.22.12...
+[1F[0K⣾ Downloading Trunk 1.22.12...
+[1F[0K⣷ Downloading Trunk 1.22.12...
+[1F[0K[0;32m✔[0m Downloading Trunk 1.22.12... done
+⡿ Unpacking Trunk...
+[1F[0K[0;32m✔[0m Unpacking Trunk... done
+
+1.22.12
+##[group]Run # Determine check mode
+[36;1m# Determine check mode[0m
+[36;1m${GITHUB_ACTION_PATH}/determine_check_mode.sh[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+env:
+  GITHUB_TOKEN: ***
+  TRUNK_LAUNCHER_QUIET: false
+  INPUT_GITHUB_TOKEN: 
+  INPUT_TRUNK_TOKEN: 
+  TRUNK_TOKEN: 
+  GITHUB_EVENT_PULL_REQUEST_BASE_SHA: ee9ff31cee13712d2be2a6b5c0a4a54449fe9fe1

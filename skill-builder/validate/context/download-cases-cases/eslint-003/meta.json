@@ -1,0 +1,7 @@
+{
+  "id": "eslint-003",
+  "repo": "eslint/eslint",
+  "split": "training",
+  "fix_file": "lib/config/config.js",
+  "error_type": "Error"
+}

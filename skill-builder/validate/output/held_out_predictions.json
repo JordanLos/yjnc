@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {"id": "axios-001", "fix_file": "lib/helpers/toFormData.js"},
+    {"id": "axios-002", "fix_file": null},
+    {"id": "prettier-003", "fix_file": "src/language-js/print/component.js"},
+    {"id": "eslint-005", "fix_file": "lib/eslint/eslint-helpers.js"},
+    {"id": "eslint-007", "fix_file": "lib/eslint/eslint-helpers.js"},
+    {"id": "eslint-009", "fix_file": "eslint.config.js"},
+    {"id": "eslint-011", "fix_file": null},
+    {"id": "prettier-013", "fix_file": "src/utilities/visitor-keys.js"},
+    {"id": "prettier-018", "fix_file": "src/language-js/location/comparison.js"},
+    {"id": "prettier-024", "fix_file": "src/language-js/print/typescript.js"}
+  ]
+}

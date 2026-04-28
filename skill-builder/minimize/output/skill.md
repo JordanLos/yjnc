@@ -1,0 +1,1 @@
+`---a/P`,`[warn]P`,`P:L:C`;node_modules→eslint.config.js;`{"file":"P|null"}`

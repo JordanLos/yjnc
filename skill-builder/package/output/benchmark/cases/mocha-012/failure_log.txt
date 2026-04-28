@@ -1,0 +1,41 @@
+> node ./bin/mocha --no-config test/smoke/smoke.spec.js
+
+
+ Exception during run: ReferenceError: constants is not defined
+    at Suite.addSuite (/home/runner/work/mocha/mocha/lib/suite.js:426:15)
+    at Suite.create (/home/runner/work/mocha/mocha/lib/suite.js:112:12)
+    at Object.create (/home/runner/work/mocha/mocha/lib/interfaces/common.js:138:27)
+    at context.describe.context.context (/home/runner/work/mocha/mocha/lib/interfaces/bdd.js:46:27)
+    at Object.<anonymous> (/home/runner/work/mocha/mocha/test/smoke/smoke.spec.js:11:1)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at cjsLoader (node:internal/modules/esm/translators:309:5)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:202:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async formattedImport (/home/runner/work/mocha/mocha/lib/nodejs/esm-utils.js:11:14)
+    at async Object.requireModule [as requireOrImport] (/home/runner/work/mocha/mocha/lib/nodejs/esm-utils.js:106:30)
+    at async exports.loadFilesAsync (/home/runner/work/mocha/mocha/lib/nodejs/esm-utils.js:159:20)
+    at async singleRun (/home/runner/work/mocha/mocha/lib/cli/run-helpers.js:174:3)
+    at async exports.handler (/home/runner/work/mocha/mocha/lib/cli/run.js:377:5)
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/4aa67d8c-73ba-4edf-ae26-5f0c76c014fe' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/mocha/mocha
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

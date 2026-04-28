@@ -1,0 +1,7 @@
+{
+  "id": "prettier-010",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/utilities/is-indentable-block-comment.js",
+  "error_type": "Error"
+}

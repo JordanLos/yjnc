@@ -1,0 +1,21 @@
+WARNING: Large gap between training F1 (0.9194) and validation F1 (0.5000) — gap = 0.4194 exceeds threshold of 0.15.
+
+Two compounding factors explain most of the gap:
+
+1. Out-of-split inflation (structural): 4 of the 10 held-out cases (eslint-005, eslint-007,
+   eslint-009, eslint-011) have no entry in ground_truth.json. They are labeled held-out in
+   index.json but absent from the scorer's reference file. The scorer treats these predictions
+   as precision penalties (score=0, but counted in n_pred=10), reducing precision from 0.667
+   to 0.400 and F1 from 0.667 to 0.500. If only the 6 covered cases are predicted, the
+   measured F1 would be 0.667 — a gap of 0.252 (still above 0.15, but materially smaller).
+
+2. Genuine skill weakness: prettier-013 is a miss (pred=src/utilities/visitor-keys.js,
+   gt=src/language-js/traverse/visitor-keys.evaluate.js). The skill's "first src/ in stack
+   trace" rule picks the error-throwing file rather than the root-cause file that defines
+   incorrect visitor keys. This is a real generalization failure: the skill needs a rule to
+   prefer the file named in a "triggered by this import" or evaluated-module context over the
+   first stack frame, when the error message is about missing keys in a data file.
+
+Recommended action: add a training case or rule refinement to handle build-time "plugin:
+evaluate" errors where the actual fix is in the evaluated source file, not the validator that
+throws.

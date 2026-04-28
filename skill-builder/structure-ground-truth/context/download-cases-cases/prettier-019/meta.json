@@ -1,0 +1,7 @@
+{
+  "id": "prettier-019",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/utilities/call-or-new-expression-parentheses.js",
+  "error_type": "Error"
+}

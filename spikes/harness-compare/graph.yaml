@@ -1,0 +1,12 @@
+juc: "2.0"
+config:
+  concurrency: 2
+
+with-claude:
+  # harness: claude (default)
+
+with-forge:
+  # harness: forge — requires .juc/adapters/forge and OPENROUTER_API_KEY
+
+compare:
+  depends: [with-claude, with-forge]

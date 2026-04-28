@@ -1,0 +1,330 @@
+Loaded 0 existing candidates (0 passing)
+
+=== mochajs/mocha ===
+  fetched 400 failed runs
+  277 new unique failing SHAs
+  61 pairs have a next-passing run
+    9f15a71 -> 9f15a71 [fail(no_prod_file)] - 
+    bc9f369 -> bc9f369 [fail(no_prod_file)] - 
+    2697baa -> 2697baa [fail(no_prod_file)] - 
+    46d09d1 -> 46d09d1 [fail(no_prod_file)] - 
+    4ac00c4 -> 95acd82 [fail(multi_prod_file)] - 
+    5ee1993 -> 5ee1993 [fail(no_prod_file)] - 
+    88a9806 -> 88a9806 [fail(no_prod_file)] - 
+    a20506c -> 572c67a [fail(too_many_commits(14))] - 
+    e719e0a -> e0b1600 [fail(too_many_commits(13))] - 
+    a88c4b8 -> 572c67a [fail(too_many_commits(15))] - 
+    aef6df9 -> 6b7eb82 [fail(multi_prod_file)] - 
+    0a6013d -> f94207c [fail(passing_behind_failing)] - 
+    badad57 -> f94207c [fail(diff_too_large(1178))] - 
+    e83c131 -> d5e8737 [fail(diff_too_large(1101))] - 
+    d46fe41 -> f94207c [fail(diff_too_large(1178))] - 
+    27d50bc -> 316d4c3 [fail(multi_prod_file)] - 
+    b725e7f -> 316d4c3 [fail(multi_prod_file)] - 
+    aad7997 -> db85960 [fail(no_prod_file)] - 
+    bf3d9bf -> bf3d9bf [fail(no_prod_file)] - 
+    8bb403d -> f755981 [fail(no_prod_file)] - 
+    1b2a6cc -> 1b2a6cc [fail(no_prod_file)] - 
+    eef42fb -> 3a28bdc [fail(no_prod_file)] - 
+    456e2d6 -> 22c690b [fail(no_prod_file)] - 
+    632175f -> b7a2313 [fail(no_prod_file)] - 
+    e5e0084 -> b7a2313 [fail(no_prod_file)] - 
+    f4eca4e -> a5d4081 [fail(multi_prod_file)] - 
+    727ef88 -> ef7a981 [fail(no_prod_file)] - 
+    f94e2bc -> ef7a981 [fail(no_prod_file)] - 
+    4cd8a1c -> ef7a981 [fail(multi_prod_file)] - 
+    0518ea6 -> 93d4116 [fail(module_not_found)] lib/cli/lookup-files.mjs 
+    e15bbda -> 46cd926 [fail(multi_prod_file)] - 
+    d8f8f55 -> 0c4ba05 [fail(too_many_commits(13))] - 
+    9eac605 -> fcd6e4f [fail(too_many_commits(41))] - 
+    5823625 -> 35eb59b [fail(module_not_found)] browser-entry.js 
+    3221e44 -> 1b2a6cc [fail(too_many_commits(20))] - 
+    052c79e -> b7a2313 [KEEP] lib/mocha.js Error
+    d6e3069 -> 4dbf4b5 [fail(no_prod_file)] - 
+    2bbc9a0 -> 1fef510 [KEEP] lib/interfaces/common.js Error
+    5ba0247 -> 11da30f [KEEP] lib/nodejs/esm-utils.js Error
+    6d86833 -> 11da30f [KEEP] lib/nodejs/esm-utils.js Error
+  kept=4 (out of 40 evaluated)
+  -- total kept so far: 4
+
+=== chaijs/chai ===
+  fetched 61 failed runs
+  49 new unique failing SHAs
+  45 pairs have a next-passing run
+    e87eefa -> e87eefa [fail(no_prod_file)] - 
+    4e7303c -> d0b081a [fail(no_prod_file)] - 
+    34fa07a -> 4e7303c [fail(no_prod_file)] - 
+    a547ae0 -> 3a385df [fail(no_prod_file)] - 
+    ae19823 -> 4e7303c [fail(no_prod_file)] - 
+    cda020e -> 6d05df7 [fail(diff_too_large(649))] - 
+    09f85ac -> 3a385df [fail(no_prod_file)] - 
+    52ae0b5 -> 52ae0b5 [fail(no_prod_file)] - 
+    8387c5f -> e87eefa [fail(no_prod_file)] - 
+    df9c76b -> 3a385df [fail(no_prod_file)] - 
+    f42d4f5 -> e87eefa [fail(no_prod_file)] - 
+    1187b82 -> 0573b25 [fail(diff_too_large(513))] - 
+    41f780d -> 6d05df7 [fail(diff_too_large(649))] - 
+    375bebe -> 3a385df [fail(no_prod_file)] - 
+    b1ea94c -> 3a385df [fail(no_prod_file)] - 
+    f10c116 -> 63b869d [fail(no_prod_file)] - 
+    2758df4 -> 63b869d [fail(no_prod_file)] - 
+    57c6a18 -> 52ae0b5 [fail(no_prod_file)] - 
+    f544ac6 -> 57c6a18 [fail(no_prod_file)] - 
+    2a67f97 -> 63b869d [fail(diff_too_large(733))] - 
+    07c2367 -> 921a67c [fail(too_many_commits(12))] - 
+    5069340 -> 5069340 [fail(no_prod_file)] - 
+    86f8fb8 -> 5069340 [fail(no_prod_file)] - 
+    180d4cc -> 814172d [fail(no_prod_file)] - 
+    b25e5d8 -> b25e5d8 [fail(no_prod_file)] - 
+    c8fb100 -> 814172d [fail(no_prod_file)] - 
+    678cd00 -> 814172d [fail(no_prod_file)] - 
+    97413cb -> b25e5d8 [fail(multi_prod_file)] - 
+    1bc99e3 -> 0f75664 [fail(no_signal)] lib/chai/interface/assert.js 
+    8b037e1 -> 0f75664 [fail(no_signal)] lib/chai/interface/assert.js 
+    192f44e -> 5069340 [fail(log_unavailable)] lib/chai/core/assertions.js 
+    37de9c3 -> b25e5d8 [fail(multi_prod_file)] - 
+    c459040 -> d86fdd2 [fail(no_prod_file)] - 
+    fe45947 -> b25e5d8 [fail(too_many_commits(10))] - 
+    76324f6 -> d86fdd2 [fail(no_prod_file)] - 
+    9475838 -> d86fdd2 [fail(no_prod_file)] - 
+    42013e1 -> 445243d [fail(no_prod_file)] - 
+    6bc9b50 -> b25e5d8 [fail(too_many_commits(19))] - 
+    1a3fa1d -> 6eddf11 [fail(multi_prod_file)] - 
+    250dd48 -> 6eddf11 [fail(multi_prod_file)] - 
+  kept=0 (out of 40 evaluated)
+  -- total kept so far: 4
+
+=== sinonjs/sinon ===
+  fetched 31 failed runs
+  31 new unique failing SHAs
+  30 pairs have a next-passing run
+    1404e66 -> 5612c01 [fail(no_prod_file)] - 
+    e0aa2e5 -> 5b15ca8 [fail(no_prod_file)] - 
+    cadf47a -> 8dc7a55 [fail(diff_too_large(1341))] - 
+    105acee -> 8dc7a55 [fail(diff_too_large(1341))] - 
+    3373a36 -> 8dc7a55 [fail(diff_too_large(1966))] - 
+    ab51dbe -> 20548e7 [fail(diff_too_large(14021))] - 
+    850620d -> 20548e7 [fail(diff_too_large(14021))] - 
+    14437a6 -> 5b15ca8 [fail(diff_too_large(513))] - 
+    192ca78 -> 5b15ca8 [fail(diff_too_large(2179))] - 
+    918570a -> 5b15ca8 [fail(too_many_commits(22))] - 
+    a24d42c -> 5b15ca8 [fail(too_many_commits(22))] - 
+    dbbfb64 -> 0a5526c [fail(diff_too_large(3713))] - 
+    819bb64 -> 5262204 [fail(no_prod_file)] - 
+    00b56bf -> cd2bf5a [fail(no_prod_file)] - 
+    7b84cd9 -> 06db9cb [fail(too_many_commits(11))] - 
+    024321c -> 2948314 [fail(no_prod_file)] - 
+    b836fcc -> 2948314 [fail(no_prod_file)] - 
+    3af394e -> 2d93d68 [fail(no_prod_file)] - 
+    e93be63 -> 06db9cb [KEEP] lib/sinon/sandbox.js Error
+    ca87962 -> 5b15ca8 [fail(module_not_found)] build.cjs 
+    90a4350 -> ddce973 [fail(log_unavailable)] lib/sinon/stub.js 
+    9e9d050 -> 8d020a6 [fail(log_unavailable)] lib/sinon/assert.js 
+    c9d66cd -> d4e77e0 [fail(multi_prod_file)] - 
+    af16e08 -> d7d4376 [fail(too_many_commits(30))] - 
+    ef387e8 -> ebf0c43 [fail(diff_too_large(1825))] - 
+    ebcd506 -> ebf0c43 [KEEP] lib/sinon/sandbox.js Error
+    824da53 -> 43c88c9 [fail(diff_too_large(1387))] - 
+    3beab2b -> ebf0c43 [KEEP] lib/sinon/sandbox.js Error
+    8bac331 -> 43c88c9 [fail(too_many_commits(14))] - 
+    766715c -> ebf0c43 [KEEP] lib/sinon/sandbox.js Error
+  kept=4 (out of 30 evaluated)
+  -- total kept so far: 8
+
+=== yargs/yargs ===
+  fetched 50 failed runs
+  48 new unique failing SHAs
+  25 pairs have a next-passing run
+    3fe49e4 -> 95735cc [fail(no_prod_file)] - 
+    b2d96f6 -> 3f1f251 [fail(no_prod_file)] - 
+    054cfb4 -> 3f1f251 [fail(no_prod_file)] - 
+    be9df3e -> 1494992 [fail(multi_prod_file)] - 
+    4d65b06 -> 5624cca [fail(no_prod_file)] - 
+    b1ac08d -> b22bd66 [fail(no_prod_file)] - 
+    72352f3 -> b22bd66 [fail(no_prod_file)] - 
+    42bf9b4 -> e19310a [fail(no_prod_file)] - 
+    3d2b7e0 -> af6b442 [fail(no_prod_file)] - 
+    125c8aa -> e4dfdb9 [fail(log_unavailable)] lib/yargs-factory.ts 
+    1900cd1 -> af6b442 [fail(log_unavailable)] lib/yargs-factory.ts 
+    3bf0280 -> af6b442 [fail(log_unavailable)] lib/yargs-factory.ts 
+    4690b16 -> e19a25e [fail(log_unavailable)] lib/platform-shims/browser.mjs 
+    05d6b3d -> af6b442 [fail(log_unavailable)] lib/yargs-factory.ts 
+    6d86df5 -> af6b442 [fail(too_many_commits(9))] - 
+    253e804 -> af6b442 [fail(too_many_commits(10))] - 
+    8fbcf0b -> af6b442 [fail(too_many_commits(11))] - 
+    85a5529 -> af6b442 [fail(too_many_commits(13))] - 
+    4800996 -> af6b442 [fail(log_unavailable)] lib/yargs-factory.ts 
+    7526a76 -> af6b442 [fail(too_many_commits(14))] - 
+    f427f56 -> af6b442 [fail(too_many_commits(15))] - 
+    ea68275 -> af6b442 [fail(too_many_commits(16))] - 
+    07e9577 -> af6b442 [fail(too_many_commits(17))] - 
+    5246892 -> af6b442 [fail(log_unavailable)] lib/yargs-factory.ts 
+    147871c -> af6b442 [fail(log_unavailable)] lib/yargs-factory.ts 
+  kept=0 (out of 25 evaluated)
+  -- total kept so far: 8
+
+=== eslint/eslint ===
+  fetched 400 failed runs
+  364 new unique failing SHAs
+  74 pairs have a next-passing run
+    9ea446f -> c3d56ed [fail(no_prod_file)] - 
+    77502c0 -> 7020c22 [fail(no_prod_file)] - 
+    c7be37a -> d4eaff0 [fail(no_prod_file)] - 
+    528b84d -> 70bc951 [fail(no_prod_file)] - 
+    02d56c2 -> 9ee7cd3 [fail(no_prod_file)] - 
+    eb6ad89 -> 86c8b9f [fail(multi_prod_file)] - 
+    3a557ec -> 2cd68bb [fail(no_prod_file)] - 
+    0fc7b18 -> 31a908d [fail(no_prod_file)] - 
+    482097d -> 31a908d [fail(multi_prod_file)] - 
+    56fe4be -> 31a908d [fail(diff_too_large(783))] - 
+    51812e5 -> e219b9d [fail(multi_prod_file)] - 
+    42c14ac -> 7722eab [fail(multi_prod_file)] - 
+    d0e1b62 -> 7722eab [fail(multi_prod_file)] - 
+    ed94877 -> 7722eab [fail(multi_prod_file)] - 
+    f9ef671 -> 2cd68bb [fail(no_prod_file)] - 
+    ff528ad -> 1017256 [fail(no_prod_file)] - 
+    c305d02 -> 5e80c9b [fail(no_prod_file)] - 
+    532dcf6 -> 5e80c9b [fail(no_prod_file)] - 
+    f2acd2b -> 64235e4 [fail(no_prod_file)] - 
+    a62c4cc -> 7722eab [fail(too_many_commits(106))] - 
+    e31c6de -> 27ecb41 [fail(no_prod_file)] - 
+    b2eea40 -> d431c16 [fail(no_prod_file)] - 
+    06c75a8 -> b76ccce [fail(no_prod_file)] - 
+    341eaad -> 341eaad [fail(no_prod_file)] - 
+    999bf04 -> 341eaad [fail(no_prod_file)] - 
+    2d1ec31 -> 6a004f0 [fail(no_prod_file)] - 
+    13a46c2 -> 7722eab [KEEP] lib/config/config.js Error
+    95c3e9c -> af764af [fail(too_many_commits(16))] - 
+    d14fe01 -> d14fe01 [fail(no_prod_file)] - 
+    712cede -> 49cd625 [fail(too_many_commits(19))] - 
+    9e65539 -> c66b52a [fail(no_prod_file)] - 
+    a18a716 -> c66b52a [fail(no_prod_file)] - 
+    30e0c06 -> 2cd68bb [fail(no_prod_file)] - 
+    239a0a7 -> c66b52a [fail(no_prod_file)] - 
+    2e5eebc -> 2cd68bb [fail(no_prod_file)] - 
+    3552fb4 -> 2cd68bb [fail(no_prod_file)] - 
+    f6285e4 -> 8e4c956 [fail(no_prod_file)] - 
+    c42027a -> 6c766be [KEEP] lib/rules/for-direction.js Error
+    eea5961 -> 2cd68bb [fail(no_prod_file)] - 
+    229b92e -> 374914f [fail(no_signal)] eslint.config.js 
+  kept=2 (out of 40 evaluated)
+  -- total kept so far: 10
+
+=== fastify/fastify ===
+  fetched 400 failed runs
+  295 new unique failing SHAs
+  60 pairs have a next-passing run
+    372da95 -> 576b877 [fail(no_prod_file)] - 
+    cf60b78 -> adc330b [fail(multi_prod_file)] - 
+    8fefb6b -> 576b877 [fail(no_prod_file)] - 
+    9290260 -> adc330b [fail(no_prod_file)] - 
+    c8b2f2b -> adc330b [fail(no_prod_file)] - 
+    159099c -> 991e51d [fail(no_prod_file)] - 
+    0e9e83e -> 576b877 [fail(no_prod_file)] - 
+    909d361 -> 576b877 [fail(no_prod_file)] - 
+    c67592e -> 576b877 [fail(no_prod_file)] - 
+    c6f8a00 -> 576b877 [fail(no_prod_file)] - 
+    5af35d4 -> 54c719b [fail(no_prod_file)] - 
+    dc48d11 -> dce0d47 [fail(no_prod_file)] - 
+    890ab75 -> dce0d47 [fail(no_prod_file)] - 
+    282ff73 -> dce0d47 [fail(no_prod_file)] - 
+    3983cce -> dce0d47 [fail(multi_prod_file)] - 
+    dc27670 -> 9f14dff [fail(no_prod_file)] - 
+    3ce3ae6 -> dce0d47 [fail(multi_prod_file)] - 
+    5acd47b -> e23ef03 [fail(diff_too_large(704))] - 
+    9bbf609 -> 21b4c3c [fail(no_signal)] lib/request.js 
+    b06a196 -> dce0d47 [fail(multi_prod_file)] - 
+    3448dc9 -> 1169710 [fail(no_prod_file)] - 
+    47ddeeb -> 2bd9273 [fail(no_prod_file)] - 
+    d33f017 -> c2ba18c [fail(no_signal)] fastify.js 
+    2ae3e1d -> c06fc06 [fail(no_signal)] lib/schemas.js 
+    e596364 -> d2efab3 [fail(no_prod_file)] - 
+    1e7a0c2 -> d2efab3 [fail(no_prod_file)] - 
+    a05a812 -> 3a01379 [fail(no_prod_file)] - 
+    ceab55d -> 4d04166 [fail(no_prod_file)] - 
+    a3e77ce -> 3ce3ae6 [fail(too_many_commits(11))] - 
+    92301bc -> 4d04166 [fail(no_prod_file)] - 
+    b62b6d8 -> 4d04166 [fail(no_prod_file)] - 
+    f6aa88d -> d2efab3 [fail(no_prod_file)] - 
+    f6d4da3 -> 357fe0d [fail(too_many_commits(11))] - 
+    8746e61 -> 4969cc4 [fail(no_prod_file)] - 
+    b3d3550 -> 1eff635 [fail(no_signal)] lib/request.js 
+    9739e04 -> e368739 [fail(no_prod_file)] - 
+    070a0ce -> 4969cc4 [fail(too_many_commits(124))] - 
+    4edcec8 -> b62b6d8 [fail(no_signal)] fastify.js 
+    3727e29 -> 4969cc4 [fail(too_many_commits(125))] - 
+    132f907 -> 4d04166 [fail(no_signal)] fastify.js 
+  kept=0 (out of 40 evaluated)
+  -- total kept so far: 10
+
+=== hapijs/joi ===
+  fetched 5 failed runs
+  5 new unique failing SHAs
+  3 pairs have a next-passing run
+    ca1b597 -> 520abc7 [fail(no_prod_file)] - 
+    c831020 -> c8bee29 [fail(no_prod_file)] - 
+    2d8681e -> c8bee29 [fail(no_prod_file)] - 
+  kept=0 (out of 3 evaluated)
+  -- total kept so far: 10
+
+=== expressjs/express ===
+  fetched 64 failed runs
+  44 new unique failing SHAs
+  19 pairs have a next-passing run
+    0cf4efb -> e79dfa5 [fail(no_prod_file)] - 
+    cc9d70c -> 9957795 [fail(diff_too_large(1059))] - 
+    1140301 -> 9c85a25 [fail(no_prod_file)] - 
+    daaa05d -> 175e645 [fail(no_prod_file)] - 
+    1eb9629 -> 14f337b [fail(no_prod_file)] - 
+    66404b3 -> 66404b3 [fail(no_prod_file)] - 
+    ca6b00b -> 12fae14 [fail(no_prod_file)] - 
+    a7e24fb -> c3e71ff [fail(no_prod_file)] - 
+    475b00c -> 1f860fb [fail(no_prod_file)] - 
+    3f8432b -> a865e54 [fail(too_many_commits(9))] - 
+    160714f -> 57b6969 [fail(too_many_commits(61))] - 
+    6f4d04d -> be3d262 [fail(no_prod_file)] - 
+    49744ab -> 12fae14 [fail(log_unavailable)] lib/utils.js 
+    1f683d5 -> bf678ff [fail(log_unavailable)] lib/response.js 
+    6e97452 -> 12fae14 [fail(log_unavailable)] lib/utils.js 
+    2eb4205 -> c76ed5a [fail(too_many_commits(46))] - 
+    d9a62f9 -> c76ed5a [fail(too_many_commits(49))] - 
+    747869f -> ffeab94 [fail(multi_prod_file)] - 
+    40adc69 -> d20fdb5 [fail(log_unavailable)] lib/response.js 
+  kept=0 (out of 19 evaluated)
+  -- total kept so far: 10
+
+=== date-fns/date-fns ===
+  fetched 145 failed runs
+  37 new unique failing SHAs
+  7 pairs have a next-passing run
+    774f249 -> 30667a1 [fail(multi_prod_file)] - 
+    1ed51e6 -> ef962f8 [fail(diff_too_large(5214))] - 
+    246dd27 -> 423eeb3 [fail(no_prod_file)] - 
+    b21dc25 -> 1ed51e6 [fail(diff_too_large(1551))] - 
+    423eeb3 -> 1ed51e6 [fail(diff_too_large(2205))] - 
+    9af6342 -> e0cdf0e [fail(diff_too_large(1689))] - 
+    52c6398 -> a8d8805 [fail(multi_prod_file)] - 
+  kept=0 (out of 7 evaluated)
+  -- total kept so far: 10
+
+=== karma-runner/karma ===
+  fetched 61 failed runs
+  23 new unique failing SHAs
+  1 pairs have a next-passing run
+    84f85e7 -> 84f85e7 [fail(no_prod_file)] - 
+  kept=0 (out of 1 evaluated)
+  -- total kept so far: 10
+
+=== SUMMARY ===
+  mochajs/mocha: checked=40, kept=4
+  chaijs/chai: checked=40, kept=0
+  sinonjs/sinon: checked=30, kept=4
+  yargs/yargs: checked=25, kept=0
+  eslint/eslint: checked=40, kept=2
+  fastify/fastify: checked=40, kept=0
+  hapijs/joi: checked=3, kept=0
+  expressjs/express: checked=19, kept=0
+  date-fns/date-fns: checked=7, kept=0
+  karma-runner/karma: checked=1, kept=0
+TOTAL: checked=245, kept=10
+Manifest size: 10

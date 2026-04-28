@@ -1,0 +1,54 @@
+name: pi
+version: "2026-04-26"
+source: https://github.com/can1357/oh-my-pi
+status: needs-adapter
+
+# Pi/omp is NOT spec-native. It has its own agent system but does not use
+# the markdown+frontmatter pattern. An adapter must bridge the gap.
+#
+# What's needed to build juc-adapter-pi:
+#   1. Write a per-invocation system prompt via --system-prompt <file>
+#      (pi accepts a file path or inline string — file path works)
+#   2. Translate tool names via tool_map below and pass as --tools <list>
+#   3. Resolve model tier via model_map and pass as --model <id>
+#   4. Pass body as positional prompt argument
+#
+# Missing / unresolved:
+#   - pi does not natively understand juc's agent.md frontmatter spec
+#   - Subagent spawning (agent: Agent → task) has different semantics
+#   - Memory, permissionMode, isolation fields have no pi equivalent
+#
+# Install: bun install -g @oh-my-pi/pi-coding-agent  (binary: omp)
+# Requires: OPENROUTER_API_KEY env var
+
+binary: omp
+fixed_args:
+  - "--print"
+  - "--no-session"
+  - "--no-lsp"
+  - "--no-skills"
+  - "--no-rules"
+
+agent_flag: "--system-prompt"
+prompt_flag: ""
+prompt_stdin: false
+
+model_flag: "--model"
+model_map:
+  haiku: openrouter/anthropic/claude-haiku-4-5
+  sonnet: openrouter/anthropic/claude-sonnet-4-6
+  opus: openrouter/anthropic/claude-opus-4-7
+
+tools_flag: "--tools"
+tools_separator: ","
+tool_map:
+  read: read
+  write: write
+  edit: edit
+  bash: bash
+  grep: grep
+  glob: find
+  fetch: fetch
+  search: web_search
+  agent: task
+  notebook: notebook

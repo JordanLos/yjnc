@@ -1,0 +1,150 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 10s 303ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.2[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.34.0[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.34.0[39m [32mSTDOUT[39m **INFO** Skipping Firefox download as instructed.
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.34.0[39m [31mSTDERR[39m 
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.34.0[39m [31mSTDERR[39m 
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.34.0[39m [32mSTDOUT[39m chrome-headless-shell (143.0.7499.169) downloaded to /home/runner/work/prettier/prettier/.tmp/puppeteer/chrome-headless-shell/linux-143.0.7499.169
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.34.0[39m [32mSTDOUT[39m chrome (143.0.7499.169) downloaded to /home/runner/work/prettier/prettier/.tmp/puppeteer/chrome/linux-143.0.7499.169
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 12s 574ms
+[93m➤[39m YN0000: · Done with warnings in 28s 626ms
+
+
+  ✘  no-unused-vars
+
+     'getFencedCodeBlockValue' is defined but never used
+
+
+     src/language-markdown/embed.js:5:10
+     3 | [36mimport[39m inferParser [36mfrom[39m [32m"../utilities/infer-parser.js"[39m[33m;[39m
+     4 | [36mimport[39m { printJsExpression } [36mfrom[39m [32m"./acorn/printer.js"[39m[33m;[39m
+   > 5 | [36mimport[39m { getFencedCodeBlockValue } [36mfrom[39m [32m"./utilities.js"[39m[33m;[39m
+       |          ^
+     6 | 
+     7 | [36mfunction[39m embed(path[33m,[39m options) {
+     8 |   [36mconst[39m { node } [33m=[39m path[33m;[39m
+
+  ✘  no-unused-vars
+
+     'mathFromMarkdown' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:2:10
+     1 | [36mimport[39m { fromMarkdown } [36mfrom[39m [32m"mdast-util-from-markdown"[39m[33m;[39m
+   > 2 | [36mimport[39m { mathFromMarkdown } [36mfrom[39m [32m"mdast-util-math"[39m[33m;[39m
+       |          ^
+     3 | [36mimport[39m { mdxFromMarkdown } [36mfrom[39m [32m"mdast-util-mdx"[39m[33m;[39m
+     4 | [36mimport[39m { fromMarkdown [36mas[39m wikiLinkFromMarkdown } [36mfrom[39m [32m"mdast-util-wiki-link"[39m[33m;[39m
+     5 | [36mimport[39m { gfm [36mas[39m gfmSyntax } [36mfrom[39m [32m"micromark-extension-gfm"[39m[33m;[39m
+
+  ✘  no-unused-vars
+
+     'wikiLinkFromMarkdown' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:4:26
+     2 | [36mimport[39m { mathFromMarkdown } [36mfrom[39m [32m"mdast-util-math"[39m[33m;[39m
+     3 | [36mimport[39m { mdxFromMarkdown } [36mfrom[39m [32m"mdast-util-mdx"[39m[33m;[39m
+   > 4 | [36mimport[39m { fromMarkdown [36mas[39m wikiLinkFromMarkdown } [36mfrom[39m [32m"mdast-util-wiki-link"[39m[33m;[39m
+       |                          ^
+     5 | [36mimport[39m { gfm [36mas[39m gfmSyntax } [36mfrom[39m [32m"micromark-extension-gfm"[39m[33m;[39m
+     6 | [36mimport[39m { math [36mas[39m mathSyntax } [36mfrom[39m [32m"micromark-extension-math"[39m[33m;[39m
+     7 | [36mimport[39m { mdxExpression } [36mfrom[39m [32m"micromark-extension-mdx-expression"[39m[33m;[39m
+
+  ✘  no-unused-vars
+
+     'mathSyntax' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:6:18
+     4 | [36mimport[39m { fromMarkdown [36mas[39m wikiLinkFromMarkdown } [36mfrom[39m [32m"mdast-util-wiki-link"[39m[33m;[39m
+     5 | [36mimport[39m { gfm [36mas[39m gfmSyntax } [36mfrom[39m [32m"micromark-extension-gfm"[39m[33m;[39m
+   > 6 | [36mimport[39m { math [36mas[39m mathSyntax } [36mfrom[39m [32m"micromark-extension-math"[39m[33m;[39m
+       |                  ^
+     7 | [36mimport[39m { mdxExpression } [36mfrom[39m [32m"micromark-extension-mdx-expression"[39m[33m;[39m
+     8 | [36mimport[39m { mdxJsx } [36mfrom[39m [32m"micromark-extension-mdx-jsx"[39m[33m;[39m
+     9 | [36mimport[39m { mdxMd } [36mfrom[39m [32m"micromark-extension-mdx-md"[39m[33m;[39m
+
+  ✘  no-unused-vars
+
+     'wikiLinkSyntax' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:11:20
+      9 | [36mimport[39m { mdxMd } [36mfrom[39m [32m"micromark-extension-mdx-md"[39m[33m;[39m
+     10 | [36mimport[39m { mdxjsEsm } [36mfrom[39m [32m"micromark-extension-mdxjs-esm"[39m[33m;[39m
+   > 11 | [36mimport[39m { syntax [36mas[39m wikiLinkSyntax } [36mfrom[39m [32m"micromark-extension-wiki-link"[39m[33m;[39m
+        |                    ^
+     12 | [36mimport[39m { comment[33m,[39m commentFromMarkdown } [36mfrom[39m [32m"remark-comment"[39m[33m;[39m
+     13 | [36mimport[39m parseFrontMatter [36mfrom[39m [32m"../../main/front-matter/parse.js"[39m[33m;[39m
+     14 | [36mimport[39m [33m*[39m [36mas[39m dummyAcorn [36mfrom[39m [32m"../acorn/dummy-parser.js"[39m[33m;[39m
+
+  ✘  no-unused-vars
+
+     'overrideHtmlTextSyntax' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:17:10
+     15 | [36mimport[39m [33m*[39m [36mas[39m acorn [36mfrom[39m [32m"../acorn/parser.js"[39m[33m;[39m
+     16 | [36mimport[39m { gfmFromMarkdown } [36mfrom[39m [32m"./micromark/mdast-util-gfm.js"[39m[33m;[39m
+   > 17 | [36mimport[39m { overrideHtmlTextSyntax } [36mfrom[39m [32m"./micromark/micromark-extension-html-text.js"[39m[33m;[39m
+        |          ^
+     18 | [36mimport[39m {
+     19 |   liquidFromMarkdown[33m,[39m
+     20 |   liquidSyntax[33m,[39m
+
+  ✘  no-unused-vars
+
+     'liquidFromMarkdown' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:19:3
+     17 | [36mimport[39m { overrideHtmlTextSyntax } [36mfrom[39m [32m"./micromark/micromark-extension-html-text.js"[39m[33m;[39m
+     18 | [36mimport[39m {
+   > 19 |   liquidFromMarkdown[33m,[39m
+        |   ^
+     20 |   liquidSyntax[33m,[39m
+     21 | } [36mfrom[39m [32m"./micromark/micromark-extension-liquid.js"[39m[33m;[39m
+     22 | 
+
+  ✘  no-unused-vars
+
+     'liquidSyntax' is defined but never used
+
+
+     src/language-markdown/parse/parse-mdx.js:20:3
+     18 | [36mimport[39m {
+     19 |   liquidFromMarkdown[33m,[39m
+   > 20 |   liquidSyntax[33m,[39m
+        |   ^
+     21 | } [36mfrom[39m [32m"./micromark/micromark-extension-liquid.js"[39m[33m;[39m
+     22 | 
+     23 | [36mlet[39m markdownParseOptions[33m;[39m
+
+  ✘  no-unused-vars
+
+     'options' is defined but never used
+
+
+     src/language-markdown/print/children.js:66:45
+     64 | [90m * @returns {boolean}[39m
+     65 | [90m */[39m
+   > 66 | [36mfunction[39m shouldPrePrintDoubleHardline(path[33m,[39m options) {
+        |                                             ^
+     67 |   [36mconst[39m { node[33m,[39m previous[33m,[39m parent } [33m=[39m path[33m;[39m
+     68 | 
+     69 |   [36mif[39m (
+
+  ✘  no-unused-vars
+
+     'isLooseListItemLegacy' is defined but never used
+
+
+     src/language-markdown/print/children.js:131:10
+     129 | }
+     130 | 
+   > 131 | [36mfunction[39m isLooseListItemLegacy(node[33m,[39m options) {

@@ -1,0 +1,91 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 0s 244ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.4[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 8s 313ms
+[93m➤[39m YN0000: · Done with warnings in 13s 199ms
+##[group]Run yarn lint:deps
+[36;1myarn lint:deps[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+Checking '/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/website/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/scripts/release/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/scripts/tools/bundle-test/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/scripts/tools/eslint-plugin-prettier-internal-rules/package.json'...
+✅ All dependency versions are pinned.
+##[group]Run yarn lint:typecheck
+[36;1myarn lint:typecheck[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+##[group]Run yarn lint:eslint
+[36;1myarn lint:eslint[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+
+
+  ✘  curly
+
+     Expected { after 'if' condition
+
+
+     src/language-js/utilities/is-indentable-block-comment.js:29:32
+     27 |   [36mfor[39m ([36mlet[39m line [36mof[39m [32m`*${comment.value}*`[39m[33m.[39msplit([32m"\n"[39m)) {
+     28 |     line [33m=[39m line[33m.[39mtrimStart()[33m;[39m
+   > 29 |     [36mif[39m ([33m![39mline[33m.[39mstartsWith([32m"*"[39m)) [36mreturn[39m [][33m;[39m
+        |                                ^
+     30 |     trimmedLines[33m.[39mpush(line)[33m;[39m
+     31 |   }
+     32 | 
+
+✘ 1 problem (1 error, 0 warnings)
+
+
+Errors:
+  1  curly
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/b413160b-9d9e-4c4c-a6fc-cdc345891dfa' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-80b9fb30-1988-4765-9827-e695e7197b2a.config'
+Cleaning up orphan processes

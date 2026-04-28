@@ -1,0 +1,40 @@
+name: forge
+version: "2026-04-26"
+source: https://forgecode.dev/docs/creating-agents/
+status: experimental
+
+# ForgeCode invocation. Agents are defined in .forge/agents/ by id,
+# but one-shot CLI mode accepts a system prompt inline via --system.
+# Headless flags confirmed from forgecode.dev docs; exact flags may shift.
+binary: forge
+fixed_args:
+  - "run"
+  - "--quiet"
+
+# No agent_flag: forge receives the system prompt inline via --system in fixed_args.
+# Override this file in .juc/harnesses/forge.yaml once headless flags stabilise.
+agent_flag: ""
+prompt_flag: ""    # body passed as positional
+prompt_stdin: false
+
+model_flag: "--model"
+model_map:
+  haiku: claude-haiku-4-5-20251001
+  sonnet: claude-sonnet-4-6
+  opus: claude-opus-4-7
+
+# Forge tools: read write patch shell search fetch remove undo
+# Canonical edit -> patch; bash -> shell; glob/grep not available.
+tools_flag: "--tools"
+tools_separator: ","
+tool_map:
+  read: read
+  write: write
+  edit: patch
+  bash: shell
+  grep: ""
+  glob: ""
+  fetch: fetch
+  search: search
+  agent: ""
+  notebook: ""

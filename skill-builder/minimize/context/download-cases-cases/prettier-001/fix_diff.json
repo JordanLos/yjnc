@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-yaml/utilities.js"
+  ],
+  "patch": "--- a/src/language-yaml/utilities.js\n+++ b/src/language-yaml/utilities.js\n@@ -182,7 +182,7 @@ function getFlowScalarLineContents(nodeType, content, options) {\n       words.length > 0 &&\n       !(\n         // trailing backslash in quoteDouble should be preserved\n-        nodeType === \"quoteDouble\" && lines.at(-1).at(-1).endsWith(\"\\\\\")\n+        (nodeType === \"quoteDouble\" && lines.at(-1).at(-1).endsWith(\"\\\\\"))\n       )\n     ) {\n       lines[lines.length - 1] = [...lines.at(-1), ...words];"
+}

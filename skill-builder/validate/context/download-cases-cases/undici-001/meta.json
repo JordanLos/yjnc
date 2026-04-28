@@ -1,0 +1,7 @@
+{
+  "id": "undici-001",
+  "repo": "nodejs/undici",
+  "split": "training",
+  "fix_file": "lib/web/fetch/index.js",
+  "error_type": "Error"
+}

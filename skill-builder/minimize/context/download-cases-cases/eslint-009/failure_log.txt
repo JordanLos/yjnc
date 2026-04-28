@@ -1,0 +1,86 @@
+const {applyExtends, cjsPlatformShim, Parser, Yargs, processArgv} = require('./build/index.cjs')
+                                                                    ^
+
+ReferenceError: require is not defined in ES module scope, you can use import instead
+    at file:///home/runner/work/eslint/eslint/node_modules/yargs/yargs:3:69
+    at ModuleJobSync.runSync (node:internal/modules/esm/module_job:534:37)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:366:47)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1628:24)
+    at Module._compile (node:internal/modules/cjs/loader:1793:5)
+    at Object..js (node:internal/modules/cjs/loader:1951:10)
+    at Module.load (node:internal/modules/cjs/loader:1532:32)
+    at Module._load (node:internal/modules/cjs/loader:1334:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1555:12)
+
+Node.js v25.7.0
+/home/runner/work/eslint/eslint/node_modules/shelljs/src/common.js:477
+      if (config.fatal || options.handlesFatalDynamically) throw e;
+                                                           ^
+
+Error: exec: file:///home/runner/work/eslint/eslint/node_modules/yargs/yargs:3
+const {applyExtends, cjsPlatformShim, Parser, Yargs, processArgv} = require('./build/index.cjs')
+                                                                    ^
+
+ReferenceError: require is not defined in ES module scope, you can use import instead
+    at file:///home/runner/work/eslint/eslint/node_modules/yargs/yargs:3:69
+    at ModuleJobSync.runSync (node:internal/modules/esm/module_job:534:37)
+    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:366:47)
+    at loadESMFromCJS (node:internal/modules/cjs/loader:1628:24)
+    at Module._compile (node:internal/modules/cjs/loader:1793:5)
+    at Object..js (node:internal/modules/cjs/loader:1951:10)
+    at Module.load (node:internal/modules/cjs/loader:1532:32)
+    at Module._load (node:internal/modules/cjs/loader:1334:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1555:12)
+
+Node.js v25.7.0
+
+    at Object.error (/home/runner/work/eslint/eslint/node_modules/shelljs/src/common.js:126:15)
+    at execSync (/home/runner/work/eslint/eslint/node_modules/shelljs/src/exec.js:130:12)
+    at _exec (/home/runner/work/eslint/eslint/node_modules/shelljs/src/exec.js:252:12)
+    at /home/runner/work/eslint/eslint/node_modules/shelljs/src/common.js:411:23
+    at target.mocha (/home/runner/work/eslint/eslint/Makefile.js:588:15)
+    at global.target.<computed> [as mocha] (/home/runner/work/eslint/eslint/node_modules/shelljs/make.js:36:40)
+    at /home/runner/work/eslint/eslint/node_modules/shelljs/make.js:48:27
+    at Array.forEach (<anonymous>)
+    at Timeout._onTimeout (/home/runner/work/eslint/eslint/node_modules/shelljs/make.js:46:10)
+    at listOnTimeout (node:internal/timers:605:17) {
+  code: 1
+}
+
+Node.js v25.7.0
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/4e90f0b0-f874-48c7-81ab-13433c80cf4c' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/eslint/eslint
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/eslint/eslint/.git.path
+includeif.gitdir:/home/runner/work/eslint/eslint/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/eslint/eslint/.git.path
+/home/runner/work/_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/eslint/eslint/.git.path /home/runner/work/_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/eslint/eslint/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/eslint/eslint/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-1497d265-974e-41b6-8081-42a921f1e534.config'
+Cleaning up orphan processes

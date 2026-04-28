@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-yaml/printer-yaml.js"
+  ],
+  "patch": "--- a/src/language-yaml/printer-yaml.js\n+++ b/src/language-yaml/printer-yaml.js\n@@ -357,7 +357,7 @@ function printNode(path, options, print) {\n     case \"flowMappingItem\":\n       return printMappingItem(path, options, print);\n \n-    case \"flowMapping\": {\n+    case \"flowMapping\":\n       if (options.objectWrap === \"collapse\") {\n         const flowDoc = printFlowMapping(path, options, print);\n         const blockDoc = [\n@@ -380,8 +380,8 @@ function printNode(path, options, print) {\n         ];\n       }\n       return printFlowMapping(path, options, print);\n-    }\n-    case \"flowSequence\": {\n+\n+    case \"flowSequence\":\n       if (options.objectWrap === \"collapse\") {\n         const flowDoc = printFlowSequence(path, options, print);\n         const blockDoc = [\n@@ -410,7 +410,7 @@ function printNode(path, options, print) {\n         ];\n       }\n       return printFlowSequence(path, options, print);\n-    }\n+\n     case \"flowSequenceItem\":\n       return print(\"content\");\n     default:"
+}

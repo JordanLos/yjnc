@@ -1,0 +1,37 @@
+[32m03 02 2026 15:44:21.162:INFO [launcher]: [39mStarting browser ChromeHeadless
+[32m03 02 2026 15:44:26.783:INFO [Chrome Headless 144.0.0.0 (Linux 0.0.0)]: [39mConnected on socket YClsv_AdzmPPiq8rAAAB with id 14739139
+Chrome Headless 144.0.0.0 (Linux 0.0.0) ERROR
+  Uncaught TypeError: requireIsUnicodeSupported(...).default is not a function
+  at mocha.js:8628:64
+  
+  TypeError: requireIsUnicodeSupported(...).default is not a function
+      at mocha.js:8628:64
+      at requireUtils (mocha.js:9336:5)
+      at mocha.js:13419:16
+      at requireBase (mocha.js:13993:5)
+      at mocha.js:16441:34
+      at requireReporters (mocha.js:16456:5)
+      at mocha.js:17450:27
+      at requireMocha (mocha.js:18718:5)
+      at requireBrowserEntry (mocha.js:18739:15)
+      at mocha.js:18955:28
+[91m03 02 2026 15:44:26.892:ERROR [reporter.sauce]: [39m✖ Tests errored
+ERROR: "test-browser:reporters:bdd" exited with 1.
+ERROR: "test-browser:reporters" exited with 1.
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/0ef51c77-79ec-4136-8e9d-78c93cb1f6ab' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/mocha/mocha
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

@@ -1,0 +1,7 @@
+{
+  "id": "eslint-011",
+  "repo": "eslint/eslint",
+  "split": "held-out",
+  "fix_file": "lib/rules/no-var.js",
+  "error_type": "Error"
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/utilities/is-indentable-block-comment.js"
+  ],
+  "patch": "--- a/src/language-js/utilities/is-indentable-block-comment.js\n+++ b/src/language-js/utilities/is-indentable-block-comment.js\n@@ -26,7 +26,9 @@ function getIndentableLinesInternal(comment) {\n \n   for (let line of `*${comment.value}*`.split(\"\\n\")) {\n     line = line.trimStart();\n-    if (!line.startsWith(\"*\")) return [];\n+    if (!line.startsWith(\"*\")) {\n+      return [];\n+    }\n     trimmedLines.push(line);\n   }\n "
+}

@@ -1,0 +1,2 @@
+{"type":"agent_start","timestamp":"2026-04-25T02:09:28Z","unit":"opencode"}
+{"type":"event","timestamp":"2026-04-25T02:09:30Z","unit":"opencode","message":"agent error: exit status 1"}

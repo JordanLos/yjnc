@@ -1,0 +1,7 @@
+{
+  "files": [
+    "src/language-js/print/binary-cast-expression.js",
+    "tests/config/format-test/failed-format-tests.js"
+  ],
+  "patch": "--- a/src/language-js/print/binary-cast-expression.js\n+++ b/src/language-js/print/binary-cast-expression.js\n@@ -70,4 +70,4 @@ function shouldInlineBinaryCastExpression(path) {\n   return false;\n }\n \n-export { printBinaryCastExpression, shouldInlineBinaryCastExpression };\n+export { printBinaryCastExpression };\n--- a/tests/config/format-test/failed-format-tests.js\n+++ b/tests/config/format-test/failed-format-tests.js\n@@ -35,6 +35,7 @@ const unstableTests = new Map(\n     \"typescript/call/callee-comments.ts\",\n     \"js/arrows/arrow-chain-with-trailing-comments.js\",\n     \"typescript/as/comments/18160.ts\",\n+    \"typescript/as/break-after-keyword.ts\",\n     \"js/arrows/issue-14702.js\",\n   ].map((fixture) => {\n     const [file, isUnstable = () => true] = Array.isArray(fixture)"
+}

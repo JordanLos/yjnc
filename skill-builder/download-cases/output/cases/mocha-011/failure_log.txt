@@ -1,0 +1,149 @@
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /home/runner/work/mocha/mocha/.git/
+[command]/usr/bin/git remote add origin https://github.com/mochajs/mocha
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+[command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+[command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/mocha/mocha/.git.path /home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ea77718e67b5de9d7352b634935c5c5da7a14beb:refs/remotes/pull/5469/merge
+From https://github.com/mochajs/mocha
+ * [new ref]         ea77718e67b5de9d7352b634935c5c5da7a14beb -> pull/5469/merge
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/5469/merge
+Note: switching to 'refs/remotes/pull/5469/merge'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at ea77718 Merge 1616e567cae2e4534a8fc2039604ab63b742797e into 15fb31a8b25a4d03242e5c5f901ff3800889263e
+##[endgroup]
+[command]/usr/bin/git log -1 --format=%H
+ea77718e67b5de9d7352b634935c5c5da7a14beb
+##[group]Removing auth
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/mocha/mocha/.git.path
+includeif.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mocha/mocha/.git.path
+/home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mocha/mocha/.git.path /home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-5856f6b9-b299-4abb-9fdc-af4120b149a0.config'
+##[endgroup]
+##[group]Run actions/setup-node@v6
+with:
+  node-version: 22
+  cache: npm
+  check-latest: false
+  token: ***
+  package-manager-cache: true
+##[endgroup]
+Found in cache @ /opt/hostedtoolcache/node/22.22.0/x64
+##[group]Environment details
+node: v22.22.0
+npm: 10.9.4
+yarn: 1.22.22
+##[endgroup]
+[command]/opt/hostedtoolcache/node/22.22.0/x64/bin/npm config get cache
+/home/runner/.npm
+npm cache is not found
+##[group]Run npm ci --ignore-scripts
+[36;1mnpm ci --ignore-scripts[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+npm error code EUSAGE
+npm error
+npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+npm error
+npm error Missing: typescript@4.9.5 from lock file
+npm error Missing: typescript@4.9.5 from lock file
+npm error Missing: typescript@4.9.5 from lock file
+npm error Missing: typescript@4.9.5 from lock file
+npm error Missing: typescript@4.9.5 from lock file
+npm error
+npm error Clean install a project
+npm error
+npm error Usage:
+npm error npm ci
+npm error
+npm error Options:
+npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+npm error [--no-bin-links] [--no-fund] [--dry-run]
+npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+npm error
+npm error aliases: clean-install, ic, install-clean, isntall-clean
+npm error
+npm error Run "npm help ci" for more info
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-02-03T15_43_53_895Z-debug-0.log
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/81afa993-a46c-4202-9902-4b103d416e0c' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/mocha/mocha
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

@@ -1,0 +1,7 @@
+{
+  "id": "prettier-024",
+  "repo": "prettier/prettier",
+  "split": "held-out",
+  "fix_file": "src/language-js/print/typescript.js",
+  "error_type": "Error"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "prettier-025",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/print/binary-cast-expression.js",
+  "error_type": "Error"
+}

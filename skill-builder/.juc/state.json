@@ -1,0 +1,13 @@
+{
+  "units": {
+    "autoresearch": "passed",
+    "build-scorer": "passed",
+    "download-cases": "passed",
+    "minimize": "passed",
+    "package": "passed",
+    "research-cases": "passed",
+    "seed-skill": "passed",
+    "structure-ground-truth": "passed",
+    "validate": "passed"
+  }
+}

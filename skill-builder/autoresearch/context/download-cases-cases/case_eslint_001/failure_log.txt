@@ -1,0 +1,19 @@
+FAIL tests/lib/linter/linter.js
+  linter
+    ● linter > verify > should handle rule options correctly
+
+      TypeError: Cannot read properties of undefined (reading 'options')
+
+        540 |   verify(code, config, filename) {
+        541 |     const ruleOpts = this._options.rules[rule];
+      > 542 |     const severity = ruleOpts.options[0];
+            |                               ^
+        543 |     if (severity === 0) return [];
+        544 |
+
+        at Linter.verify (lib/linter/linter.js:542:28)
+        at Object.<anonymous> (tests/lib/linter/linter.js:89:12)
+        at Object.asyncJestTest (node_modules/jest-jasmine2/build/jasmine/Env.js:342:37)
+
+Test Suites: 1 failed, 14 passed, 15 total
+Tests:       1 failed, 243 passed, 244 total

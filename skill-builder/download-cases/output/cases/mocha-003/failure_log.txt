@@ -1,0 +1,150 @@
+  1) Uncaught error outside test suite
+
+  0 passing (2s)
+  1 failing
+
+  1) Uncaught error outside test suite:
+     Uncaught Error: Unsupported URL protocol "d:". Only "file:" URLs are supported.
+      at resolveFile (lib\nodejs\esm-utils.js:38:1143)
+      at exports.loadFilesAsync (lib\nodejs\esm-utils.js:38:1525)
+      at AsyncFunction.run (lib\nodejs\worker.js:30:249)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+
+
+
+  2) Uncaught error outside test suite
+
+  3) Uncaught error outside test suite
+
+  4) Uncaught error outside test suite
+
+  5) Uncaught error outside test suite
+
+  6) Uncaught error outside test suite
+
+  7) Uncaught error outside test suite
+
+  8) Uncaught error outside test suite
+
+  9) Uncaught error outside test suite
+
+  10) Uncaught error outside test suite
+
+  11) Uncaught error outside test suite
+
+  12) Uncaught error outside test suite
+
+  13) Uncaught error outside test suite
+
+  14) Uncaught error outside test suite
+
+  15) Uncaught error outside test suite
+
+  16) Uncaught error outside test suite
+
+  17) Uncaught error outside test suite
+
+  18) Uncaught error outside test suite
+
+  19) Uncaught error outside test suite
+
+  20) Uncaught error outside test suite
+
+  21) Uncaught error outside test suite
+
+  22) Uncaught error outside test suite
+
+  23) Uncaught error outside test suite
+
+  24) Uncaught error outside test suite
+
+  25) Uncaught error outside test suite
+
+  26) Uncaught error outside test suite
+
+  27) Uncaught error outside test suite
+
+  28) Uncaught error outside test suite
+
+  29) Uncaught error outside test suite
+
+  30) Uncaught error outside test suite
+
+  31) Uncaught error outside test suite
+
+  32) Uncaught error outside test suite
+
+  33) Uncaught error outside test suite
+
+  34) Uncaught error outside test suite
+
+  35) Uncaught error outside test suite
+
+  36) Uncaught error outside test suite
+
+  37) Uncaught error outside test suite
+
+  38) Uncaught error outside test suite
+
+  39) Uncaught error outside test suite
+
+  40) Uncaught error outside test suite
+
+  41) Uncaught error outside test suite
+
+  42) Uncaught error outside test suite
+
+  43) Uncaught error outside test suite
+
+  44) Uncaught error outside test suite
+
+  45) Uncaught error outside test suite
+
+  46) Uncaught error outside test suite
+
+  47) Uncaught error outside test suite
+
+  48) Uncaught error outside test suite
+
+  49) Uncaught error outside test suite
+
+  50) Uncaught error outside test suite
+
+  51) Uncaught error outside test suite
+
+  52) Uncaught error outside test suite
+
+  53) Uncaught error outside test suite
+
+  54) Uncaught error outside test suite
+
+  55) Uncaught error outside test suite
+
+  56) Uncaught error outside test suite
+
+  57) Uncaught error outside test suite
+
+  58) Uncaught error outside test suite
+
+  59) Uncaught error outside test suite
+
+  60) Uncaught error outside test suite
+
+  61) Uncaught error outside test suite
+
+  62) Uncaught error outside test suite
+
+  63) Uncaught error outside test suite
+##[error]Process completed with exit code 1.
+##[group]Run npm run test-coverage-generate
+[36;1mnpm run test-coverage-generate[0m
+shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+##[endgroup]
+
+> mocha@12.0.0-beta.10 test-coverage-generate
+> nyc report --reporter=lcov --reporter=text
+
+------------------------------|---------|----------|---------|---------|----------------------------
+File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s          
+------------------------------|---------|----------|---------|---------|----------------------------

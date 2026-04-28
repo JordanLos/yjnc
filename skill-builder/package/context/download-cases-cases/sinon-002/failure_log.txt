@@ -1,0 +1,149 @@
+  sparse-checkout-cone-mode: true
+  fetch-depth: 1
+  fetch-tags: false
+  show-progress: true
+  lfs: false
+  submodules: false
+  set-safe-directory: true
+##[endgroup]
+Syncing repository: sinonjs/sinon
+##[group]Getting Git version info
+Working directory is '/home/runner/work/sinon/sinon'
+[command]/usr/bin/git version
+git version 2.53.0
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/5f95bdc1-ed09-4c39-a565-35593994f1ed' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/sinon/sinon
+Deleting the contents of '/home/runner/work/sinon/sinon'
+##[group]Initializing the repository
+[command]/usr/bin/git init /home/runner/work/sinon/sinon
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: will change to "main" in Git 3.0. To configure the initial branch name
+hint: to use in all of your new repositories, which will suppress this warning,
+hint: call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+hint:
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /home/runner/work/sinon/sinon/.git/
+[command]/usr/bin/git remote add origin https://github.com/sinonjs/sinon
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+[command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ebcd506cbb55df6c7d2bda558f58386a218df9be:refs/remotes/origin/main
+From https://github.com/sinonjs/sinon
+ * [new ref]         ebcd506cbb55df6c7d2bda558f58386a218df9be -> origin/main
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Switched to a new branch 'main'
+branch 'main' set up to track 'origin/main'.
+##[endgroup]
+[command]/usr/bin/git log -1 --format=%H
+ebcd506cbb55df6c7d2bda558f58386a218df9be
+##[group]Run actions/setup-node@v4
+with:
+  node-version: lts/*
+  cache: npm
+  always-auth: false
+  check-latest: false
+  token: ***
+##[endgroup]
+Attempt to resolve LTS alias from manifest...
+Found in cache @ /opt/hostedtoolcache/node/24.13.1/x64
+##[group]Environment details
+node: v24.13.1
+npm: 11.8.0
+yarn: 1.22.22
+##[endgroup]
+[command]/opt/hostedtoolcache/node/24.13.1/x64/bin/npm config get cache
+/home/runner/.npm
+Cache hit for: node-cache-Linux-x64-npm-2ea892a0fa1a911a58432ec0f5e3afb5fb5a4ada71ac282b1c8ab947de79be85
+Received 41354265 of 41354265 (100.0%), 59.5 MBs/sec
+Cache Size: ~39 MB (41354265 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/e972a8a6-35ac-41d7-8ef0-c173ecac01cd/cache.tzst -P -C /home/runner/work/sinon/sinon --use-compress-program unzstd
+Cache restored successfully
+Cache restored from key: node-cache-Linux-x64-npm-2ea892a0fa1a911a58432ec0f5e3afb5fb5a4ada71ac282b1c8ab947de79be85
+##[group]Run npm ci
+[36;1mnpm ci[0m
+shell: /usr/bin/bash -e {0}
+env:
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 1
+  HUSKY_SKIP_INSTALL: 1
+##[endgroup]
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 645 packages, and audited 646 packages in 11s
+
+150 packages are looking for funding
+  run `npm fund` for details
+
+11 vulnerabilities (6 low, 2 moderate, 3 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+##[group]Run npm run prettier:check
+[36;1mnpm run prettier:check[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+
+> sinon@21.0.1 prettier:check
+> prettier --check '**/*.{js,css,md}'
+
+Checking formatting...
+[[33mwarn[39m] lib/sinon/sandbox.js
+[[33mwarn[39m] Code style issues found in the above file. Run Prettier with --write to fix.
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/0a2f6d8a-113c-437b-9729-0017b076d4d0' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/sinon/sinon
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+http.https://github.com/.extraheader
+[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

@@ -1,0 +1,109 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 9s 917ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.4[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 6s 937ms
+[93m➤[39m YN0000: · Done with warnings in 22s 302ms
+Checking formatting...
+[[33mwarn[39m] src/language-js/print/flow.js
+[[33mwarn[39m] Code style issues fixed in the above file.
+##[group]Run autofix-ci/action@v1
+with:
+  commit-message: Apply automated changes
+  fail-fast: true
+##[endgroup]
+[command]/usr/bin/git reset
+Unstaged changes after reset:
+M	src/language-js/print/flow.js
+[command]/usr/bin/git -c core.fileMode=false add --all
+[command]/usr/bin/git -c core.quotepath=false diff --name-only --staged --no-renames
+src/language-js/print/flow.js
+Need to update 1 files.
+[command]/usr/bin/git config user.name autofix.ci
+[command]/usr/bin/git config user.email noreply@autofix.ci
+[command]/usr/bin/git commit --no-verify -m autofix
+[detached HEAD 3b524e5] autofix
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[command]/usr/bin/git rev-parse HEAD
+3b524e5062e4eec31d7b14f3a39c998213eecf48
+[command]/usr/bin/git fetch --depth=1 origin a056e349552a3c618ca3f572637c22c06c71715a
+From https://github.com/prettier/prettier
+ * branch            a056e349552a3c618ca3f572637c22c06c71715a -> FETCH_HEAD
+[command]/usr/bin/git checkout --force FETCH_HEAD
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  3b524e5 autofix
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 3b524e5
+
+HEAD is now at a056e34 Add tests for readonly variance and update hermes-parser to 0.35.0
+[command]/usr/bin/git cherry-pick --no-commit 3b524e5062e4eec31d7b14f3a39c998213eecf48
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 4852
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact zip is c507f9f828f970ff9deb2ddf36503ebb39dd786af0eadd8d6648c06c9b01eb76
+Finalizing artifact upload
+Artifact autofix.ci.zip successfully finalized. Artifact ID 6359049237
+##[error]✅ Autofix task started.
+[command]/usr/bin/git diff --staged
+diff --git a/src/language-js/print/flow.js b/src/language-js/print/flow.js
+index 16e711c..0016f52 100644
+--- a/src/language-js/print/flow.js
++++ b/src/language-js/print/flow.js
+@@ -214,9 +214,9 @@ function printFlow(path, options, print, args) {
+       return ["?", print("typeAnnotation")];
+     case "Variance": {
+       const varianceKinds = {
+-        "plus": "+",
+-        "minus": "-",
+-        "readonly": "readonly ",
++        plus: "+",
++        minus: "-",
++        readonly: "readonly ",
+       };
+       const { kind } = node;
+       assert.ok(kind in varianceKinds);
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/582b9861-457d-4703-8182-d5c5f7d448f2' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-5ca43c7a-27d9-4e41-bd77-427b464705b7.config'
+Cleaning up orphan processes
+##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: autofix-ci/action@v1. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

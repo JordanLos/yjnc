@@ -1,0 +1,7 @@
+{
+  "id": "prettier-020",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/print/return-statement.js",
+  "error_type": "Error"
+}

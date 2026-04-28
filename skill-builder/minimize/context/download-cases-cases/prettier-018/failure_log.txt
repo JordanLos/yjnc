@@ -1,0 +1,99 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 0s 319ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.2[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 7s 254ms
+[93m➤[39m YN0000: · Done with warnings in 13s 440ms
+##[group]Run yarn build --clean
+[36;1myarn build --clean[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+[34m[1/3] Building package 'prettier'[39m
+[90mMain[39m
+ index.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ index.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ index.cjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ index.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ standalone.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ standalone.js[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ standalone.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+[90mCLI[39m
+ bin/prettier.cjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ internal/legacy-cli.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ internal/experimental-cli.mjs[2m.[22m[42m[30m   DONE  [39m[49m
+ internal/experimental-cli-worker.mjs[42m[30m   DONE  [39m[49m
+[90mDoc[39m
+ doc.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ doc.js[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ doc.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+[90mPlugin[estree][39m
+✘ [ERROR] Could not resolve "./end.js"
+
+    src/language-js/location/comparison.js:1:23:
+      1 │ import { locEnd } from "./end.js";
+        ╵                        ~~~~~~~~~~
+
+ plugins/estree.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[41m[30m   FAIL  [39m[49m
+
+Error: Build failed with 1 error:
+src/language-js/location/comparison.js:1:23: ERROR: Could not resolve "./end.js"
+    at failureErrorWithLog (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:926:25
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1345:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+Error: Build failed with 1 error:
+src/language-js/location/comparison.js:1:23: ERROR: Could not resolve "./end.js"
+    at failureErrorWithLog (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:926:25
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1345:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v20.20.0
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/a7803324-fd97-466d-9a37-fc57e4af0fdb' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-e2a38ef0-7c46-49fb-8427-dde1ef6d3027.config'
+Cleaning up orphan processes

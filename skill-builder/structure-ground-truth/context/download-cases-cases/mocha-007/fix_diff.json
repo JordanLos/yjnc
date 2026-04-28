@@ -1,0 +1,6 @@
+{
+  "files": [
+    "eslint.config.js"
+  ],
+  "patch": "--- a/eslint.config.js\n+++ b/eslint.config.js\n@@ -166,7 +166,5 @@ module.exports = defineConfig(\n     // TODO: ESLint's parser can't parse import attributes\n     \"rollup.config.mjs\",\n     \"scripts/pick-from-package-json.mjs\",\n-    \"**/node_modules/**\",\n-    \"docs/node_modules/**\"\n   ]),\n );"
+}

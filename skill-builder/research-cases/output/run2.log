@@ -1,0 +1,761 @@
+Loaded 245 existing candidates (10 passing)
+
+=== mochajs/mocha ===
+  fetched 400 failed runs
+  237 new unique failing SHAs
+  97 pairs have a next-passing run
+    f9f9436 -> 46cd926 [fail(too_many_commits(16))] - 
+    4ab5813 -> 46cd926 [fail(too_many_commits(20))] - 
+    640f08a -> 46cd926 [fail(too_many_commits(19))] - 
+    48577b4 -> f2b9188 [fail(diff_too_large(1721))] - 
+    ae2068b -> a0e5eb6 [fail(no_prod_file)] - 
+    74c2be1 -> 3221e44 [fail(diff_too_large(1147))] - 
+    cc83bf2 -> cc83bf2 [fail(same_sha_rerun)] - 
+    e8147ff -> e8147ff [fail(same_sha_rerun)] - 
+    661f349 -> 46cd926 [fail(too_many_commits(28))] - 
+    f05cc93 -> 29de573 [fail(no_signal)] lib/errors.js 
+    56b6ff7 -> 56b6ff7 [fail(same_sha_rerun)] - 
+    186b358 -> 29de573 [fail(no_signal)] lib/errors.js 
+    8b53005 -> b05591a [fail(multi_prod_file)] - 
+    29fa6f2 -> 8824795 [fail(no_prod_file)] - 
+    5931845 -> 29de573 [KEEP] lib/errors.js ReferenceError
+    c852dbd -> 8824795 [fail(diff_too_large(519))] - 
+    93f73d4 -> b38b423 [fail(no_prod_file)] - 
+    0f77459 -> 29de573 [fail(no_signal)] lib/errors.js 
+    251e64e -> 8824795 [fail(diff_too_large(525))] - 
+    9ebc68a -> baeff0e [fail(diff_too_large(770))] - 
+    5dd2b55 -> ce7c03e [fail(too_many_commits(16))] - 
+    016498d -> ce7c03e [fail(too_many_commits(15))] - 
+    4bc5599 -> 66132e0 [fail(diff_too_large(790))] - 
+    d8301f3 -> 66132e0 [fail(too_many_commits(9))] - 
+    9e8eada -> 177b24c [fail(multi_prod_file)] - 
+    2ab1e6e -> 66132e0 [fail(too_many_commits(9))] - 
+    ccbdf42 -> ccbdf42 [fail(same_sha_rerun)] - 
+    0cd4e1c -> 0cd4e1c [fail(same_sha_rerun)] - 
+    0d21148 -> baeff0e [fail(too_many_commits(10))] - 
+    dc5c4c3 -> b880931 [fail(multi_prod_file)] - 
+    e61c8d5 -> 2829fe3 [fail(too_many_commits(40))] - 
+    8d3d175 -> 27c34d0 [fail(too_many_commits(17))] - 
+    5a00521 -> 83dfcc3 [fail(no_prod_file)] - 
+    8d5cb63 -> 11da30f [KEEP] lib/nodejs/esm-utils.js Error
+    2517693 -> 2829fe3 [fail(too_many_commits(44))] - 
+    5bff8ef -> 6ad2a81 [fail(no_prod_file)] - 
+    e571dd3 -> 0a0c7ba [fail(multi_prod_file)] - 
+    1378fd8 -> 46cd926 [fail(too_many_commits(55))] - 
+    0f17221 -> b07fd30 [fail(no_prod_file)] - 
+    6feb9ef -> b07fd30 [fail(diff_too_large(639))] - 
+    34422c1 -> b38b423 [KEEP] eslint.config.js Error
+    7d52551 -> 2b20293 [fail(no_prod_file)] - 
+    42fb833 -> d4bfe93 [fail(diff_too_large(528))] - 
+    628bd57 -> 5514908 [fail(diff_too_large(4131))] - 
+    2e21efa -> 2e21efa [fail(same_sha_rerun)] - 
+    c42bf90 -> ebba191 [fail(diff_too_large(4179))] - 
+    22cfd28 -> 36a5be0 [fail(module_not_found)] mocha.mjs 
+    87c23c7 -> a6857c9 [fail(no_prod_file)] - 
+    93e9635 -> b07fd30 [KEEP] mocha.mjs Error
+    fe7a1aa -> 17ad811 [fail(too_many_commits(49))] - 
+    c030a3b -> 46cd926 [fail(too_many_commits(80))] - 
+    cf839a5 -> 75c1dde [fail(module_not_found)] lib/reporters/base.js 
+    239c4f4 -> e99ad21 [fail(diff_too_large(615))] - 
+    96be464 -> 239c4f4 [fail(too_many_commits(29))] - 
+    f024706 -> 75c1dde [fail(module_not_found)] lib/reporters/base.js 
+    f3be6ab -> c4976a0 [fail(diff_too_large(5766))] - 
+    625c34e -> 46cd926 [fail(too_many_commits(87))] - 
+    f41e3d4 -> c4976a0 [fail(diff_too_large(5769))] - 
+    65cf9a7 -> 17ad811 [fail(too_many_commits(58))] - 
+    2009fa2 -> f3be6ab [fail(multi_prod_file)] - 
+    771b1b7 -> 8d5c19a [fail(no_prod_file)] - 
+    3363908 -> b84931a [KEEP] lib/nodejs/parallel-buffered-runner.js Error
+    cdf10cf -> f17d264 [fail(no_prod_file)] - 
+    430960c -> 2829fe3 [fail(too_many_commits(91))] - 
+    3a2de01 -> 30949f6 [fail(no_prod_file)] - 
+    5e30b2b -> 2974a87 [fail(no_prod_file)] - 
+    7d85b41 -> 8d8bebd [fail(multi_prod_file)] - 
+    6c67d8a -> 63f59a5 [fail(diff_too_large(553))] - 
+    1dd4919 -> 63f59a5 [fail(diff_too_large(545))] - 
+    12dd49a -> f7890b7 [KEEP] lib/utils.js TypeError
+    1616e56 -> f7890b7 [KEEP] lib/utils.js TypeError
+    9d59cb1 -> 627083b [KEEP] lib/suite.js ReferenceError
+    c7f9a02 -> 627083b [KEEP] lib/suite.js ReferenceError
+    df4a03c -> a5eff03 [fail(no_prod_file)] - 
+    611b89d -> 46cd926 [fail(too_many_commits(96))] - 
+    234492c -> b6e4cc6 [fail(no_prod_file)] - 
+    87ccfb9 -> 94893d8 [KEEP] lib/pending.js Error
+    d78e94a -> 627083b [fail(no_signal)] lib/suite.js 
+    d96cd18 -> f7890b7 [fail(module_not_found)] lib/utils.js 
+    8c53d35 -> 627083b [fail(no_signal)] lib/suite.js 
+  kept=10 (out of 80 evaluated)
+  -- total kept so far: 20
+
+=== chaijs/chai ===
+  fetched 61 failed runs
+  9 new unique failing SHAs
+  5 pairs have a next-passing run
+    4cbd383 -> b25e5d8 [fail(too_many_commits(24))] - 
+    e081fe6 -> b25e5d8 [fail(too_many_commits(20))] - 
+    a125d3e -> b25e5d8 [fail(too_many_commits(32))] - 
+    373c61a -> b25e5d8 [fail(too_many_commits(33))] - 
+    10cb344 -> b25e5d8 [fail(too_many_commits(31))] - 
+  kept=0 (out of 5 evaluated)
+  -- total kept so far: 20
+
+=== sinonjs/sinon ===
+  fetched 31 failed runs
+  1 new unique failing SHAs
+  0 pairs have a next-passing run
+  kept=0 (out of 0 evaluated)
+  -- total kept so far: 20
+
+=== yargs/yargs ===
+  fetched 50 failed runs
+  23 new unique failing SHAs
+  0 pairs have a next-passing run
+  kept=0 (out of 0 evaluated)
+  -- total kept so far: 20
+
+=== eslint/eslint ===
+  fetched 400 failed runs
+  324 new unique failing SHAs
+  179 pairs have a next-passing run
+    6fe94ca -> f19d98d [fail(passing_behind_failing)] - 
+    2962a2d -> 2cd68bb [fail(no_prod_file)] - 
+    6eb06d7 -> 8e4c956 [fail(no_prod_file)] - 
+    8fb12e7 -> 8e4c956 [fail(no_prod_file)] - 
+    2eb9c8e -> f19d98d [fail(too_many_commits(20))] - 
+    5b1f77b -> f19d98d [fail(too_many_commits(20))] - 
+    bec0c37 -> 27cd888 [fail(no_prod_file)] - 
+    21fc640 -> 53521cf [fail(too_many_commits(50))] - 
+    20f5a64 -> 180001b [fail(no_prod_file)] - 
+    520f87b -> f6e264a [fail(no_prod_file)] - 
+    8ab37e2 -> f19d98d [fail(no_signal)] lib/rules/preserve-caught-error.js 
+    527de52 -> af764af [fail(too_many_commits(44))] - 
+    61348ef -> f19d98d [fail(no_signal)] lib/rules/preserve-caught-error.js 
+    a2caf34 -> 51e8ae5 [fail(no_prod_file)] - 
+    933a7a4 -> af764af [fail(too_many_commits(46))] - 
+    7bca62f -> af764af [fail(too_many_commits(46))] - 
+    eec4871 -> edd18fc [fail(no_signal)] lib/config/config.js 
+    8e0dfb6 -> c8cac86 [fail(no_prod_file)] - 
+    4684dd3 -> edd18fc [KEEP] lib/config/config.js Error
+    b0a8724 -> edd18fc [fail(multi_prod_file)] - 
+    eb78644 -> f19d98d [fail(no_signal)] lib/rules/preserve-caught-error.js 
+    f6abd16 -> 395a612 [fail(no_prod_file)] - 
+    8b8bd9c -> 395a612 [fail(no_prod_file)] - 
+    4b8560f -> af764af [fail(too_many_commits(46))] - 
+    b698d8c -> 65b5583 [fail(no_prod_file)] - 
+    04e3d19 -> 21ad6d6 [fail(no_prod_file)] - 
+    30a5f66 -> 65b5583 [fail(no_prod_file)] - 
+    92b0b69 -> 70963be [fail(no_prod_file)] - 
+    14d7e93 -> 9755030 [fail(no_prod_file)] - 
+    4429cdf -> 1c94103 [fail(no_prod_file)] - 
+    4637557 -> 9aa94f6 [fail(multi_prod_file)] - 
+    041fb41 -> 9aa94f6 [fail(multi_prod_file)] - 
+    6a20998 -> 1f6ba7e [KEEP] lib/rules/no-use-before-define.js Error
+    c1b3ebb -> b9dadea [fail(no_signal)] lib/eslint/eslint-helpers.js 
+    e49ab44 -> e798025 [KEEP] Makefile.js AssertionError
+    50a364c -> e798025 [KEEP] Makefile.js AssertionError
+    ed014f1 -> e798025 [KEEP] Makefile.js AssertionError
+    11d40f0 -> 5f7c009 [fail(no_prod_file)] - 
+    73075e9 -> 2629a96 [fail(no_prod_file)] - 
+    bef70d3 -> e798025 [KEEP] Makefile.js ReferenceError
+    a3c868f -> 1d16c2f [fail(no_prod_file)] - 
+    0fa40dd -> 9e71344 [fail(too_many_commits(33))] - 
+    2c7b1cc -> e798025 [KEEP] Makefile.js ReferenceError
+    23174be -> 9fce4ae [fail(too_many_commits(43))] - 
+    0d7cfbb -> e798025 [KEEP] Makefile.js ReferenceError
+    d406192 -> 9582d13 [fail(no_prod_file)] - 
+    10f75f3 -> 5f7c009 [fail(no_signal)] lib/rules/no-unused-private-class-members.js 
+    9949347 -> 7722eab [fail(too_many_commits(106))] - 
+    1eefd91 -> 7722eab [fail(too_many_commits(106))] - 
+    ef51ced -> 9fce4ae [KEEP] lib/rules/no-var.js Error
+    c87d5bd -> 7246f92 [fail(too_many_commits(94))] - 
+    2243c55 -> f6a9c11 [fail(no_prod_file)] - 
+    d841001 -> 7246f92 [fail(too_many_commits(96))] - 
+    01c135e -> ce43a11 [fail(no_prod_file)] - 
+    7dbc8ea -> 56d3fe3 [fail(no_prod_file)] - 
+    8c3832a -> 7246f92 [fail(too_many_commits(97))] - 
+    17316ee -> 56d3fe3 [fail(no_prod_file)] - 
+    e3ddb07 -> f705182 [KEEP] lib/rules/utils/unicode/is-combining-character.js Error
+    671013c -> 5d2560a [fail(no_prod_file)] - 
+    01a1f9f -> 5d2560a [fail(no_prod_file)] - 
+    bdcb848 -> 3af9fca [fail(no_prod_file)] - 
+    0670889 -> 5d2560a [fail(no_prod_file)] - 
+    d68e009 -> 5d2560a [fail(no_prod_file)] - 
+    275827f -> 0670889 [fail(no_prod_file)] - 
+    31b74ab -> c7fd677 [fail(no_signal)] eslint.config.js 
+    2b69fa1 -> cb171e7 [fail(no_prod_file)] - 
+    bf031d5 -> 148ad35 [fail(no_prod_file)] - 
+    63baa7e -> 37e2c95 [fail(no_prod_file)] - 
+    98df913 -> 1d334b1 [fail(multi_prod_file)] - 
+    53d1318 -> 31a908d [fail(too_many_commits(99))] - 
+    265e797 -> 27519a8 [fail(no_prod_file)] - 
+    0627497 -> 27519a8 [fail(no_prod_file)] - 
+    1297746 -> 3038174 [fail(no_prod_file)] - 
+    71c8422 -> 3038174 [fail(no_prod_file)] - 
+    931b314 -> 31a908d [fail(too_many_commits(99))] - 
+    359fb37 -> 9542221 [fail(no_prod_file)] - 
+    7726ceb -> 9a8b871 [fail(no_prod_file)] - 
+    9a91bc9 -> f705182 [fail(no_signal)] lib/rules/utils/unicode/is-combining-character.js 
+    560b525 -> 5c24cbe [fail(no_signal)] lib/rules/no-use-before-define.js 
+    8679ed2 -> 9a8b871 [fail(no_signal)] lib/services/warning-service.js 
+  kept=10 (out of 80 evaluated)
+  -- total kept so far: 30
+
+=== fastify/fastify ===
+  fetched 400 failed runs
+  255 new unique failing SHAs
+  130 pairs have a next-passing run
+    4f48f58 -> 357fe0d [fail(too_many_commits(15))] - 
+    ea53b2a -> 759868e [fail(too_many_commits(16))] - 
+    5fc791b -> 759868e [fail(too_many_commits(21))] - 
+    3854b26 -> 759868e [fail(too_many_commits(21))] - 
+    870aff4 -> 759868e [fail(too_many_commits(17))] - 
+    9353305 -> 759868e [fail(too_many_commits(21))] - 
+    91e80d8 -> dc58392 [fail(no_prod_file)] - 
+    50cbbad -> 8a5020e [fail(no_prod_file)] - 
+    e0bc248 -> 02c30d6 [fail(no_prod_file)] - 
+    d6b9d4e -> d6b9d4e [fail(same_sha_rerun)] - 
+    57aea4e -> dc58392 [fail(no_prod_file)] - 
+    719ced9 -> dc58392 [fail(no_prod_file)] - 
+    de47306 -> 357fe0d [fail(too_many_commits(18))] - 
+    4462d48 -> 02c30d6 [fail(no_prod_file)] - 
+    a576f0c -> b3d3550 [fail(too_many_commits(12))] - 
+    e943bad -> b3d3550 [fail(too_many_commits(19))] - 
+    dcd34f3 -> a576f0c [fail(too_many_commits(14))] - 
+    8abcd98 -> dce0d47 [fail(too_many_commits(30))] - 
+    dae0b9a -> f6aa88d [fail(too_many_commits(70))] - 
+    b61c362 -> dce0d47 [fail(too_many_commits(41))] - 
+    073ff81 -> dce0d47 [fail(too_many_commits(42))] - 
+    67f6c9b -> dce0d47 [fail(too_many_commits(43))] - 
+    9b06a78 -> dce0d47 [fail(too_many_commits(45))] - 
+    161578a -> dce0d47 [fail(too_many_commits(44))] - 
+    bbdfe82 -> dce0d47 [fail(too_many_commits(46))] - 
+    cd58ed4 -> dce0d47 [fail(too_many_commits(47))] - 
+    2590592 -> dce0d47 [fail(too_many_commits(48))] - 
+    3109f52 -> dce0d47 [fail(too_many_commits(52))] - 
+    a7b8b9e -> 02c30d6 [fail(too_many_commits(36))] - 
+    156eda1 -> 02c30d6 [fail(too_many_commits(37))] - 
+    1e0be12 -> dce0d47 [fail(too_many_commits(53))] - 
+    8bd749d -> 02c30d6 [fail(too_many_commits(38))] - 
+    3380d0b -> 99dd26d [fail(no_prod_file)] - 
+    8fad072 -> dce0d47 [fail(too_many_commits(54))] - 
+    5c62eeb -> dce0d47 [fail(too_many_commits(55))] - 
+    f9c6399 -> dce0d47 [fail(too_many_commits(56))] - 
+    e2709f2 -> deaaf0e [fail(no_prod_file)] - 
+    a091d7c -> 3ce3ae6 [fail(too_many_commits(53))] - 
+    fb39187 -> 8f0a713 [fail(no_prod_file)] - 
+    f376f60 -> dce0d47 [fail(too_many_commits(57))] - 
+    3d11b95 -> 3a01379 [fail(too_many_commits(43))] - 
+    7883bbc -> 7883bbc [fail(same_sha_rerun)] - 
+    26b5e70 -> 8f0a713 [fail(no_prod_file)] - 
+    a109385 -> 8f0a713 [fail(no_prod_file)] - 
+    f61f496 -> 3a01379 [fail(too_many_commits(44))] - 
+    c970ed4 -> dce0d47 [fail(too_many_commits(58))] - 
+    e338b2d -> e338b2d [fail(same_sha_rerun)] - 
+    3ff8940 -> 7883bbc [fail(no_prod_file)] - 
+    db15c95 -> 7883bbc [fail(no_prod_file)] - 
+    da08356 -> 7883bbc [fail(no_prod_file)] - 
+    6a173ba -> 7883bbc [fail(no_prod_file)] - 
+    ba79755 -> 20a25c7 [fail(no_prod_file)] - 
+    c4a6e78 -> dce0d47 [fail(too_many_commits(60))] - 
+    58c0f5b -> 6d7e419 [fail(no_signal)] lib/errors.js 
+    53eea2c -> dce0d47 [fail(too_many_commits(59))] - 
+    3653e7b -> dce0d47 [fail(too_many_commits(62))] - 
+    9e93d64 -> 27fd763 [fail(no_prod_file)] - 
+    f75c5b3 -> dc39e88 [fail(no_prod_file)] - 
+    ea0c9fb -> ea0c9fb [fail(same_sha_rerun)] - 
+    81c330b -> d898f61 [fail(no_prod_file)] - 
+    b4db85b -> dce0d47 [fail(too_many_commits(61))] - 
+    37c7088 -> dce0d47 [fail(too_many_commits(63))] - 
+    22c140d -> a576f0c [fail(too_many_commits(59))] - 
+    b2c22af -> 05b7051 [fail(no_prod_file)] - 
+    b50feca -> bc30cf7 [fail(no_signal)] lib/route.js 
+    3937f93 -> 3ce3ae6 [fail(too_many_commits(69))] - 
+    16ba33d -> 9587ed6 [fail(no_prod_file)] - 
+    80dca43 -> 415f6c3 [fail(no_prod_file)] - 
+    96c40c0 -> b06a196 [fail(too_many_commits(69))] - 
+    8e4e6c4 -> 9587ed6 [fail(too_many_commits(11))] - 
+    c7edfd3 -> c7edfd3 [fail(same_sha_rerun)] - 
+    927c451 -> e56afc5 [fail(too_many_commits(9))] - 
+    4682a78 -> 3ce3ae6 [fail(too_many_commits(72))] - 
+    3af6dec -> 3af6dec [fail(same_sha_rerun)] - 
+    7e0bdf8 -> 091fc98 [fail(no_prod_file)] - 
+    49468ed -> dce0d47 [fail(too_many_commits(78))] - 
+    058dda7 -> 05b7051 [fail(too_many_commits(13))] - 
+    eb11156 -> 3ce3ae6 [fail(too_many_commits(74))] - 
+    d0c2f45 -> dce0d47 [fail(too_many_commits(76))] - 
+    19b5564 -> 05b7051 [fail(too_many_commits(14))] - 
+  kept=0 (out of 80 evaluated)
+  -- total kept so far: 30
+
+=== hapijs/joi ===
+  fetched 5 failed runs
+  2 new unique failing SHAs
+  0 pairs have a next-passing run
+  kept=0 (out of 0 evaluated)
+  -- total kept so far: 30
+
+=== expressjs/express ===
+  fetched 64 failed runs
+  25 new unique failing SHAs
+  0 pairs have a next-passing run
+  kept=0 (out of 0 evaluated)
+  -- total kept so far: 30
+
+=== date-fns/date-fns ===
+  fetched 145 failed runs
+  30 new unique failing SHAs
+  0 pairs have a next-passing run
+  kept=0 (out of 0 evaluated)
+  -- total kept so far: 30
+
+=== karma-runner/karma ===
+  fetched 61 failed runs
+  22 new unique failing SHAs
+  0 pairs have a next-passing run
+  kept=0 (out of 0 evaluated)
+  -- total kept so far: 30
+
+=== axios/axios ===
+  fetched 400 failed runs
+  304 new unique failing SHAs
+  109 pairs have a next-passing run
+    2271ea2 -> 59f848c [fail(no_prod_file)] - 
+    ea010f4 -> 420485c [fail(no_prod_file)] - 
+    411b75e -> eeffeb9 [fail(multi_prod_file)] - 
+    8c89b1e -> 4870f2b [fail(multi_prod_file)] - 
+    1c1c125 -> 420485c [fail(multi_prod_file)] - 
+    351f992 -> 09b9e5c [fail(no_prod_file)] - 
+    50a44e3 -> 0f849ee [fail(no_prod_file)] - 
+    529c745 -> 37f4ab4 [fail(no_prod_file)] - 
+    714feb3 -> 4870f2b [fail(no_prod_file)] - 
+    d123104 -> a100656 [fail(diff_too_large(1019))] - 
+    d73ed8a -> f8a202c [fail(diff_too_large(1019))] - 
+    da6c76c -> d78e4ca [fail(no_signal)] lib/adapters/http.js 
+    262a140 -> 420485c [KEEP] lib/helpers/toFormData.js Error
+    7677897 -> d73ed8a [fail(no_prod_file)] - 
+    6113cac -> ffc9c1d [fail(no_prod_file)] - 
+    5d13111 -> 2486f24 [fail(too_many_commits(9))] - 
+    3758ada -> 9ea8043 [fail(no_signal)] lib/helpers/toFormData.js 
+    2079031 -> 98799bf [fail(multi_prod_file)] - 
+    19e9b41 -> de1a810 [fail(too_many_commits(35))] - 
+    7898a35 -> 7d3e23e [fail(no_prod_file)] - 
+    00ab2af -> b57eb1a [fail(no_prod_file)] - 
+    11fc7a0 -> c16da40 [fail(multi_prod_file)] - 
+    9c14e19 -> 6fc2cab [KEEP] lib/env/data.js AssertionError
+    1ea8d0f -> b3aa67d [fail(diff_too_large(3065))] - 
+    7a8bd9a -> de1a810 [fail(too_many_commits(39))] - 
+    8eba4a9 -> 6fc2cab [KEEP] lib/env/data.js AssertionError
+    66bde94 -> 3bde8fa [fail(no_prod_file)] - 
+    7d14e79 -> 3bde8fa [fail(no_prod_file)] - 
+    9099470 -> 98799bf [fail(no_signal)] lib/helpers/shouldBypassProxy.js 
+    eaf4314 -> 3bde8fa [fail(no_prod_file)] - 
+    570858a -> 3bde8fa [fail(no_prod_file)] - 
+    64f2086 -> 3bde8fa [fail(no_prod_file)] - 
+    688dfaa -> 3bde8fa [fail(no_prod_file)] - 
+    725f6c4 -> 3bde8fa [fail(too_many_commits(10))] - 
+    564ef89 -> 3bde8fa [fail(no_prod_file)] - 
+    42eec53 -> 28f0178 [fail(no_prod_file)] - 
+    b26f023 -> aa1061d [fail(no_prod_file)] - 
+    8e25f06 -> 76b184b [fail(no_prod_file)] - 
+    bf7612d -> 76b184b [fail(no_prod_file)] - 
+    131e293 -> 301dfd7 [fail(no_prod_file)] - 
+    deb9dbd -> aa1061d [fail(diff_too_large(31334))] - 
+    caf490c -> 6d142f9 [fail(no_prod_file)] - 
+    ff9e467 -> 5a22319 [fail(no_prod_file)] - 
+    3c4a33a -> 5a22319 [fail(diff_too_large(1393))] - 
+    c9ee30d -> 5a22319 [fail(diff_too_large(1395))] - 
+    b4065f3 -> 3932b2c [fail(log_unavailable)] lib/adapters/fetch.js 
+    c137bc2 -> 5a22319 [fail(diff_too_large(1429))] - 
+    166e150 -> 18256e9 [fail(no_prod_file)] - 
+    947f709 -> de1a810 [fail(too_many_commits(78))] - 
+    6672d50 -> 1150a68 [fail(no_prod_file)] - 
+    f72dca6 -> f507291 [fail(no_signal)] lib/adapters/fetch.js 
+    19944c5 -> 1741de3 [fail(no_prod_file)] - 
+    06baf44 -> 1150a68 [fail(no_prod_file)] - 
+    a0757bc -> 1741de3 [fail(no_prod_file)] - 
+    c25c6e7 -> e61021e [fail(too_many_commits(43))] - 
+    af969d7 -> 8c39cdf [fail(no_prod_file)] - 
+    15c26f6 -> 8c39cdf [fail(no_prod_file)] - 
+    a6d8f04 -> 8c39cdf [fail(no_prod_file)] - 
+    59b077d -> c5d0de6 [fail(no_signal)] lib/env/data.js 
+    e67e898 -> 8c39cdf [fail(no_prod_file)] - 
+    cb4ef61 -> 9983085 [fail(no_signal)] lib/env/data.js 
+    045a1c6 -> 8c39cdf [fail(no_prod_file)] - 
+    839ad52 -> 8c39cdf [fail(no_prod_file)] - 
+    18b9d82 -> 8c39cdf [fail(no_prod_file)] - 
+    b982ff0 -> 8c39cdf [fail(too_many_commits(9))] - 
+    eb977fa -> 8c39cdf [fail(too_many_commits(10))] - 
+    c039513 -> c856db0 [fail(no_prod_file)] - 
+    282043d -> c856db0 [fail(no_prod_file)] - 
+    e67884e -> c856db0 [fail(no_prod_file)] - 
+    9ba015d -> c856db0 [fail(no_prod_file)] - 
+    8a5938f -> 2a33e9b [fail(no_prod_file)] - 
+    0abdcff -> 8a7158c [fail(diff_too_large(3794))] - 
+    e2164cd -> 044de6b [fail(diff_too_large(32206))] - 
+    2e1e03b -> 044de6b [fail(diff_too_large(29361))] - 
+    8bc3fc7 -> bf776d9 [fail(no_prod_file)] - 
+    66d5482 -> 512359b [fail(no_prod_file)] - 
+    30a80bf -> acc4795 [fail(no_prod_file)] - 
+    4a43f41 -> acc4795 [fail(no_prod_file)] - 
+    2acba4f -> acc4795 [fail(no_prod_file)] - 
+    ee5e8fe -> acc4795 [fail(no_prod_file)] - 
+  kept=3 (out of 80 evaluated)
+  -- total kept so far: 33
+
+=== lodash/lodash ===
+  fetched 33 failed runs
+  20 new unique failing SHAs
+  15 pairs have a next-passing run
+    879aaa9 -> b9d70ee [fail(no_prod_file)] - 
+    b9d70ee -> af63457 [fail(no_prod_file)] - 
+    1073a76 -> af63457 [fail(no_prod_file)] - 
+    3e1daba -> 60c52df [fail(no_prod_file)] - 
+    02a7151 -> d120f81 [fail(diff_too_large(715))] - 
+    69532dc -> 19f45bd [fail(no_prod_file)] - 
+    d052b3d -> a25c3f1 [fail(no_prod_file)] - 
+    5e45b6f -> d052b3d [fail(too_many_commits(11))] - 
+    fe7a579 -> 09578fb [fail(no_prod_file)] - 
+    a05981c -> 879aaa9 [fail(multi_prod_file)] - 
+    565acc4 -> 09578fb [fail(no_prod_file)] - 
+    1faa334 -> 879aaa9 [fail(no_signal)] lodash.js 
+    fe8d32e -> 879aaa9 [fail(no_signal)] lodash.js 
+    4afb725 -> b819080 [fail(too_many_commits(16))] - 
+    228ad2a -> 83d0860 [fail(log_unavailable)] lodash.js 
+  kept=0 (out of 15 evaluated)
+  -- total kept so far: 33
+
+=== prettier/prettier ===
+  fetched 400 failed runs
+  214 new unique failing SHAs
+  139 pairs have a next-passing run
+    04d288a -> 453322b [fail(multi_prod_file)] - 
+    98072f1 -> 3f36728 [fail(multi_prod_file)] - 
+    a67175d -> adfbb96 [fail(multi_prod_file)] - 
+    3f36728 -> a7faeff [fail(diff_too_large(1879))] - 
+    137169c -> a7faeff [fail(diff_too_large(1879))] - 
+    31feb9a -> 137169c [fail(multi_prod_file)] - 
+    de8e37e -> f092bfc [fail(diff_too_large(512))] - 
+    c3abd1e -> a7faeff [KEEP] src/language-yaml/utilities.js Error
+    cd01ffa -> 84393b2 [KEEP] src/language-markdown/print/children.js Error
+    83335d2 -> 83e7b22 [fail(no_signal)] src/language-markdown/parse/parse-mdx.js 
+    43061b7 -> 83e7b22 [fail(no_signal)] src/language-markdown/parse/parse-mdx.js 
+    d259772 -> 9667873 [fail(no_prod_file)] - 
+    87d4a8c -> ee240ad [fail(no_prod_file)] - 
+    bb1cfc6 -> 020a8da [fail(no_prod_file)] - 
+    7b5d79f -> ec2f94e [fail(no_prod_file)] - 
+    850d436 -> bfd7851 [KEEP] src/language-js/print/component.js Error
+    5904737 -> c8b5c9e [fail(multi_prod_file)] - 
+    74233d9 -> c8b5c9e [fail(too_many_commits(9))] - 
+    7b1571c -> bb268ec [fail(no_prod_file)] - 
+    c0ddc68 -> f34e85e [fail(no_prod_file)] - 
+    2c42738 -> c0ddc68 [fail(no_prod_file)] - 
+    20ed5e6 -> de8e37e [fail(too_many_commits(50))] - 
+    ac2f999 -> de8e37e [fail(no_signal)] src/language-markdown/parse/parse-mdx.js 
+    7470ef4 -> ab58e2d [KEEP] src/language-js/print/flow.js Error
+    a056e34 -> 041035f [KEEP] src/language-js/print/flow.js Error
+    d4121f4 -> 2115a3a [KEEP] src/document/printer/printer.js Error
+    683c525 -> 8a33709 [KEEP] src/language-js/print/flow.js Error
+    b80f3db -> c0ddc68 [fail(no_prod_file)] - 
+    fcc6740 -> c8b5c9e [fail(too_many_commits(34))] - 
+    40f32b9 -> c8b5c9e [fail(too_many_commits(34))] - 
+    af144a8 -> 44f3a0a [KEEP] src/document/printer/printer.js Error
+    2187158 -> c8b5c9e [fail(too_many_commits(34))] - 
+    f805e84 -> c8b5c9e [fail(too_many_commits(35))] - 
+    944ca3f -> c0ddc68 [fail(no_prod_file)] - 
+    3622ded -> 1d92346 [fail(multi_prod_file)] - 
+    328c438 -> c8b5c9e [fail(too_many_commits(35))] - 
+    4133d37 -> de8e37e [fail(no_signal)] src/language-markdown/parse/parse-mdx.js 
+    c349c3f -> c0ddc68 [fail(no_prod_file)] - 
+    c8cc2dc -> c8b5c9e [fail(too_many_commits(36))] - 
+    4534438 -> 1d92346 [KEEP] src/language-js/parse/postprocess/merge-nestled-jsdoc-comments.js Error
+    cffe5a1 -> f80c8e8 [fail(multi_prod_file)] - 
+    9a71dfd -> 06bace6 [KEEP] src/language-js/utilities/is-indentable-block-comment.js Error
+    21b5fa9 -> c8b5c9e [fail(too_many_commits(36))] - 
+    f80c8e8 -> a7faeff [fail(too_many_commits(63))] - 
+    49e40ac -> b578212 [fail(no_prod_file)] - 
+    67d275a -> a7faeff [fail(too_many_commits(63))] - 
+    38d0f33 -> bb3f3a2 [fail(too_many_commits(33))] - 
+    fb47e51 -> a7faeff [fail(too_many_commits(63))] - 
+    f9a0b4d -> b578212 [fail(diff_too_large(527))] - 
+    14cea6f -> 67d275a [KEEP] src/language-yaml/printer-yaml.js Error
+    6bed01a -> b578212 [fail(too_many_commits(9))] - 
+    b5c0a78 -> c8b5c9e [fail(too_many_commits(41))] - 
+    612d843 -> fb47e51 [KEEP] src/language-yaml/printer-yaml.js Error
+    2527231 -> c8b5c9e [fail(too_many_commits(41))] - 
+    f48b291 -> 6bed01a [fail(too_many_commits(9))] - 
+    18298c0 -> 81a4d9e [fail(no_prod_file)] - 
+    d7f78be -> 6bed01a [fail(too_many_commits(11))] - 
+    ef801bc -> c8b5c9e [fail(too_many_commits(50))] - 
+    969dea9 -> 2e03c6f [fail(multi_prod_file)] - 
+    b6d21be -> 8f51958 [fail(no_prod_file)] - 
+    5d16446 -> b578212 [fail(too_many_commits(20))] - 
+    6b79d73 -> 18298c0 [KEEP] src/language-js/traverse/visitor-keys.evaluate.js Error
+    cac88f9 -> b578212 [fail(too_many_commits(23))] - 
+    4c66b55 -> 32c28cb [fail(no_prod_file)] - 
+    b8731e7 -> ec62a76 [fail(multi_prod_file)] - 
+    2ae8b1d -> 1513c86 [fail(multi_prod_file)] - 
+    9a626c3 -> 8b2b133 [fail(no_prod_file)] - 
+    df95618 -> b578212 [fail(no_signal)] src/language-js/print/flow.js 
+    c37fd5e -> ab27c11 [KEEP] src/language-js/parse/utilities/source-types.js Error
+    0606879 -> 1513c86 [fail(multi_prod_file)] - 
+    fabe468 -> ab27c11 [KEEP] src/language-js/parse/utilities/source-types.js Error
+    9bb7335 -> 6ba3c05 [fail(too_many_commits(85))] - 
+    c6f3ae2 -> ff2966b [fail(no_prod_file)] - 
+    c2e96a4 -> 2e03c6f [fail(no_signal)] src/language-js/traverse/visitor-keys.evaluate.js 
+    35eeb4a -> 51e7f17 [fail(no_prod_file)] - 
+    587b77b -> d4737c7 [fail(too_many_commits(16))] - 
+    bbf395a -> 6ff94ee [fail(no_prod_file)] - 
+    56cb5ba -> 33894c9 [fail(no_prod_file)] - 
+    163cb0a -> 6ff94ee [fail(no_prod_file)] - 
+    90bc501 -> ec25bc4 [KEEP] src/language-markdown/parse/parse-mdx.js Error
+  kept=16 (out of 80 evaluated)
+  -- total kept so far: 49
+
+=== nodejs/undici ===
+  fetched 400 failed runs
+  357 new unique failing SHAs
+  120 pairs have a next-passing run
+    500eb60 -> c6bb580 [fail(no_prod_file)] - 
+    1dec881 -> 67ca48c [fail(no_signal)] lib/cache/sqlite-cache-store.js 
+    8ca76ab -> 94c9dea [fail(no_signal)] lib/web/websocket/stream/websocketstream.js 
+    552af7a -> fe13149 [fail(multi_prod_file)] - 
+    2a6f9c7 -> 67ca48c [fail(multi_prod_file)] - 
+    97e7827 -> 5ee2fce [fail(no_prod_file)] - 
+    0e144eb -> 5ee2fce [fail(no_prod_file)] - 
+    ea9afee -> 5ee2fce [fail(no_prod_file)] - 
+    bd1a90d -> 5ee2fce [fail(no_prod_file)] - 
+    b115e9f -> ccab3f6 [fail(multi_prod_file)] - 
+    8b1b2b1 -> 156756f [fail(no_signal)] lib/dispatcher/client-h2.js 
+    12974fe -> ccab3f6 [fail(multi_prod_file)] - 
+    5f15b44 -> ccab3f6 [fail(multi_prod_file)] - 
+    3ce9516 -> 156756f [fail(no_signal)] lib/dispatcher/client-h2.js 
+    e0e61d3 -> c7a2901 [fail(multi_prod_file)] - 
+    a516f87 -> c7a2901 [fail(multi_prod_file)] - 
+    7afc6c3 -> ad2500b [fail(no_prod_file)] - 
+    549cc0b -> 90942cd [fail(multi_prod_file)] - 
+    bc0a19c -> c7a2901 [fail(too_many_commits(15))] - 
+    3ca265e -> b04759c [fail(no_prod_file)] - 
+    dcf9d03 -> c6bb580 [fail(no_signal)] lib/dispatcher/client-h2.js 
+    bd91f86 -> c7a2901 [fail(too_many_commits(19))] - 
+    2eced88 -> 6bc1a56 [fail(no_signal)] lib/dispatcher/client-h2.js 
+    30e9f98 -> c7a2901 [fail(too_many_commits(22))] - 
+    d3ea390 -> c7a2901 [fail(too_many_commits(28))] - 
+    a0291b9 -> c7a2901 [fail(too_many_commits(45))] - 
+    7338e9b -> 6bc1a56 [fail(no_signal)] lib/dispatcher/client-h2.js 
+    30c4f42 -> 496d04e [fail(no_prod_file)] - 
+    11afb73 -> c7a2901 [fail(too_many_commits(57))] - 
+    30c8822 -> 47cc74a [fail(multi_prod_file)] - 
+    a9eab22 -> 47cc74a [fail(multi_prod_file)] - 
+    a770b10 -> c7a2901 [fail(too_many_commits(81))] - 
+    6acd19b -> c7a2901 [fail(too_many_commits(82))] - 
+    1da1c74 -> c7a2901 [fail(too_many_commits(83))] - 
+    c1c9c0b -> aba708d [fail(no_signal)] lib/web/websocket/permessage-deflate.js 
+    04cb773 -> c7a2901 [fail(too_many_commits(84))] - 
+    5145a7c -> c7a2901 [fail(too_many_commits(85))] - 
+    ec23620 -> c7a2901 [fail(too_many_commits(86))] - 
+    90a1609 -> c971e46 [fail(multi_prod_file)] - 
+    a4e4b84 -> c7a2901 [fail(too_many_commits(88))] - 
+    8a5cbb9 -> c971e46 [fail(multi_prod_file)] - 
+    a78274e -> ef881be [fail(no_signal)] lib/api/readable.js 
+    38eab36 -> c7a2901 [fail(too_many_commits(89))] - 
+    4b71486 -> c971e46 [fail(no_signal)] lib/core/util.js 
+    ef8c121 -> c971e46 [fail(multi_prod_file)] - 
+    993609d -> c7a2901 [fail(too_many_commits(90))] - 
+    6ecbeb7 -> 2569829 [fail(no_signal)] lib/dispatcher/dispatcher1-wrapper.js 
+    deba679 -> c7a2901 [fail(too_many_commits(93))] - 
+    feef62b -> c7a2901 [fail(too_many_commits(94))] - 
+    a613d9a -> c7a2901 [fail(too_many_commits(95))] - 
+    8ab6ad1 -> c971e46 [fail(too_many_commits(16))] - 
+    2ba99a3 -> c7a2901 [fail(too_many_commits(96))] - 
+    a7398c0 -> c7a2901 [fail(too_many_commits(97))] - 
+    0419a1b -> 805449c [fail(no_prod_file)] - 
+    0b44030 -> 98c9429 [fail(no_prod_file)] - 
+    b8d7ae5 -> 98c9429 [fail(multi_prod_file)] - 
+    2b2afbc -> c7a2901 [fail(too_many_commits(98))] - 
+    2d2c95a -> c971e46 [fail(too_many_commits(21))] - 
+    6514780 -> c971e46 [fail(too_many_commits(22))] - 
+    9766c6d -> c7a2901 [fail(too_many_commits(99))] - 
+    51fd661 -> c7a2901 [fail(too_many_commits(102))] - 
+    aa50095 -> 98c9429 [fail(multi_prod_file)] - 
+    9077500 -> c7a2901 [fail(too_many_commits(103))] - 
+    1c5dc1a -> c7a2901 [fail(too_many_commits(104))] - 
+    119ddea -> c971e46 [fail(too_many_commits(33))] - 
+    7c1b59a -> 47cc74a [fail(no_signal)] lib/web/fetch/index.js 
+    ea3a06d -> c7a2901 [fail(too_many_commits(107))] - 
+    4991f3e -> c7a2901 [fail(too_many_commits(106))] - 
+    9eaa5af -> c7a2901 [fail(too_many_commits(110))] - 
+    06925c7 -> c7a2901 [fail(too_many_commits(112))] - 
+    3cd6c40 -> ecefdb1 [KEEP] lib/web/fetch/index.js Error
+    f2e155b -> c7a2901 [fail(too_many_commits(112))] - 
+    a9bfe21 -> c7a2901 [fail(too_many_commits(111))] - 
+    639d09f -> 98c9429 [fail(multi_prod_file)] - 
+    4d2d1af -> c7a2901 [fail(too_many_commits(113))] - 
+    b8b8fec -> 98c9429 [fail(multi_prod_file)] - 
+    3a05a4f -> c7a2901 [fail(too_many_commits(114))] - 
+    411bd01 -> d7a1e55 [fail(diff_too_large(840))] - 
+    3aedaa8 -> c7a2901 [fail(too_many_commits(116))] - 
+    07a3906 -> c7a2901 [fail(too_many_commits(118))] - 
+  kept=1 (out of 80 evaluated)
+  -- total kept so far: 50
+
+=== storybookjs/storybook ===
+  fetched 400 failed runs
+  332 new unique failing SHAs
+  48 pairs have a next-passing run
+    d9db8a8 -> 01068aa [fail(no_prod_file)] - 
+    9140f6c -> a6aaf4f [fail(no_prod_file)] - 
+    d8de741 -> 448d4d4 [fail(no_prod_file)] - 
+    8c8312b -> 448d4d4 [fail(no_prod_file)] - 
+    42f4ed9 -> d86161f [fail(no_prod_file)] - 
+    7cb6490 -> 448d4d4 [fail(no_prod_file)] - 
+    d0fe90e -> 391a8c1 [fail(no_prod_file)] - 
+    9412695 -> 5be3f0b [fail(no_prod_file)] - 
+    8ed4332 -> 8ed4332 [fail(same_sha_rerun)] - 
+    741237e -> 86ae333 [fail(no_prod_file)] - 
+    5a85358 -> 86ae333 [fail(no_prod_file)] - 
+    45a0949 -> 720d018 [fail(no_prod_file)] - 
+    acb6138 -> 720d018 [fail(no_prod_file)] - 
+    daf25b5 -> dbb4a54 [fail(no_prod_file)] - 
+    3107c1e -> 82c9d87 [fail(no_prod_file)] - 
+    6774cfb -> 8d5a1de [fail(no_prod_file)] - 
+    6f3d50f -> 36e53a6 [fail(no_prod_file)] - 
+    601a891 -> c9fb103 [fail(no_prod_file)] - 
+    bcf1797 -> 4065d56 [fail(no_prod_file)] - 
+    b1e3cc1 -> 4d7bd4e [fail(no_prod_file)] - 
+    34d98a3 -> 4d7bd4e [fail(no_prod_file)] - 
+    a389277 -> 4d7bd4e [fail(no_prod_file)] - 
+    3ef7a4d -> 8ed4332 [fail(too_many_commits(15))] - 
+    6ad855d -> 0c8eb06 [fail(too_many_commits(96))] - 
+    7e2f30f -> 1719263 [fail(no_prod_file)] - 
+    0dfdb9b -> 57f0c42 [fail(too_many_commits(9))] - 
+    63cb346 -> 82c9d87 [fail(too_many_commits(12))] - 
+    ffaabc7 -> a4f12d3 [fail(too_many_commits(36))] - 
+    9a43d2c -> a4f12d3 [fail(too_many_commits(40))] - 
+    07b510a -> 56105eb [fail(too_many_commits(9))] - 
+    3c0e29b -> e8047b9 [fail(no_prod_file)] - 
+    1667c5f -> 82c9d87 [fail(too_many_commits(13))] - 
+    6bcf2ea -> f2b6f3f [fail(no_prod_file)] - 
+    3df6d72 -> 27f1737 [fail(no_prod_file)] - 
+    d3a6d66 -> e8047b9 [fail(no_prod_file)] - 
+    6644f4e -> 19798d7 [fail(no_prod_file)] - 
+    e2361c6 -> 3046192 [fail(no_prod_file)] - 
+    6ce391a -> 2194325 [fail(too_many_commits(9))] - 
+    0255310 -> 3046192 [fail(no_prod_file)] - 
+    d7c1db9 -> 4065d56 [fail(too_many_commits(14))] - 
+    ecc3c28 -> b67d5d7 [fail(no_prod_file)] - 
+    ae0852e -> b67d5d7 [fail(no_prod_file)] - 
+    911b983 -> 1ff39f6 [fail(no_prod_file)] - 
+    80be82e -> 7f1aef7 [fail(no_prod_file)] - 
+    b0aca7c -> 35db5f9 [fail(no_prod_file)] - 
+    b27b132 -> 0872682 [fail(too_many_commits(23))] - 
+    0379ace -> ce1bbfb [fail(no_prod_file)] - 
+    ffca1b8 -> 0872682 [fail(too_many_commits(25))] - 
+  kept=0 (out of 48 evaluated)
+  -- total kept so far: 50
+
+=== vercel/next.js ===
+  fetched 400 failed runs
+  246 new unique failing SHAs
+  104 pairs have a next-passing run
+    ecfc1c4 -> 49f8cf2 [fail(no_prod_file)] - 
+    06811c5 -> a19b275 [fail(no_prod_file)] - 
+    a19b275 -> 7d474d7 [fail(no_prod_file)] - 
+    32e18ec -> 7e6ac42 [fail(no_prod_file)] - 
+    5adb757 -> b1ed455 [fail(diff_too_large(1213))] - 
+    1646aed -> b1ed455 [fail(too_many_commits(10))] - 
+    c26f063 -> ecfc1c4 [fail(no_prod_file)] - 
+    46f6cfd -> ecfc1c4 [fail(no_prod_file)] - 
+    3b82c69 -> ecfc1c4 [fail(no_prod_file)] - 
+    b92d457 -> c9d80f7 [fail(compare_404)] - 
+    8e2f2d1 -> c9d80f7 [fail(no_prod_file)] - 
+    731891e -> bedb17b [fail(no_prod_file)] - 
+    d4213bb -> b92d457 [fail(compare_404)] - 
+    8cd3fdc -> 2cdb7ed [fail(no_prod_file)] - 
+    6910f57 -> 9d239e3 [fail(compare_404)] - 
+    5fef40f -> 282fb9c [fail(too_many_commits(9))] - 
+    bd4ac77 -> bedb17b [fail(too_many_commits(28))] - 
+    6fd09bf -> 8cd3fdc [fail(no_prod_file)] - 
+    765be4f -> c5f0530 [fail(compare_404)] - 
+    b15a3f6 -> 8c96fec [fail(multi_prod_file)] - 
+    2ee7978 -> 9af46a6 [fail(diff_too_large(1791))] - 
+    162016b -> 4167e1f [fail(diff_too_large(1380))] - 
+    da5e6c4 -> bedb17b [fail(too_many_commits(29))] - 
+    9e47640 -> ccab190 [fail(too_many_commits(13))] - 
+    923ebac -> 58f650b [fail(multi_prod_file)] - 
+    1eb46c8 -> 808d2b0 [fail(compare_404)] - 
+    db7d1ba -> 2cdb7ed [fail(compare_404)] - 
+    7e382c9 -> c9d80f7 [fail(compare_404)] - 
+    94d377b -> c9d80f7 [fail(too_many_commits(38))] - 
+    5b2ee87 -> bedb17b [fail(compare_404)] - 
+    67ff464 -> 2cdb7ed [fail(compare_404)] - 
+    87f9928 -> 67ff464 [fail(compare_404)] - 
+    b66bf06 -> 5b2ee87 [fail(compare_404)] - 
+    d1ef4fb -> 7e382c9 [fail(compare_404)] - 
+    15341fd -> 2cdb7ed [fail(diff_too_large(740))] - 
+    c916c80 -> 82b320a [fail(too_many_commits(10))] - 
+    bba7ec8 -> 7383aa3 [fail(compare_404)] - 
+    dea81b1 -> 5b2ee87 [fail(compare_404)] - 
+    a75db52 -> 7383aa3 [fail(compare_404)] - 
+    a430936 -> cabf0a4 [fail(too_many_commits(12))] - 
+    e56eaee -> ccab190 [fail(compare_404)] - 
+    8de4b60 -> 82b320a [fail(too_many_commits(12))] - 
+    711cdc5 -> 7e382c9 [fail(compare_404)] - 
+    22441e6 -> 9af46a6 [fail(compare_404)] - 
+    c136098 -> 58f650b [fail(multi_prod_file)] - 
+    f68f8db -> 7e382c9 [fail(compare_404)] - 
+    8d2ee37 -> 5b2ee87 [fail(compare_404)] - 
+    d57aecf -> 7e382c9 [fail(compare_404)] - 
+    3fd8771 -> 5b2ee87 [fail(compare_404)] - 
+    11d4085 -> 9af46a6 [fail(compare_404)] - 
+    075f720 -> 015ec5e [fail(compare_404)] - 
+    30eb61c -> 58f650b [fail(diff_too_large(623))] - 
+    426ca49 -> 8e2af10 [fail(compare_404)] - 
+    638ab4b -> ed2063e [fail(too_many_commits(59))] - 
+    554ca4b -> 5fd699e [fail(diff_too_large(1238))] - 
+    956915d -> 9af46a6 [fail(compare_404)] - 
+    f519076 -> c9d80f7 [fail(compare_404)] - 
+    4fdebc3 -> 58f650b [fail(compare_404)] - 
+    9759582 -> c91e175 [fail(compare_404)] - 
+    9eee5ca -> c69cc10 [fail(compare_404)] - 
+    6540800 -> ab325cd [fail(compare_404)] - 
+    c84f624 -> 295c122 [fail(no_prod_file)] - 
+    8c97dc7 -> cb8abfe [fail(compare_404)] - 
+    77ae9fe -> 295c122 [fail(no_prod_file)] - 
+    baa22a5 -> 77ae9fe [fail(no_prod_file)] - 
+    a37ac90 -> 77ae9fe [fail(no_prod_file)] - 
+    bdce6ca -> 77ae9fe [fail(no_prod_file)] - 
+    874fc77 -> 295c122 [fail(no_prod_file)] - 
+    55349c5 -> cb8abfe [fail(compare_404)] - 
+    46099fd -> cb8abfe [fail(too_many_commits(11))] - 
+    dfa46e8 -> 77ae9fe [fail(no_prod_file)] - 
+    440a3f4 -> 295c122 [fail(no_prod_file)] - 
+    5b1f1c2 -> 894b3ca [fail(too_many_commits(25))] - 
+    fda89e4 -> a7c08cd [fail(compare_404)] - 
+    c4fdcc2 -> 0e59ef8 [fail(too_many_commits(23))] - 
+    b12a466 -> 894b3ca [fail(too_many_commits(26))] - 
+    bda7ace -> 0e59ef8 [fail(too_many_commits(24))] - 
+    1c4eb32 -> bfba347 [fail(compare_404)] - 
+    7902f29 -> bedb17b [fail(too_many_commits(41))] - 
+    6e6c6a4 -> 58f650b [fail(no_signal)] packages/next/src/client/output-export-fallback.ts 
+  kept=0 (out of 80 evaluated)
+  -- total kept so far: 50
+
+=== SUMMARY ===
+  mochajs/mocha: checked=80, kept=14
+  chaijs/chai: checked=5, kept=0
+  sinonjs/sinon: checked=0, kept=4
+  yargs/yargs: checked=0, kept=0
+  eslint/eslint: checked=80, kept=12
+  fastify/fastify: checked=80, kept=0
+  hapijs/joi: checked=0, kept=0
+  expressjs/express: checked=0, kept=0
+  date-fns/date-fns: checked=0, kept=0
+  karma-runner/karma: checked=0, kept=0
+  axios/axios: checked=80, kept=3
+  lodash/lodash: checked=15, kept=0
+  prettier/prettier: checked=80, kept=16
+  nodejs/undici: checked=80, kept=1
+  storybookjs/storybook: checked=48, kept=0
+  vercel/next.js: checked=80, kept=0
+TOTAL: checked=628, kept=50
+Manifest size: 50

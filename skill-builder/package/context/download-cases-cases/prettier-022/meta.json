@@ -1,0 +1,7 @@
+{
+  "id": "prettier-022",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/print/class-body.js",
+  "error_type": "Error"
+}

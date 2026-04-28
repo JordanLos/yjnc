@@ -1,0 +1,150 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 10s 252ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.4[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 6s 410ms
+[93m➤[39m YN0000: · Done with warnings in 22s 139ms
+Checking formatting...
+[[33mwarn[39m] src/document/printer/printer.js
+[[33mwarn[39m] Code style issues fixed in the above file.
+##[group]Run autofix-ci/action@v1
+with:
+  commit-message: Apply automated changes
+  fail-fast: true
+##[endgroup]
+[command]/usr/bin/git reset
+Unstaged changes after reset:
+M	src/document/printer/printer.js
+[command]/usr/bin/git -c core.fileMode=false add --all
+[command]/usr/bin/git -c core.quotepath=false diff --name-only --staged --no-renames
+src/document/printer/printer.js
+Need to update 1 files.
+[command]/usr/bin/git config user.name autofix.ci
+[command]/usr/bin/git config user.email noreply@autofix.ci
+[command]/usr/bin/git commit --no-verify -m autofix
+[detached HEAD 6527012] autofix
+ 1 file changed, 66 insertions(+), 67 deletions(-)
+[command]/usr/bin/git rev-parse HEAD
+6527012cffa3cdbd253bd5591e7e7434d2a25faa
+[command]/usr/bin/git fetch --depth=1 origin d4121f46c94640e012b56a4884e2c55f60e4b11d
+From https://github.com/prettier/prettier
+ * branch            d4121f46c94640e012b56a4884e2c55f60e4b11d -> FETCH_HEAD
+[command]/usr/bin/git checkout --force FETCH_HEAD
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  6527012 autofix
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 6527012
+
+HEAD is now at d4121f4 Update ESLint related dependencies
+[command]/usr/bin/git cherry-pick --no-commit 6527012cffa3cdbd253bd5591e7e7434d2a25faa
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 7454
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact zip is e0672d44a21d9e7447671c3c56b8aa7fa5340b49594cde14ece4c7803d0c2f7a
+Finalizing artifact upload
+Artifact autofix.ci.zip successfully finalized. Artifact ID 6360701869
+##[error]✅ Autofix task started.
+[command]/usr/bin/git diff --staged
+diff --git a/src/document/printer/printer.js b/src/document/printer/printer.js
+index 0c32367..918b986 100644
+--- a/src/document/printer/printer.js
++++ b/src/document/printer/printer.js
+@@ -242,84 +242,83 @@ function printDocToString(doc, options) {
+         position -= result.trim();
+         break;
+ 
+-      case DOC_TYPE_GROUP:
+-        {
+-          /** @type {Command} */
+-          const command = (function printGroup() {
+-            if (mode === MODE_FLAT && !shouldRemeasure) {
+-              return {
+-                indent,
+-                mode: doc.break ? MODE_BREAK : MODE_FLAT,
+-                doc: doc.contents,
+-              };
+-            }
++      case DOC_TYPE_GROUP: {
++        /** @type {Command} */
++        const command = (function printGroup() {
++          if (mode === MODE_FLAT && !shouldRemeasure) {
++            return {
++              indent,
++              mode: doc.break ? MODE_BREAK : MODE_FLAT,
++              doc: doc.contents,
++            };
++          }
+ 
+-            shouldRemeasure = false;
+-            const remainingWidth = width - position;
+-            const hasLineSuffix = lineSuffix.length > 0;
+-
+-            /** @type {Command} */
+-            const flatCommand = { indent, mode: MODE_FLAT, doc: doc.contents };
+-            if (
+-              !doc.break &&
+-              fits(
+-                flatCommand,
+-                commands,
+-                remainingWidth,
+-                hasLineSuffix,
+-                groupModeMap,
+-              )
+-            ) {
+-              return flatCommand;
+-            }
++          shouldRemeasure = false;
++          const remainingWidth = width - position;
++          const hasLineSuffix = lineSuffix.length > 0;
+ 
+-            if (!doc.expandedStates) {
+-              return { indent, mode: MODE_BREAK, doc: doc.contents };
+-            }
++          /** @type {Command} */
++          const flatCommand = { indent, mode: MODE_FLAT, doc: doc.contents };
++          if (
++            !doc.break &&
++            fits(
++              flatCommand,
++              commands,
++              remainingWidth,
++              hasLineSuffix,
++              groupModeMap,
++            )
++          ) {
++            return flatCommand;
++          }
++
++          if (!doc.expandedStates) {
++            return { indent, mode: MODE_BREAK, doc: doc.contents };
++          }
+ 
+-            if (!doc.break) {
+-              // Expanded states are a rare case where a document
+-              // can manually provide multiple representations of
+-              // itself. It provides an array of documents
+-              // going from the least expanded (most flattened)
+-              // representation first to the most expanded. If a
+-              // group has these, we need to manually go through
+-              // these states and find the first one that fits.
+-              for (
+-                let index = 1;
+-                index < doc.expandedStates.length - 1;
+-                index++
++          if (!doc.break) {
++            // Expanded states are a rare case where a document
++            // can manually provide multiple representations of
++            // itself. It provides an array of documents
++            // going from the least expanded (most flattened)
++            // representation first to the most expanded. If a

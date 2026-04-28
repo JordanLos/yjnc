@@ -1,0 +1,7 @@
+{
+  "id": "eslint-002",
+  "repo": "eslint/eslint",
+  "split": "training",
+  "fix_file": "lib/rules/for-direction.js",
+  "error_type": "Error"
+}

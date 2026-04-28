@@ -1,0 +1,4 @@
+{
+  "files": ["lib/linter/linter.js"],
+  "patch": "--- a/lib/linter/linter.js\n+++ b/lib/linter/linter.js\n@@ -539,7 +539,7 @@\n   verify(code, config, filename) {\n     const ruleOpts = this._options.rules[rule];\n-    const severity = ruleOpts.options[0];\n+    const severity = ruleOpts && ruleOpts.options ? ruleOpts.options[0] : 0;\n     if (severity === 0) return [];\n"
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/print/component.js"
+  ],
+  "patch": "--- a/src/language-js/print/component.js\n+++ b/src/language-js/print/component.js\n@@ -15,7 +15,11 @@ import { printDeclareToken, printSemicolon } from \"./miscellaneous.js\";\n function printComponent(path, options, print) {\n   const { node } = path;\n \n-  const parts = [printDeclareToken(path), node.async ? \"async \" : \"\", \"component\"];\n+  const parts = [\n+    printDeclareToken(path),\n+    node.async ? \"async \" : \"\",\n+    \"component\",\n+  ];\n   if (node.id) {\n     parts.push(\" \", print(\"id\"));\n   }"
+}

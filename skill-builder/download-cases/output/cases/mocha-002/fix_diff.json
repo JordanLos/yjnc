@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/interfaces/common.js"
+  ],
+  "patch": "--- a/lib/interfaces/common.js\n+++ b/lib/interfaces/common.js\n@@ -84,7 +84,7 @@ module.exports = function (suites, context, mocha) {\n      * @return {Function} A function which runs the root suite\n      */\n     run: function run(identifier) {\n-        getDelayedRunCoordinator().ready(identifier);\n+      getDelayedRunCoordinator().ready(identifier);\n     },\n \n     /**"
+}

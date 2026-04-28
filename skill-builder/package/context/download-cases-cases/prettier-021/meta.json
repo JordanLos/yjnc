@@ -1,0 +1,7 @@
+{
+  "id": "prettier-021",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/print/ignored.js",
+  "error_type": "Error"
+}

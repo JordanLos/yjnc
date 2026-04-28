@@ -1,0 +1,7 @@
+{
+  "id": "eslint-004",
+  "repo": "eslint/eslint",
+  "split": "training",
+  "fix_file": "lib/rules/no-use-before-define.js",
+  "error_type": "Error"
+}

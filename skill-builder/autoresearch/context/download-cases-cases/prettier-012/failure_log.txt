@@ -1,0 +1,150 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 10s 782ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.4[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.40.0[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 6s 467ms
+[93m➤[39m YN0000: · Done with warnings in 22s 569ms
+Checking formatting...
+[[33mwarn[39m] src/language-yaml/printer-yaml.js
+[[33mwarn[39m] Code style issues fixed in the above file.
+##[group]Run autofix-ci/action@v1
+with:
+  commit-message: Apply automated changes
+  fail-fast: true
+##[endgroup]
+[command]/usr/bin/git reset
+Unstaged changes after reset:
+M	src/language-yaml/printer-yaml.js
+[command]/usr/bin/git -c core.fileMode=false add --all
+[command]/usr/bin/git -c core.quotepath=false diff --name-only --staged --no-renames
+src/language-yaml/printer-yaml.js
+Need to update 1 files.
+[command]/usr/bin/git config user.name autofix.ci
+[command]/usr/bin/git config user.email noreply@autofix.ci
+[command]/usr/bin/git commit --no-verify -m autofix
+[detached HEAD abedb2c] autofix
+ 1 file changed, 7 insertions(+), 14 deletions(-)
+[command]/usr/bin/git rev-parse HEAD
+abedb2c4cdbeb8939725be211a46c9ef12341e33
+[command]/usr/bin/git fetch --depth=1 origin 612d84346eee0e452af3069528bb49a405f5f725
+From https://github.com/prettier/prettier
+ * branch            612d84346eee0e452af3069528bb49a405f5f725 -> FETCH_HEAD
+[command]/usr/bin/git checkout --force FETCH_HEAD
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  abedb2c autofix
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> abedb2c
+
+HEAD is now at 612d843 Automatically use block syntax for multi-line YAML collections
+[command]/usr/bin/git cherry-pick --no-commit abedb2c4cdbeb8939725be211a46c9ef12341e33
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 5741
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact zip is bc3a1003b2fe83eb27732df34dbed626a25af28e016128fbbad62dfc75b8640d
+Finalizing artifact upload
+Artifact autofix.ci.zip successfully finalized. Artifact ID 6084529152
+##[error]✅ Autofix task started.
+[command]/usr/bin/git diff --staged
+diff --git a/src/language-yaml/printer-yaml.js b/src/language-yaml/printer-yaml.js
+index 328baf2..8100436 100644
+--- a/src/language-yaml/printer-yaml.js
++++ b/src/language-yaml/printer-yaml.js
+@@ -331,8 +331,7 @@ function printNode(path, options, print) {
+         const flowItems = isMapping
+           ? path.map(print, "children")
+           : path.map(
+-              ({ node: child }) =>
+-                child.content ? print("content") : "",
++              ({ node: child }) => (child.content ? print("content") : ""),
+               "children",
+             );
+         const flowDoc = [
+@@ -358,7 +357,7 @@ function printNode(path, options, print) {
+     case "flowMappingItem":
+       return printMappingItem(path, options, print);
+ 
+-    case "flowMapping": {
++    case "flowMapping":
+       if (options.objectWrap === "collapse") {
+         const flowDoc = printFlowMapping(path, options, print);
+         const blockDoc = [
+@@ -381,17 +380,14 @@ function printNode(path, options, print) {
+         ];
+       }
+       return printFlowMapping(path, options, print);
+-    }
+-    case "flowSequence": {
++
++    case "flowSequence":
+       if (options.objectWrap === "collapse") {
+         const flowDoc = printFlowSequence(path, options, print);
+         const blockDoc = [
+           join(
+             hardline,
+-            path.map(
+-              () => ["- ", alignWithSpaces(2, print())],
+-              "children",
+-            ),
++            path.map(() => ["- ", alignWithSpaces(2, print())], "children"),
+           ),
+           hasEndComments(node)
+             ? [hardline, join(hardline, path.map(print, "endComments"))]
+@@ -406,10 +402,7 @@ function printNode(path, options, print) {
+         return [
+           join(
+             hardline,
+-            path.map(
+-              () => ["- ", alignWithSpaces(2, print())],
+-              "children",
+-            ),
++            path.map(() => ["- ", alignWithSpaces(2, print())], "children"),
+           ),
+           hasEndComments(node)
+             ? [hardline, join(hardline, path.map(print, "endComments"))]
+@@ -417,7 +410,7 @@ function printNode(path, options, print) {
+         ];
+       }
+       return printFlowSequence(path, options, print);
+-    }
++
+     case "flowSequenceItem":
+       return print("content");
+     default:
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/d46cfb83-cbc5-4af0-b042-73085c7903f5' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-68fb3e5f-a90b-4498-b327-45474866a355.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-68fb3e5f-a90b-4498-b327-45474866a355.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-68fb3e5f-a90b-4498-b327-45474866a355.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-68fb3e5f-a90b-4498-b327-45474866a355.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-68fb3e5f-a90b-4498-b327-45474866a355.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-68fb3e5f-a90b-4498-b327-45474866a355.config

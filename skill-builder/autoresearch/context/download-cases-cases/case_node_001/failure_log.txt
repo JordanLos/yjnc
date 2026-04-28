@@ -1,0 +1,18 @@
+FAIL test/test-http-client-timeout.js
+
+  ● http client › should respect socket timeout option
+
+    ReferenceError: HTTPParser is not defined
+
+      232 |   constructor(type) {
+      233 |     super();
+    > 234 |     this._parser = new HTTPParser(HTTPParser.REQUEST);
+            |                      ^
+      235 |     this._parser[HTTPParser.kOnHeaders] = (headers) => {
+
+      at new ClientRequest (lib/internal/http.js:234:16)
+      at http.request (lib/_http_client.js:56:10)
+      at Object.<anonymous> (test/test-http-client-timeout.js:12:14)
+
+Test Suites: 1 failed, 5 passed, 6 total
+Tests:       1 failed, 89 passed, 90 total

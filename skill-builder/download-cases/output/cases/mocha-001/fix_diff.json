@@ -1,0 +1,8 @@
+{
+  "files": [
+    "lib/mocha.js",
+    "test/reporters/helpers.js",
+    "test/reporters/xunit.spec.js"
+  ],
+  "patch": "--- a/lib/mocha.js\n+++ b/lib/mocha.js\n@@ -13,7 +13,8 @@ var utils = require(\"./utils\");\n var mocharc = require(\"./mocharc.json\");\n var Suite = require(\"./suite\");\n var esmUtils = require(\"./nodejs/esm-utils\");\n-var createStatsCollector = require(\"./stats-collector.mjs\").createStatsCollector;\n+var createStatsCollector =\n+  require(\"./stats-collector.mjs\").createStatsCollector;\n const {\n   createInvalidReporterError,\n   createInvalidInterfaceError,\n--- a/test/reporters/helpers.js\n+++ b/test/reporters/helpers.js\n@@ -2,7 +2,8 @@\n \n var sinon = require(\"sinon\");\n var errors = require(\"../../lib/errors\");\n-var createStatsCollector = require(\"../../lib/stats-collector.mjs\").default;\n+var createStatsCollector =\n+  require(\"../../lib/stats-collector.mjs\").createStatsCollector;\n \n var createUnsupportedError = errors.createUnsupportedError;\n \n--- a/test/reporters/xunit.spec.js\n+++ b/test/reporters/xunit.spec.js\n@@ -4,7 +4,8 @@ var EventEmitter = require(\"events\").EventEmitter;\n var fs = require(\"fs\");\n var path = require(\"path\");\n var sinon = require(\"sinon\");\n-var createStatsCollector = require(\"../../lib/stats-collector.mjs\").default;\n+var createStatsCollector =\n+  require(\"../../lib/stats-collector.mjs\").createStatsCollector;\n var events = require(\"../../\").Runner.constants;\n var reporters = require(\"../../\").reporters;\n var states = require(\"../../\").Runnable.constants;"
+}

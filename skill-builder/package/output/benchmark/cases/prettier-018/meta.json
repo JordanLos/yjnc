@@ -1,0 +1,7 @@
+{
+  "id": "prettier-018",
+  "repo": "prettier/prettier",
+  "split": "held-out",
+  "fix_file": "src/language-js/location/comparison.js",
+  "error_type": "Error"
+}

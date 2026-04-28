@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/env/data.js"
+  ],
+  "patch": "--- a/lib/env/data.js\n+++ b/lib/env/data.js\n@@ -1,3 +1,3 @@\n module.exports = {\n-  \"version\": \"0.30.3\"\n-};\n\\ No newline at end of file\n+  version: \"0.31.0\",\n+};"
+}

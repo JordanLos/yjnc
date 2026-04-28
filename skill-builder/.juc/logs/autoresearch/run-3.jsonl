@@ -1,0 +1,3 @@
+{"type":"agent_start","timestamp":"2026-04-24T19:30:13Z","unit":"autoresearch"}
+{"type":"agent_end","timestamp":"2026-04-24T19:39:26Z","unit":"autoresearch"}
+{"type":"check_result","timestamp":"2026-04-24T19:39:26Z","unit":"autoresearch","exit_code":1,"check":"autoresearch-plateau","stderr":"No improvement (1/5): 0.9194 vs best 0.9194\n"}

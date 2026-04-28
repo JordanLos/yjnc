@@ -1,0 +1,7 @@
+{
+  "files": [
+    "bower.json",
+    "lib/env/data.js"
+  ],
+  "patch": "--- a/bower.json\n+++ b/bower.json\n@@ -1,7 +1,7 @@\n {\n   \"name\": \"axios\",\n   \"main\": \"./dist/axios.js\",\n-  \"version\": \"0.30.3\",\n+  \"version\": \"0.31.0\",\n   \"homepage\": \"https://axios-http.com\",\n   \"authors\": [\n     \"Matt Zabriskie\"\n--- a/lib/env/data.js\n+++ b/lib/env/data.js\n@@ -1,3 +1,3 @@\n module.exports = {\n-  \"version\": \"0.30.3\"\n-};\n\\ No newline at end of file\n+  version: \"0.31.0\",\n+};"
+}

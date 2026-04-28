@@ -1,0 +1,4 @@
+{
+  "files": ["lib/internal/http.js"],
+  "patch": "--- a/lib/internal/http.js\n+++ b/lib/internal/http.js\n@@ -230,7 +230,8 @@\n+  const { HTTPParser } = require('_http_common');\n   constructor(type) {\n     super();\n     this._parser = new HTTPParser(HTTPParser.REQUEST);"
+}

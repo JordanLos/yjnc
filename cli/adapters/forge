@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# juc-adapter-forge
+#
+# Translates a juc unit's agent.md into a ForgeCode agent definition and invokes it.
+# Forge is spec-native: agent.md maps directly to .forge/agents/<id>.md.
+#
+# Install: copy to .juc/adapters/forge (project) or ~/.juc/adapters/forge (global),
+#          or place on PATH as juc-adapter-forge.
+#
+# Provider selection (checked in order):
+#   OPENROUTER_API_KEY set → provider: open_router
+#   ANTHROPIC_API_KEY  set → provider: anthropic
+#
+# Adapter interface (set by juc runner):
+#   JUC_UNIT      - unit id (e.g. "autoresearch")
+#   JUC_UNIT_DIR  - absolute path to the unit directory
+#   JUC_AGENT_MD  - absolute path to agent.md
+#   JUC_ATTEMPT   - attempt number
+#   JUC_ROOT      - graph root
+
+set -euo pipefail
+
+UNIT="${JUC_UNIT}"
+UNIT_DIR="${JUC_UNIT_DIR}"
+AGENT_MD="${JUC_AGENT_MD}"
+
+# ---------------------------------------------------------------------------
+# Parse frontmatter fields
+# ---------------------------------------------------------------------------
+
+fm_scalar() {
+  awk -v key="$1" '
+    /^---/ { n++; next }
+    n == 1 && $0 ~ "^"key":" { sub(/^[^:]+:[[:space:]]*/, ""); print; exit }
+  ' "$AGENT_MD"
+}
+
+fm_tools() {
+  awk '
+    /^---/ { n++; next }
+    n == 1 && /^tools:/ {
+      val = $0; sub(/^tools:[[:space:]]*/, "", val)
+      if (val != "") { gsub(/,/, " ", val); print val; exit }
+      in_tools = 1; next
+    }
+    in_tools && /^  - / { sub(/^  - /, ""); print; next }
+    in_tools && /^[^ ]/ { exit }
+  ' "$AGENT_MD"
+}
+
+fm_body() {
+  awk '/^---/ { n++; if (n == 2) { found=1; next } } found { print }' "$AGENT_MD"
+}
+
+RAW_MODEL=$(fm_scalar "model")
+RAW_TOOLS=$(fm_tools)
+
+# ---------------------------------------------------------------------------
+# Resolve provider and model ID
+# ---------------------------------------------------------------------------
+
+if [ -n "${OPENROUTER_API_KEY:-}" ]; then
+  PROVIDER="open_router"
+  case "${RAW_MODEL}" in
+    haiku)  MODEL="anthropic/claude-haiku-4-5-20251001" ;;
+    sonnet) MODEL="anthropic/claude-sonnet-4-6" ;;
+    opus)   MODEL="anthropic/claude-opus-4-7" ;;
+    "")     MODEL="anthropic/claude-sonnet-4-6" ;;
+    *)      MODEL="${RAW_MODEL}" ;;
+  esac
+else
+  PROVIDER="anthropic"
+  case "${RAW_MODEL}" in
+    haiku)  MODEL="claude-haiku-4-5-20251001" ;;
+    sonnet) MODEL="claude-sonnet-4-6" ;;
+    opus)   MODEL="claude-opus-4-7" ;;
+    "")     MODEL="claude-sonnet-4-6" ;;
+    *)      MODEL="${RAW_MODEL}" ;;
+  esac
+fi
+
+# ---------------------------------------------------------------------------
+# Translate canonical tool names → ForgeCode names
+# ---------------------------------------------------------------------------
+
+forge_tool() {
+  case "$1" in
+    edit)   echo "patch" ;;
+    bash)   echo "shell" ;;
+    grep)   ;;  # not available in forge
+    glob)   ;;  # not available in forge
+    agent)  ;;  # implicit via description field
+    *)      echo "$1" ;;
+  esac
+}
+
+TOOLS_YAML=""
+while IFS= read -r tool; do
+  tool=$(echo "$tool" | tr -d '[:space:]')
+  [ -z "$tool" ] && continue
+  mapped=$(forge_tool "$tool")
+  [ -z "$mapped" ] && continue
+  TOOLS_YAML="${TOOLS_YAML}  - ${mapped}"$'\n'
+done <<< "${RAW_TOOLS}"
+
+# ---------------------------------------------------------------------------
+# Write ForgeCode agent definition to .forge/agents/<unit>.md
+# ---------------------------------------------------------------------------
+
+FORGE_AGENTS_DIR="${UNIT_DIR}/.forge/agents"
+mkdir -p "${FORGE_AGENTS_DIR}"
+AGENT_FILE="${FORGE_AGENTS_DIR}/${UNIT}.md"
+
+{
+  echo "---"
+  echo "id: ${UNIT}"
+  echo "model: ${MODEL}"
+  echo "provider: ${PROVIDER}"
+  if [ -n "${TOOLS_YAML}" ]; then
+    echo "tools:"
+    printf '%s' "${TOOLS_YAML}"
+  fi
+  echo "---"
+  fm_body
+} > "${AGENT_FILE}"
+
+# ---------------------------------------------------------------------------
+# Invoke forge
+# -p = headless (single prompt, no interactive session)
+# --agent = custom agent ID from .forge/agents/<id>.md
+# -C = working directory (forge reads/writes relative to this)
+# ---------------------------------------------------------------------------
+
+echo "[juc-adapter-forge] unit=${UNIT} model=${MODEL} provider=${PROVIDER}" >&2
+
+forge -p "Execute the task defined in your system instructions." --agent "${UNIT}" -C "${UNIT_DIR}"

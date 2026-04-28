@@ -1,0 +1,35 @@
+name: opencode
+version: "2026-04-26"
+source: https://opencode.ai/docs/
+status: needs-research
+
+# OpenCode is structurally close to spec-native but the headless story is unclear.
+# It uses AGENTS.md and config-based agent discovery, not per-invocation file flags.
+#
+# What needs to be confirmed before building juc-adapter-opencode:
+#   1. Does "opencode run <message>" support a --agent <file> flag for
+#      per-invocation system prompt injection?
+#   2. OPENCODE_CONFIG_CONTENT env var can inject config inline — does this
+#      allow injecting an agent definition without writing to AGENTS.md?
+#   3. Tool permission system (ask/allow/deny) is config-based, not per-flag —
+#      can it be driven by env vars or inline config?
+#   4. Does --format json produce parseable output for output/ capture?
+#
+# Closest to working path:
+#   Write agent.md to AGENTS.md in unit dir, set OPENCODE_CONFIG_CONTENT
+#   with tool permissions, invoke: opencode run --format json <message>
+#
+# Source: packages/opencode/src/cli/cmd/run.ts (stdin pipe via isTTY detection)
+# Requires: ANTHROPIC_API_KEY or provider credentials
+
+binary: opencode
+fixed_args:
+  - "run"
+  - "--format"
+  - "json"
+
+model_flag: "--model"
+model_map:
+  haiku: anthropic/claude-haiku-4-5-20251001
+  sonnet: anthropic/claude-sonnet-4-6
+  opus: anthropic/claude-opus-4-7

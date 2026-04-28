@@ -1,0 +1,150 @@
+    ✓ should display error while parsing params
+    ✓ should support sockets
+    ✓ should support streams
+    ✓ should pass errors for a failed stream
+    ✓ should support buffers
+    ✓ should support HTTP proxies
+    ✓ should support HTTPS proxies
+    ✓ should not pass through disabled proxy
+    ✓ should support proxy set via env var
+    ✓ should support HTTPS proxy set via env var
+    ✓ should re-evaluate proxy on redirect when proxy set via env var
+    ✓ should not use proxy for domains in no_proxy
+    ✓ should not use proxy for localhost with trailing dot when listed in no_proxy
+    ✓ should not use proxy for bracketed IPv6 loopback when listed in no_proxy
+    ✓ should not use proxy for 127.0.0.1 when no_proxy is localhost
+    ✓ should not use proxy for [::1] when no_proxy is localhost
+    ✓ should use proxy for domains not in no_proxy
+    ✓ should support HTTP proxy auth
+    ✓ should support proxy auth from env
+    ✓ should support proxy auth with header
+    ✓ should support cancel
+    ✓ should combine baseURL and url
+    ✓ should support HTTP protocol (1003ms)
+    ✓ should support HTTPS protocol (46ms)
+    ✓ should return malformed URL (301ms)
+    ✓ should return unsupported protocol (301ms)
+    1) should supply a user-agent if one is not specified
+    ✓ should omit a user-agent if one is explicitly disclaimed
+    ✓ should throw an error if http server that aborts a chunked request (202ms)
+    ✓ should able to cancel multiple requests with CancelToken
+    ✓ should respect formSerializer config
+    ✓ should support function as paramsSerializer value
+    FormData
+      ✓ should allow passing FormData
+      toFormData helper
+        ✓ should properly serialize nested objects for parsing with multer.js (express.js)
+    URLEncoded Form
+      ✓ should post object data as url-encoded form if content-type is application/x-www-form-urlencoded
+    Data URL
+      ✓ should support requesting data URL as a Buffer
+      - should support requesting data URL as a Blob (if supported by the environment)
+      ✓ should support requesting data URL as a String (text)
+      ✓ should support requesting data URL as a Stream
+
+  Prototype Pollution Protection
+    utils.merge
+      ✓ should filter __proto__ key at top level
+      ✓ should filter constructor key at top level
+      ✓ should filter prototype key at top level
+      ✓ should filter __proto__ key in nested objects
+      ✓ should filter constructor key in nested objects
+      ✓ should filter prototype key in nested objects
+      ✓ should filter dangerous keys in deeply nested objects
+      ✓ should still merge regular properties correctly
+      ✓ should handle JSON.parse payloads safely
+      ✓ should handle nested JSON.parse payloads safely
+    mergeConfig
+      ✓ should filter dangerous keys at top level
+      ✓ should filter dangerous keys in headers
+      ✓ should filter dangerous keys in custom config properties
+      ✓ should still merge configs correctly
+
+  transformResponse
+    200 request
+      ✓ parses json
+      ✓ ignores XML
+    204 request
+      ✓ does not parse the empty string
+      ✓ does not parse undefined
+
+  estimateDataURLDecodedBytes
+    ✓ should return 0 for non-data URLs
+    ✓ should calculate length for simple non-base64 data URL
+    ✓ should calculate decoded length for base64 data URL
+    ✓ should handle base64 with = padding
+    ✓ should handle base64 with %3D padding
+
+  helpers::fromDataURI
+    ✓ should return buffer from data uri
+
+  helpers::parseProtocol
+    ✓ should parse protocol part if it exists
+
+  helpers::sanitizeHeaderValue
+    ✓ should remove invalid header characters
+    ✓ should remove boundary whitespace
+    ✓ should sanitize array values recursively
+
+  helpers::shouldBypassProxy
+    ✓ should bypass proxy for localhost with a trailing dot
+    ✓ should bypass proxy for bracketed ipv6 loopback
+    ✓ should support bracketed ipv6 entries in no_proxy
+    ✓ should match wildcard and explicit ports
+    ✓ should treat localhost and loopback IP aliases as equivalent
+    ✓ should keep loopback alias matching port-aware
+
+  Server-Side Request Forgery (SSRF)
+    ✓ obeys proxy settings when following redirects
+
+  utils::isFormData
+    ✓ should detect the FormData instance provided by the `form-data` package
+
+
+  100 passing (4s)
+  1 pending
+  1 failing
+
+  1) supports http with nodejs
+       should supply a user-agent if one is not specified:
+
+      Uncaught AssertionError [ERR_ASSERTION]: 'axios/0.30.3' == 'axios/0.31.0'
+      + expected - actual
+
+      -axios/0.30.3
+      +axios/0.31.0
+      
+      at Server.<anonymous> (test/unit/adapters/http.js:1367:14)
+      at Server.EventEmitter.emit (domain.js:483:12)
+      at parserOnIncoming (_http_server.js:779:12)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:122:17)
+
+
+
+Warning: Task "mochaTest:test" failed. Use --force to continue.
+
+Aborted due to warnings.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 3
+npm ERR! axios@0.31.0 test: `node bin/ssl_hotfix.js grunt test && node bin/ssl_hotfix.js dtslint --localTs node_modules/typescript/lib`
+npm ERR! Exit status 3
+npm ERR! 
+npm ERR! Failed at the axios@0.31.0 test script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/runner/.npm/_logs/2026-04-12T08_59_29_893Z-debug.log
+##[error]Process completed with exit code 3.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/b60044ca-404d-4672-9e7f-1abc7fb19a33' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/axios/axios
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files

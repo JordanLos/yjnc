@@ -1,0 +1,7 @@
+{
+  "id": "sinon-004",
+  "repo": "sinonjs/sinon",
+  "split": "training",
+  "fix_file": "lib/sinon/sandbox.js",
+  "error_type": "Error"
+}

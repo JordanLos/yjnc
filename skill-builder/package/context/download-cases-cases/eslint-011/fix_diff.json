@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/rules/no-var.js"
+  ],
+  "patch": "--- a/lib/rules/no-var.js\n+++ b/lib/rules/no-var.js\n@@ -202,7 +202,7 @@ function hasNameDisallowedForLetDeclarations(variable) {\n /**\n  * Checks whether a given variable has any references before its declaration.\n  * This is important because var allows hoisting, but let/const do not.\n- * @param {eslint-scope.Variable} variable The variable to check.\n+ * @param {Variable} variable The variable to check.\n  * @returns {boolean} `true` if the variable is referenced before its declaration.\n  */\n function hasReferenceBeforeDeclaration(variable) {"
+}

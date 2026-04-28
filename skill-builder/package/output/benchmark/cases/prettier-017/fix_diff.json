@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/parse/utilities/create-oxc-parser-options.js"
+  ],
+  "patch": "--- a/src/language-js/parse/utilities/create-oxc-parser-options.js\n+++ b/src/language-js/parse/utilities/create-oxc-parser-options.js\n@@ -12,9 +12,7 @@ function createOxcParserOptions(options) {\n     if (oxcSupportsRawTransfer === undefined) {\n       oxcSupportsRawTransfer = rawTransferSupported();\n     }\n-    if (oxcSupportsRawTransfer) {\n-      parserOptions.experimentalRawTransfer = true;\n-    }\n+    parserOptions.experimentalRawTransfer = oxcSupportsRawTransfer;\n   }\n \n   return parserOptions;"
+}

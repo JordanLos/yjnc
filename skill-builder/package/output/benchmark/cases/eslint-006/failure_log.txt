@@ -1,0 +1,150 @@
+
+[92m [0m[32m 37871 passing[0m[90m (52s)[0m
+[36m [0m[36m 11 pending[0m
+[31m  12 failing[0m
+
+[0m  1) cli
+       execute()
+         FixtureDir Dependent Tests
+           Ignores
+             when given a pattern to ignore
+               should interpret pattern that contains a slash as relative to cwd:
+[0m[31m     Error: No files matching '**/*.js' were found.[0m[90m
+      at throwErrorForUnmatchedPatterns (lib/eslint/eslint-helpers.js:420:8)
+      at async globMultiSearch (lib/eslint/eslint-helpers.js:491:4)
+      at async Promise.all (index 0)
+      at async findFiles (lib/eslint/eslint-helpers.js:635:25)
+      at async ESLint.lintFiles (lib/eslint/eslint.js:1014:21)
+      at async Object.execute (lib/cli.js:386:14)
+      at async Context.<anonymous> (tests/lib/cli.js:982:20)
+[0m
+[0m  2) ESLint
+       lintFiles()
+         should report zero messages when given a config file and a valid file:
+
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 2
+[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-1[0m
+      [32m+2[0m
+      [0m[90m
+      at Context.<anonymous> (tests/lib/eslint/eslint.js:1946:11)
+[0m
+[0m  3) ESLint
+       lintFiles()
+         should work in case when `fsp.readFile()` returns an object that is not an instance of Promise from this realm:
+
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 2
+[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-1[0m
+      [32m+2[0m
+      [0m[90m
+      at Context.<anonymous> (tests/lib/eslint/eslint.js:2150:11)
+[0m
+[0m  4) ESLint
+       lintFiles()
+         Ignoring Files
+           should skip subdirectory files when ignore pattern matches subdirectory:
+[0m[31m     AssertionError [ERR_ASSERTION]: The input did not match the regular expression /All files matched by 'subdir\/\*\*\/\*\.js' are ignored\./u. Input:
+
+"Error: No files matching 'subdir/**/*.js' were found."
+[0m[90m
+      at async Context.<anonymous> (tests/lib/eslint/eslint.js:3274:5)
+[0m
+[0m  5) ESLint
+       lintFiles()
+         Ignoring Files
+           should allow directories to be unignored:
+[0m[31m     Error: No files matching 'subdir/**/*.js' were found.[0m[90m
+      at throwErrorForUnmatchedPatterns (lib/eslint/eslint-helpers.js:420:8)
+      at async globMultiSearch (lib/eslint/eslint-helpers.js:491:4)
+      at async Promise.all (index 0)
+      at async findFiles (lib/eslint/eslint-helpers.js:635:25)
+      at async ESLint.lintFiles (lib/eslint/eslint.js:1014:21)
+      at async Context.<anonymous> (tests/lib/eslint/eslint.js:3350:21)
+[0m
+[0m  6) ESLint
+       lintFiles()
+         Ignoring Files
+           should disregard ignore pattern '/':
+
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 2
+[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-1[0m
+      [32m+2[0m
+      [0m[90m
+      at Context.<anonymous> (tests/lib/eslint/eslint.js:3576:12)
+[0m
+[0m  7) ESLint
+       with ignores config
+         ignores can add an ignore pattern ('foo.js').
+           'lintFiles()' should not verify 'foo.js'.:
+
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
+    '/tmp/eslint/fixtures/cli-engine/ignore-patterns/bar.js',
+    '/tmp/eslint/fixtures/cli-engine/ignore-patterns/eslint.config.js',
+-   '/tmp/eslint/fixtures/cli-engine/ignore-patterns/subdir/bar.js'
+  ]
+[0m
+      [32m+ expected[0m [31m- actual[0m
+
+       [
+         "/tmp/eslint/fixtures/cli-engine/ignore-patterns/bar.js"
+         "/tmp/eslint/fixtures/cli-engine/ignore-patterns/eslint.config.js"
+      [32m+  "/tmp/eslint/fixtures/cli-engine/ignore-patterns/subdir/bar.js"[0m
+       ]
+      [0m[90m
+      at Context.<anonymous> (tests/lib/eslint/eslint.js:11368:12)
+[0m
+[0m  8) ESLint
+       with ignores config
+         ignores can add ignore patterns ('**/foo.js', '/bar.js').
+           'lintFiles()' should not verify 'foo.js' and '/bar.js'.:
+
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
+    '/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/baz.js',
+    '/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/eslint.config.js',
+-   '/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/subdir/bar.js',
+-   '/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/subdir/baz.js'
+  ]
+[0m
+      [32m+ expected[0m [31m- actual[0m
+
+       [
+         "/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/baz.js"
+         "/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/eslint.config.js"
+      [32m+  "/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/subdir/bar.js"[0m
+      [32m+  "/tmp/eslint/fixtures/cli-engine/ignore-patterns1771987492031/subdir/baz.js"[0m
+       ]
+      [0m[90m
+      at Context.<anonymous> (tests/lib/eslint/eslint.js:11421:12)
+[0m
+[0m  9) ESLint
+       with ignores config
+         ignores can unignore '/node_modules/foo' with patterns ['!node_modules/', 'node_modules/*', '!node_modules/foo/'].
+           'lintFiles()' should verify 'node_modules/foo/index.js'.:
+
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
+    '/tmp/eslint/fixtures/cli-engine/ignore-patterns-unignores/eslint.config.js',
+    '/tmp/eslint/fixtures/cli-engine/ignore-patterns-unignores/foo.js',
+-   '/tmp/eslint/fixtures/cli-engine/ignore-patterns-unignores/node_modules/foo/.dot.js',

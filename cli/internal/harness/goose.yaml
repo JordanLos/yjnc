@@ -1,0 +1,51 @@
+name: goose
+version: "2026-04-26"
+source: https://github.com/aaif-goose/goose
+status: needs-adapter
+
+# Goose is NOT spec-native. It uses a recipe/extension model with no
+# file-based agent definition. An adapter must work around significant gaps.
+#
+# What's needed to build juc-adapter-goose:
+#   1. Write a goose recipe YAML from agent.md (the only way to fully replace
+#      the default system prompt — --system only appends)
+#   2. Invoke: goose run --recipe <recipe> --no-session --no-profile --quiet
+#   3. Resolve model via model_map, pass as --model <id> --provider openrouter
+#
+# Missing / unresolved:
+#   - No per-tool allow-list flag; tools come from extension bundles (developer)
+#   - Recipe format requires its own translation layer for agent.md body
+#   - System prompt replacement requires recipe, not just a flag
+#   - Subagent spawning, memory, permissionMode have no goose equivalent
+#
+# Requires: OPENROUTER_API_KEY env var
+# Reference: https://block.github.io/goose/docs/getting-started/recipes
+
+binary: goose
+fixed_args:
+  - "run"
+  - "--no-session"
+  - "--no-profile"
+  - "--quiet"
+  - "--with-builtin"
+  - "developer"
+  - "--provider"
+  - "openrouter"
+
+model_flag: "--model"
+model_map:
+  haiku: anthropic/claude-haiku-4-5
+  sonnet: anthropic/claude-sonnet-4-6
+  opus: anthropic/claude-opus-4-7
+
+# Goose tools come from the developer extension bundle (shell read write edit tree).
+# No per-tool allow-list flag exists; tool_map is provided for recipe generation only.
+tools_flag: ""
+tools_separator: ","
+tool_map:
+  read: read
+  write: write
+  edit: edit
+  bash: shell
+  fetch: fetch
+  search: web_search

@@ -1,0 +1,19 @@
+FAIL packages/babel-parser/test/unit/parser-class-fields.test.js
+
+  ● babel-parser › should parse class fields with decorators
+
+    TypeError: this.finishNode is not a function
+
+      1454 |   parseClassMember(classBody, member, state) {
+      1455 |     this.parseClassMemberWithIsStatic(classBody, member, state, false);
+    > 1456 |     return this.finishNode(member, "ClassProperty");
+           |                ^
+      1457 |   }
+
+      at Parser.parseClassMember (packages/babel-parser/src/parser/statement.js:1456:18)
+      at Parser.parseClassBody (packages/babel-parser/src/parser/statement.js:1398:14)
+      at Parser.parseClass (packages/babel-parser/src/parser/statement.js:1370:5)
+      at Parser.parseStatement (packages/babel-parser/src/parser/statement.js:142:19)
+
+Test Suites: 1 failed, 45 passed, 46 total
+Tests:       1 failed, 882 passed, 883 total

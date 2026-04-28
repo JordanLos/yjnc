@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/utilities/call-or-new-expression-parentheses.js"
+  ],
+  "patch": "--- a/src/language-js/utilities/call-or-new-expression-parentheses.js\n+++ b/src/language-js/utilities/call-or-new-expression-parentheses.js\n@@ -36,7 +36,7 @@ function getCallOrNewExpressionClosingParenthesisIndex(\n \n /**\n @param {CallOrNewExpression} callOrNewExpression\n-@returns {number | void}\n+@returns {number | undefined}\n */\n function getCallOrNewExpressionOpeningParenthesisIndex(\n   callOrNewExpression,"
+}

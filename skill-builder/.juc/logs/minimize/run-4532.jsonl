@@ -1,0 +1,3 @@
+{"type":"agent_start","timestamp":"2026-04-27T06:00:52Z","unit":"minimize"}
+{"type":"agent_end","timestamp":"2026-04-27T06:05:19Z","unit":"minimize"}
+{"type":"check_result","timestamp":"2026-04-27T06:05:19Z","unit":"minimize","exit_code":1,"check":"minimize-plateau","stderr":"Minimization failed: score null vs threshold -.02 (1/5)\n"}

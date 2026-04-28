@@ -1,0 +1,207 @@
+[
+  {
+    "id": "axios-001",
+    "split": "held-out",
+    "fix_file": "lib/helpers/toFormData.js"
+  },
+  {
+    "id": "axios-002",
+    "split": "held-out",
+    "fix_file": "lib/env/data.js"
+  },
+  {
+    "id": "eslint-005",
+    "split": "held-out",
+    "fix_file": "Makefile.js"
+  },
+  {
+    "id": "eslint-007",
+    "split": "held-out",
+    "fix_file": "Makefile.js"
+  },
+  {
+    "id": "eslint-009",
+    "split": "held-out",
+    "fix_file": "Makefile.js"
+  },
+  {
+    "id": "eslint-011",
+    "split": "held-out",
+    "fix_file": "lib/rules/no-var.js"
+  },
+  {
+    "id": "prettier-003",
+    "split": "held-out",
+    "fix_file": "src/language-js/print/component.js"
+  },
+  {
+    "id": "prettier-013",
+    "split": "held-out",
+    "fix_file": "src/language-js/traverse/visitor-keys.evaluate.js"
+  },
+  {
+    "id": "prettier-018",
+    "split": "held-out",
+    "fix_file": "src/language-js/location/comparison.js"
+  },
+  {
+    "id": "prettier-024",
+    "split": "held-out",
+    "fix_file": "src/language-js/print/typescript.js"
+  },
+  {
+    "id": "mocha-001",
+    "split": "training",
+    "fix_file": "lib/mocha.js"
+  },
+  {
+    "id": "mocha-002",
+    "split": "training",
+    "fix_file": "lib/interfaces/common.js"
+  },
+  {
+    "id": "mocha-003",
+    "split": "training",
+    "fix_file": "lib/nodejs/esm-utils.js"
+  },
+  {
+    "id": "mocha-004",
+    "split": "training",
+    "fix_file": "lib/nodejs/esm-utils.js"
+  },
+  {
+    "id": "mocha-007",
+    "split": "training",
+    "fix_file": "eslint.config.js"
+  },
+  {
+    "id": "mocha-008",
+    "split": "training",
+    "fix_file": "mocha.mjs"
+  },
+  {
+    "id": "mocha-009",
+    "split": "training",
+    "fix_file": "lib/nodejs/parallel-buffered-runner.js"
+  },
+  {
+    "id": "mocha-010",
+    "split": "training",
+    "fix_file": "lib/utils.js"
+  },
+  {
+    "id": "mocha-012",
+    "split": "training",
+    "fix_file": "lib/suite.js"
+  },
+  {
+    "id": "mocha-013",
+    "split": "training",
+    "fix_file": "lib/suite.js"
+  },
+  {
+    "id": "mocha-014",
+    "split": "training",
+    "fix_file": "lib/pending.js"
+  },
+  {
+    "id": "prettier-001",
+    "split": "training",
+    "fix_file": "src/language-yaml/utilities.js"
+  },
+  {
+    "id": "prettier-002",
+    "split": "training",
+    "fix_file": "src/language-markdown/print/children.js"
+  },
+  {
+    "id": "prettier-004",
+    "split": "training",
+    "fix_file": "src/language-js/print/flow.js"
+  },
+  {
+    "id": "prettier-005",
+    "split": "training",
+    "fix_file": "src/language-js/print/flow.js"
+  },
+  {
+    "id": "prettier-006",
+    "split": "training",
+    "fix_file": "src/document/printer/printer.js"
+  },
+  {
+    "id": "prettier-007",
+    "split": "training",
+    "fix_file": "src/language-js/print/flow.js"
+  },
+  {
+    "id": "prettier-008",
+    "split": "training",
+    "fix_file": "src/document/printer/printer.js"
+  },
+  {
+    "id": "prettier-009",
+    "split": "training",
+    "fix_file": "src/language-js/parse/postprocess/merge-nestled-jsdoc-comments.js"
+  },
+  {
+    "id": "prettier-010",
+    "split": "training",
+    "fix_file": "src/language-js/utilities/is-indentable-block-comment.js"
+  },
+  {
+    "id": "prettier-011",
+    "split": "training",
+    "fix_file": "src/language-yaml/printer-yaml.js"
+  },
+  {
+    "id": "prettier-012",
+    "split": "training",
+    "fix_file": "src/language-yaml/printer-yaml.js"
+  },
+  {
+    "id": "prettier-016",
+    "split": "training",
+    "fix_file": "src/language-markdown/parse/parse-mdx.js"
+  },
+  {
+    "id": "prettier-017",
+    "split": "training",
+    "fix_file": "src/language-js/parse/utilities/create-oxc-parser-options.js"
+  },
+  {
+    "id": "prettier-019",
+    "split": "training",
+    "fix_file": "src/language-js/utilities/call-or-new-expression-parentheses.js"
+  },
+  {
+    "id": "prettier-020",
+    "split": "training",
+    "fix_file": "src/language-js/print/return-statement.js"
+  },
+  {
+    "id": "prettier-021",
+    "split": "training",
+    "fix_file": "src/language-js/print/ignored.js"
+  },
+  {
+    "id": "prettier-022",
+    "split": "training",
+    "fix_file": "src/language-js/print/class-body.js"
+  },
+  {
+    "id": "prettier-023",
+    "split": "training",
+    "fix_file": "src/language-js/print/binary-cast-expression.js"
+  },
+  {
+    "id": "prettier-026",
+    "split": "training",
+    "fix_file": "src/language-js/print/typescript.js"
+  },
+  {
+    "id": "undici-001",
+    "split": "training",
+    "fix_file": "lib/web/fetch/index.js"
+  }
+]

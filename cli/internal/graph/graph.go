@@ -11,6 +11,7 @@ type Config struct {
 	Concurrency int         `yaml:"concurrency"`
 	Logging     string      `yaml:"logging"`
 	Cache       string      `yaml:"cache"`
+	Harness     string      `yaml:"harness"` // default harness for all units; empty = claude
 	Secrets     []string    `yaml:"secrets"`
 	Hooks       RunnerHooks `yaml:"hooks"`
 }

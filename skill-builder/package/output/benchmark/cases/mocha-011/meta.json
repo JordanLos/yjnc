@@ -1,0 +1,7 @@
+{
+  "id": "mocha-011",
+  "repo": "mochajs/mocha",
+  "split": "training",
+  "fix_file": "lib/utils.js",
+  "error_type": "TypeError"
+}

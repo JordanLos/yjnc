@@ -1,0 +1,7 @@
+{
+  "id": "case_eslint_001",
+  "repo": "eslint/eslint",
+  "split": "training",
+  "fix_file": "lib/linter/linter.js",
+  "error_type": "TypeError"
+}

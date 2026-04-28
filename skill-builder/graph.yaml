@@ -1,0 +1,35 @@
+juc: "2.0"
+
+config:
+  concurrency: 2
+  logging: jsonl
+
+research-cases: {}      # select 60 cases from target JS repos
+
+download-cases:         # fetch failure logs + fix diffs
+  depends: [research-cases]
+
+# --- Practice run 2: 3-iteration autoresearch loop ---
+structure-ground-truth:
+  depends: [download-cases]
+
+build-scorer:
+  depends: [structure-ground-truth]
+
+seed-skill: {}
+
+autoresearch:
+  depends: [build-scorer, seed-skill, structure-ground-truth, download-cases]
+  verify: [autoresearch-plateau]
+  retries: infinite
+
+minimize:
+  depends: [autoresearch, build-scorer, structure-ground-truth, download-cases]
+  verify: [minimize-plateau]
+  retries: infinite
+
+validate:
+  depends: [minimize, structure-ground-truth, download-cases]
+
+package:
+  depends: [validate, minimize, structure-ground-truth, download-cases]

@@ -1,0 +1,35 @@
+name: claude
+version: "2026-04-26"
+source: https://code.claude.com/docs/en/sub-agents
+status: stable
+
+binary: claude
+fixed_args:
+  - "--print"
+  - "--dangerously-skip-permissions"
+
+# --agent passes agent.md as the system-prompt definition.
+# Claude handles frontmatter stripping internally.
+agent_flag: "--agent"
+prompt_flag: ""    # body is a positional argument
+prompt_stdin: false
+
+model_flag: "--model"
+model_map:
+  haiku: claude-haiku-4-5-20251001
+  sonnet: claude-sonnet-4-6
+  opus: claude-opus-4-7
+
+tools_flag: "--allowedTools"
+tools_separator: ","
+tool_map:
+  read: Read
+  write: Write
+  edit: Edit
+  bash: Bash
+  grep: Grep
+  glob: Glob
+  fetch: WebFetch
+  search: WebSearch
+  agent: Agent
+  notebook: NotebookEdit

@@ -1,0 +1,7 @@
+{
+  "id": "prettier-016",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-markdown/parse/parse-mdx.js",
+  "error_type": "Error"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "case_prettier_001",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/printer.js",
+  "error_type": "AssertionError"
+}

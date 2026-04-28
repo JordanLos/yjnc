@@ -1,0 +1,7 @@
+{
+  "units": {
+    "compare": "passed",
+    "with-claude": "passed",
+    "with-forge": "passed"
+  }
+}

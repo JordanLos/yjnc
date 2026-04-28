@@ -1,0 +1,7 @@
+{
+  "id": "mocha-013",
+  "repo": "mochajs/mocha",
+  "split": "training",
+  "fix_file": "lib/suite.js",
+  "error_type": "ReferenceError"
+}

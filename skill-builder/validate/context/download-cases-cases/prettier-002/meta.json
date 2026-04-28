@@ -1,0 +1,7 @@
+{
+  "id": "prettier-002",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-markdown/print/children.js",
+  "error_type": "Error"
+}

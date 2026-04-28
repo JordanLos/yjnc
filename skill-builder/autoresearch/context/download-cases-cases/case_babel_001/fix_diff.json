@@ -1,0 +1,4 @@
+{
+  "files": ["packages/babel-parser/src/parser/statement.js"],
+  "patch": "--- a/packages/babel-parser/src/parser/statement.js\n+++ b/packages/babel-parser/src/parser/statement.js\n@@ -1453,7 +1453,7 @@\n   parseClassMember(classBody, member, state) {\n     this.parseClassMemberWithIsStatic(classBody, member, state, false);\n-    return this.finishNode(member, \"ClassProperty\");\n+    return this.finishClassMember(member);\n   }"
+}

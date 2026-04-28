@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"github.com/JordanLos/just-use-claude/internal/graph"
+	"github.com/JordanLos/just-use-claude/internal/harness"
 	"github.com/JordanLos/just-use-claude/internal/logger"
 	"github.com/JordanLos/just-use-claude/internal/state"
 )
@@ -24,12 +25,41 @@ type Agent interface {
 	Execute(ctx context.Context, root, id, agentPath string, attempt int) error
 }
 
-// CLIAgent invokes the claude CLI.
-type CLIAgent struct{}
+// HarnessAgent dispatches each unit to either the built-in claude path or an
+// external adapter. Harness resolves from: frontmatter → graph default → "claude".
+type HarnessAgent struct {
+	DefaultHarness string
+}
 
-func (c *CLIAgent) Execute(ctx context.Context, root, id, agentPath string, attempt int) error {
-	cmd := exec.CommandContext(ctx, "claude", "--agent", agentPath)
-	cmd.Dir = root
+func (h *HarnessAgent) Execute(ctx context.Context, root, id, agentPath string, attempt int) error {
+	raw, err := os.ReadFile(agentPath)
+	if err != nil {
+		return fmt.Errorf("reading agent.md: %w", err)
+	}
+
+	fm := harness.ParseFrontmatter(raw)
+	name := fm.Harness
+	if name == "" {
+		name = h.DefaultHarness
+	}
+
+	if name == "" || name == "claude" {
+		return h.runBuiltin(ctx, root, id, agentPath, attempt, raw, fm)
+	}
+	return h.runAdapter(ctx, root, id, agentPath, attempt, name)
+}
+
+// runBuiltin invokes the claude CLI directly. Claude is the reference
+// implementation: agent.md maps 1:1 to its native agent file spec.
+func (h *HarnessAgent) runBuiltin(ctx context.Context, root, id, agentPath string, attempt int, raw []byte, fm harness.Frontmatter) error {
+	hcfg, err := harness.Load(root, "claude")
+	if err != nil {
+		return err
+	}
+	body := stripFrontmatter(string(raw))
+	args := hcfg.BuildArgs(agentPath, body, fm.Model, fm.Tools)
+	cmd := exec.CommandContext(ctx, hcfg.Binary, args...)
+	cmd.Dir = filepath.Join(root, id)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Env = append(os.Environ(),
@@ -37,6 +67,70 @@ func (c *CLIAgent) Execute(ctx context.Context, root, id, agentPath string, atte
 		fmt.Sprintf("JUC_RUN=%d", attempt),
 	)
 	return cmd.Run()
+}
+
+// runAdapter invokes an external adapter binary. The adapter owns all
+// harness-specific concerns: translating agent.md, invoking the CLI, writing output/.
+//
+// Adapter interface contract:
+//   - Resolved via: .juc/adapters/<name> → ~/.juc/adapters/<name> → juc-adapter-<name> on PATH
+//   - Env: JUC_UNIT, JUC_UNIT_DIR, JUC_AGENT_MD, JUC_ATTEMPT, JUC_ROOT
+//   - Reads:  <unit-dir>/agent.md, <unit-dir>/context/
+//   - Writes: <unit-dir>/output/
+//   - Exit 0 = success, non-zero = failure
+func (h *HarnessAgent) runAdapter(ctx context.Context, root, id, agentPath string, attempt int, name string) error {
+	adapter, err := resolveAdapter(root, name)
+	if err != nil {
+		return err
+	}
+	unitDir := filepath.Join(root, id)
+	cmd := exec.CommandContext(ctx, adapter)
+	cmd.Dir = unitDir
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Env = append(os.Environ(),
+		"JUC_UNIT="+id,
+		"JUC_UNIT_DIR="+unitDir,
+		"JUC_AGENT_MD="+agentPath,
+		fmt.Sprintf("JUC_ATTEMPT=%d", attempt),
+		"JUC_ROOT="+root,
+	)
+	return cmd.Run()
+}
+
+func resolveAdapter(root, name string) (string, error) {
+	candidates := []string{
+		filepath.Join(root, ".juc", "adapters", name),
+	}
+	if home, err := os.UserHomeDir(); err == nil {
+		candidates = append(candidates, filepath.Join(home, ".juc", "adapters", name))
+	}
+	for _, p := range candidates {
+		if _, err := os.Stat(p); err == nil {
+			return p, nil
+		}
+	}
+	if path, err := exec.LookPath("juc-adapter-" + name); err == nil {
+		return path, nil
+	}
+	return "", fmt.Errorf(
+		"no adapter found for harness %q — tried .juc/adapters/%s, ~/.juc/adapters/%s, PATH:juc-adapter-%s",
+		name, name, name, name,
+	)
+}
+
+// stripFrontmatter removes the leading --- ... --- YAML block from a markdown file.
+func stripFrontmatter(s string) string {
+	if !strings.HasPrefix(s, "---") {
+		return s
+	}
+	// Find the closing ---
+	rest := s[3:]
+	idx := strings.Index(rest, "\n---")
+	if idx == -1 {
+		return s
+	}
+	return strings.TrimSpace(rest[idx+4:])
 }
 
 type Runner struct {
@@ -47,7 +141,12 @@ type Runner struct {
 }
 
 func New(root string, g *graph.Graph, s *state.State) *Runner {
-	return &Runner{Root: root, Graph: g, State: s, Agent: &CLIAgent{}}
+	return &Runner{
+		Root:  root,
+		Graph: g,
+		State: s,
+		Agent: &HarnessAgent{DefaultHarness: g.Config.Harness},
+	}
 }
 
 func (r *Runner) Run(only string) error {
@@ -374,19 +473,36 @@ func (r *Runner) stageContext(id string) error {
 	}
 	for _, dep := range u.Depends {
 		srcDir := filepath.Join(r.Root, dep, "output")
-		entries, err := os.ReadDir(srcDir)
-		if err != nil {
-			if os.IsNotExist(err) {
-				continue
-			}
+		if err := r.copyOutputToContext(srcDir, destDir, dep); err != nil {
 			return err
 		}
-		for _, e := range entries {
-			if e.IsDir() {
-				continue
+	}
+	return nil
+}
+
+func (r *Runner) copyOutputToContext(srcDir, destDir, prefix string) error {
+	entries, err := os.ReadDir(srcDir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+	for _, e := range entries {
+		src := filepath.Join(srcDir, e.Name())
+		name := e.Name()
+		if prefix != "" {
+			name = prefix + "-" + name
+		}
+		dst := filepath.Join(destDir, name)
+		if e.IsDir() {
+			if err := os.MkdirAll(dst, 0755); err != nil {
+				return err
 			}
-			src := filepath.Join(srcDir, e.Name())
-			dst := filepath.Join(destDir, dep+"-"+e.Name())
+			if err := r.copyOutputToContext(src, dst, ""); err != nil {
+				return err
+			}
+		} else {
 			data, err := os.ReadFile(src)
 			if err != nil {
 				return err

@@ -1,0 +1,7 @@
+{
+  "id": "mocha-007",
+  "repo": "mochajs/mocha",
+  "split": "training",
+  "fix_file": "eslint.config.js",
+  "error_type": "Error"
+}

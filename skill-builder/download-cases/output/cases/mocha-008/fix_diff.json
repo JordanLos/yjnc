@@ -1,0 +1,6 @@
+{
+  "files": [
+    "mocha.mjs"
+  ],
+  "patch": "--- a/mocha.mjs\n+++ b/mocha.mjs\n@@ -1,4 +1,5 @@\n // this built file is not committed to the repo\n+/* eslint-disable-next-line n/no-missing-import */\n import \"./mocha.js\";\n \n const { mocha, Mocha } = globalThis;"
+}

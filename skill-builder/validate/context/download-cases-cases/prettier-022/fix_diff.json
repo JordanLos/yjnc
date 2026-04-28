@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/print/class-body.js"
+  ],
+  "patch": "--- a/src/language-js/print/class-body.js\n+++ b/src/language-js/print/class-body.js\n@@ -177,9 +177,9 @@ function printClassMemberSemicolon(path, options) {\n   const { parent } = path;\n \n   if (path.callParent(isClassBody)) {\n-    return parent.type === \"ObjectTypeAnnotation\"?\";\":\n-       printSemicolon(options)\n-      \n+    return parent.type === \"ObjectTypeAnnotation\"\n+      ? \";\"\n+      : printSemicolon(options);\n   }\n \n   if (parent.type === \"TSTypeLiteral\") {"
+}

@@ -1,0 +1,29 @@
+output dir: /tmp/mocha-test-webpack
+
+/home/runner/work/mocha/mocha/docs/_data/supporters.cjs
+##[error]   20:23  error  /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: Unexpected end of JSON input                                                                                                                n/no-missing-require
+##[error]  305:11  error  /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: /home/runner/work/mocha/mocha/docs/node_modules/debug/package.json (directory description file): SyntaxError: Unexpected end of JSON input  n/no-missing-require
+
+✖ 2 problems (2 errors, 0 warnings)
+
+npm error process terminated
+npm error signal SIGTERM
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-03-20T09_55_56_670Z-debug-0.log
+ERROR: "lint:code" exited with 1.
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/f7ed0b73-caff-4050-b6d6-00108b942b7b' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/mocha/mocha
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

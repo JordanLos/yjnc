@@ -1,0 +1,7 @@
+{
+  "id": "prettier-012",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-yaml/printer-yaml.js",
+  "error_type": "Error"
+}

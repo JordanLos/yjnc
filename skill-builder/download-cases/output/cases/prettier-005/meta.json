@@ -1,0 +1,7 @@
+{
+  "id": "prettier-005",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/print/flow.js",
+  "error_type": "Error"
+}

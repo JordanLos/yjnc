@@ -1,0 +1,6 @@
+{
+  "files": [
+    "lib/web/fetch/index.js"
+  ],
+  "patch": "--- a/lib/web/fetch/index.js\n+++ b/lib/web/fetch/index.js\n@@ -2169,10 +2169,10 @@ async function httpNetworkFetch (\n             headersList,\n             body: decoders.length\n               ? pipeline(this.body, ...decoders, (err) => {\n-                  if (err) {\n-                    this.onError(err)\n-                  }\n-                }).on('error', onError)\n+                if (err) {\n+                  this.onError(err)\n+                }\n+              }).on('error', onError)\n               : this.body.on('error', onError)\n           })\n "
+}

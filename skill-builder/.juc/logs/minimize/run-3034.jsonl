@@ -1,0 +1,2 @@
+{"type":"agent_start","timestamp":"2026-04-25T02:54:53Z","unit":"minimize"}
+{"type":"event","timestamp":"2026-04-25T02:54:55Z","unit":"minimize","message":"agent error: exit status 1"}

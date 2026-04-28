@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/print/typescript.js"
+  ],
+  "patch": "--- a/src/language-js/print/typescript.js\n+++ b/src/language-js/print/typescript.js\n@@ -2,9 +2,9 @@ import UnexpectedNodeError from \"../../utilities/unexpected-node-error.js\";\n import isTsKeywordType from \"../utilities/is-ts-keyword-type.js\";\n import { printArray } from \"./array.js\";\n import { printArrayType } from \"./array-type.js\";\n+import { printBinaryCastExpression } from \"./binary-cast-expression.js\";\n import { printBlock } from \"./block.js\";\n import { printCallExpression } from \"./call-expression.js\";\n-import { printBinaryCastExpression } from \"./binary-cast-expression.js\";\n import {\n   printClass,\n   printClassBody,"
+}

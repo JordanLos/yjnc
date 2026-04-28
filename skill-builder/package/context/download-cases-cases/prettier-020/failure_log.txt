@@ -1,0 +1,119 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 0s 265ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.2[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 5s 589ms
+[93m➤[39m YN0000: · Done with warnings in 10s 403ms
+##[group]Run yarn lint:deps
+[36;1myarn lint:deps[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+Checking '/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/website/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/scripts/release/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/scripts/tools/bundle-test/package.json'...
+✅ All dependency versions are pinned.
+
+Checking '/scripts/tools/eslint-plugin-prettier-internal-rules/package.json'...
+✅ All dependency versions are pinned.
+##[group]Run yarn lint:typecheck
+[36;1myarn lint:typecheck[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+##[group]Run yarn lint:eslint
+[36;1myarn lint:eslint[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+
+
+  ✘  no-unused-vars
+
+     'printDanglingComments' is defined but never used
+
+
+     src/language-js/print/return-statement.js:8:10
+      6 |   softline[33m,[39m
+      7 | } [36mfrom[39m [32m"../../document/index.js"[39m[33m;[39m
+   >  8 | [36mimport[39m { printDanglingComments } [36mfrom[39m [32m"../../main/comments/print.js"[39m[33m;[39m
+        |          ^
+      9 | [36mimport[39m { [33mCommentCheckFlags[39m[33m,[39m hasComment } [36mfrom[39m [32m"../utilities/comments.js"[39m[33m;[39m
+     10 | [36mimport[39m { isBinaryish } [36mfrom[39m [32m"../utilities/node-types.js"[39m[33m;[39m
+     11 | [36mimport[39m { returnArgumentHasLeadingComment } [36mfrom[39m [32m"../utilities/return-statement-has-leading-comment.js"[39m[33m;[39m
+
+  ✘  no-unused-vars
+
+     'CommentCheckFlags' is defined but never used
+
+
+     src/language-js/print/return-statement.js:9:10
+      7 | } [36mfrom[39m [32m"../../document/index.js"[39m[33m;[39m
+      8 | [36mimport[39m { printDanglingComments } [36mfrom[39m [32m"../../main/comments/print.js"[39m[33m;[39m
+   >  9 | [36mimport[39m { [33mCommentCheckFlags[39m[33m,[39m hasComment } [36mfrom[39m [32m"../utilities/comments.js"[39m[33m;[39m
+        |          ^
+     10 | [36mimport[39m { isBinaryish } [36mfrom[39m [32m"../utilities/node-types.js"[39m[33m;[39m
+     11 | [36mimport[39m { returnArgumentHasLeadingComment } [36mfrom[39m [32m"../utilities/return-statement-has-leading-comment.js"[39m[33m;[39m
+     12 | [36mimport[39m { printSemicolon } [36mfrom[39m [32m"./miscellaneous.js"[39m[33m;[39m
+
+  ✘  no-unused-vars
+
+     'hasComment' is defined but never used
+
+
+     src/language-js/print/return-statement.js:9:29
+      7 | } [36mfrom[39m [32m"../../document/index.js"[39m[33m;[39m
+      8 | [36mimport[39m { printDanglingComments } [36mfrom[39m [32m"../../main/comments/print.js"[39m[33m;[39m
+   >  9 | [36mimport[39m { [33mCommentCheckFlags[39m[33m,[39m hasComment } [36mfrom[39m [32m"../utilities/comments.js"[39m[33m;[39m
+        |                             ^
+     10 | [36mimport[39m { isBinaryish } [36mfrom[39m [32m"../utilities/node-types.js"[39m[33m;[39m
+     11 | [36mimport[39m { returnArgumentHasLeadingComment } [36mfrom[39m [32m"../utilities/return-statement-has-leading-comment.js"[39m[33m;[39m
+     12 | [36mimport[39m { printSemicolon } [36mfrom[39m [32m"./miscellaneous.js"[39m[33m;[39m
+
+✘ 3 problems (3 errors, 0 warnings)
+
+
+Errors:
+  3  no-unused-vars
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/ae5ed0da-820c-49fd-a98e-a09554aec0f1' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-764b80c5-a8e0-462a-a28f-17a362b33093.config'
+Cleaning up orphan processes

@@ -1,0 +1,149 @@
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+[command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+[command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/undici/undici/.git.path /home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/undici/undici/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8fcf83884353feaae14c9749b0ad5262dd9446d0:refs/remotes/pull/4909/merge
+From https://github.com/nodejs/undici
+ * [new ref]         8fcf83884353feaae14c9749b0ad5262dd9446d0 -> pull/4909/merge
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/4909/merge
+Note: switching to 'refs/remotes/pull/4909/merge'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 8fcf838 Merge 3cd6c401410f80eed26a837bbba5d990caaad942 into 1c5dc1ad36c886aa11d025cf6381c5ea1fff0ca4
+##[endgroup]
+[command]/usr/bin/git log -1 --format=%H
+8fcf83884353feaae14c9749b0ad5262dd9446d0
+##[group]Removing auth
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/undici/undici/.git.path
+includeif.gitdir:/home/runner/work/undici/undici/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/undici/undici/.git.path
+/home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/undici/undici/.git.path /home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/undici/undici/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/undici/undici/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-142e403d-2f1f-447d-86e0-cdfeceeec9bb.config'
+##[endgroup]
+##[group]Run actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238
+with:
+  node-version: latest
+  check-latest: false
+  token: ***
+  package-manager-cache: true
+##[endgroup]
+getting latest node version...
+getting latest node version...
+Attempting to download v25.8.1...
+Not found in manifest. Falling back to download directly from Node
+Acquiring 25.8.1 - x64 from https://nodejs.org/dist/v25.8.1/node-v25.8.1-linux-x64.tar.gz
+Extracting ...
+[command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/6c306d6c-3e97-4a74-a4ed-c6b8df4ec99b -f /home/runner/work/_temp/f438bf56-2ef2-4cbb-bbc5-b6102ecbbdce
+Adding to the cache ...
+Done
+##[group]Environment details
+node: v25.8.1
+npm: 11.11.0
+yarn: 1.22.22
+##[endgroup]
+##[group]Run npm install
+[36;1mnpm install[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+> undici@7.24.4 prepare
+> husky && node ./scripts/platform-shell.js
+
+
+added 691 packages, and audited 692 packages in 17s
+
+205 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+##[group]Run npm run lint
+[36;1mnpm run lint[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+
+> undici@7.24.4 lint
+> eslint --cache
+
+
+/home/runner/work/undici/undici/lib/web/fetch/index.js
+##[error]  2259:1  error  Expected indentation of 16 spaces but found 18  @stylistic/indent
+##[error]  2260:1  error  Expected indentation of 18 spaces but found 20  @stylistic/indent
+##[error]  2261:1  error  Expected indentation of 16 spaces but found 18  @stylistic/indent
+##[error]  2262:1  error  Expected indentation of 14 spaces but found 16  @stylistic/indent
+
+✖ 4 problems (4 errors, 0 warnings)
+  4 errors and 0 warnings potentially fixable with the `--fix` option.
+
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/8e5a3ded-54f2-436a-bbde-15614c360f02' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/undici/undici
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

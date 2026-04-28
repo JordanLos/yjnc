@@ -1,0 +1,7 @@
+{
+  "id": "prettier-009",
+  "repo": "prettier/prettier",
+  "split": "training",
+  "fix_file": "src/language-js/parse/postprocess/merge-nestled-jsdoc-comments.js",
+  "error_type": "Error"
+}

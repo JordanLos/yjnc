@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-markdown/parse/parse-mdx.js"
+  ],
+  "patch": "--- a/src/language-markdown/parse/parse-mdx.js\n+++ b/src/language-markdown/parse/parse-mdx.js\n@@ -1,13 +1,13 @@\n import { fromMarkdown } from \"mdast-util-from-markdown\";\n import { mathFromMarkdown } from \"mdast-util-math\";\n import { mdxFromMarkdown } from \"mdast-util-mdx\";\n+import { fromMarkdown as wikiLinkFromMarkdown } from \"mdast-util-wiki-link\";\n+import { gfm as gfmSyntax } from \"micromark-extension-gfm\";\n+import { math as mathSyntax } from \"micromark-extension-math\";\n import { mdxExpression } from \"micromark-extension-mdx-expression\";\n import { mdxJsx } from \"micromark-extension-mdx-jsx\";\n import { mdxMd } from \"micromark-extension-mdx-md\";\n import { mdxjsEsm } from \"micromark-extension-mdxjs-esm\";\n-import { fromMarkdown as wikiLinkFromMarkdown } from \"mdast-util-wiki-link\";\n-import { gfm as gfmSyntax } from \"micromark-extension-gfm\";\n-import { math as mathSyntax } from \"micromark-extension-math\";\n import { syntax as wikiLinkSyntax } from \"micromark-extension-wiki-link\";\n import { comment, commentFromMarkdown } from \"remark-comment\";\n import parseFrontMatter from \"../../main/front-matter/parse.js\";"
+}

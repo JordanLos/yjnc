@@ -1,0 +1,130 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 10s 454ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.3[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.38.0[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.38.0[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 6s 978ms
+[93m➤[39m YN0000: · Done with warnings in 22s 675ms
+##[endgroup]
+##[group][current] Build using yarn
+Building using yarn run build --clean
+[command]/usr/local/bin/yarn run build --clean
+[34m[1/3] Building package 'prettier'[39m
+[90mMain[39m
+ index.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ index.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ index.cjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ index.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ standalone.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ standalone.js[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ standalone.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+[90mCLI[39m
+ bin/prettier.cjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ internal/legacy-cli.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ internal/experimental-cli.mjs[2m.[22m[42m[30m   DONE  [39m[49m
+ internal/experimental-cli-worker.mjs[42m[30m   DONE  [39m[49m
+[90mDoc[39m
+ doc.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ doc.js[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+ doc.d.ts[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[42m[30m   DONE  [39m[49m
+[90mPlugin[estree][39m
+ plugins/estree.mjs[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m[2m.[22m✘ [ERROR] "decorators" does not exists in "TSDeclareMethod" visitor keys. [plugin evaluate]
+
+    node_modules/esbuild/lib/main.js:1267:21:
+      1267 │         let result = await callback({
+           ╵                      ^
+
+    at removeVisitorKeys (file:///home/runner/work/prettier/prettier/src/utilities/visitor-keys.js:38:15)
+    at file:///home/runner/work/prettier/prettier/src/language-js/traverse/visitor-keys.evaluate.js:63:15
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async file:///home/runner/work/prettier/prettier/scripts/build/esbuild-plugins/evaluate.js:78:26
+    at async requestCallbacks.on-load (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+      1141 │       let promise = setup({
+           ╵                     ^
+
+    at setup (file:///home/runner/work/prettier/prettier/scripts/build/esbuild-plugins/evaluate.js:75:13)
+    at handlePlugins (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:680:5)
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:2026:15
+    at new Promise (<anonymous>)
+    at Object.build (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:2025:25)
+    at Object.build (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1876:51)
+    at Object.runEsbuild [as build] (file:///home/runner/work/prettier/prettier/scripts/build/builders/javascript-module.js:268:43)
+
+  The plugin "evaluate" was triggered by this import
+
+    src/language-js/traverse/get-visitor-keys.js:2:24:
+      2 │ import visitorKeys from "./visitor-keys.evaluate.js";
+        ╵                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[41m[30m   FAIL  [39m[49m
+
+Error: Build failed with 1 error:
+node_modules/esbuild/lib/main.js:1267:21: ERROR: [plugin: evaluate] "decorators" does not exists in "TSDeclareMethod" visitor keys.
+    at failureErrorWithLog (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:926:25
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1345:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+Error: Build failed with 1 error:
+node_modules/esbuild/lib/main.js:1267:21: ERROR: [plugin: evaluate] "decorators" does not exists in "TSDeclareMethod" visitor keys.
+    at failureErrorWithLog (/home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:926:25
+    at /home/runner/work/prettier/prettier/node_modules/esbuild/lib/main.js:1345:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v20.20.1
+##[error]The process '/usr/local/bin/yarn' failed with exit code 1
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/004ef3c2-afcf-478c-942a-44e79dc77a66' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-6fbda8f5-e70a-4145-ae50-234839093a7e.config'
+Cleaning up orphan processes
+##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: preactjs/compressed-size-action@8518045ed95e94e971b83333085e1cb99aa18aa8. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

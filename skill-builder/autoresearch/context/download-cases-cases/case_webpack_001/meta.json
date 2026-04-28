@@ -1,0 +1,7 @@
+{
+  "id": "case_webpack_001",
+  "repo": "webpack/webpack",
+  "split": "training",
+  "fix_file": "lib/Compilation.js",
+  "error_type": "RangeError"
+}

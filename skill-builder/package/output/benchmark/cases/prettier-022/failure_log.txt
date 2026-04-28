@@ -1,0 +1,108 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 9s 879ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.2[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 6s 427ms
+[93m➤[39m YN0000: · Done with warnings in 21s 418ms
+Checking formatting...
+[[33mwarn[39m] src/language-js/print/class-body.js
+[[33mwarn[39m] Code style issues fixed in the above file.
+##[group]Run autofix-ci/action@v1
+with:
+  commit-message: Apply automated changes
+  fail-fast: true
+##[endgroup]
+[command]/usr/bin/git reset
+Unstaged changes after reset:
+M	src/language-js/print/class-body.js
+[command]/usr/bin/git -c core.fileMode=false add --all
+[command]/usr/bin/git -c core.quotepath=false diff --name-only --staged --no-renames
+src/language-js/print/class-body.js
+Need to update 1 files.
+[command]/usr/bin/git config user.name autofix.ci
+[command]/usr/bin/git config user.email noreply@autofix.ci
+[command]/usr/bin/git commit --no-verify -m autofix
+[detached HEAD 3637e82] autofix
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[command]/usr/bin/git rev-parse HEAD
+3637e825a0b4f4dafd2ec4c63de6ab2d44dd036a
+[command]/usr/bin/git fetch --depth=1 origin 893517f9cf8cac8cb097776f6af21f7cd12aeab3
+From https://github.com/prettier/prettier
+ * branch            893517f9cf8cac8cb097776f6af21f7cd12aeab3 -> FETCH_HEAD
+[command]/usr/bin/git checkout --force FETCH_HEAD
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  3637e82 autofix
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 3637e82
+
+HEAD is now at 893517f Fix semicolon handling in printClassMemberSemicolon
+[command]/usr/bin/git cherry-pick --no-commit 3637e825a0b4f4dafd2ec4c63de6ab2d44dd036a
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 4053
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact zip is 93ac1bf5d913c13a2f1acf400c49b517efb444e7d2ba06bd0e26ed9c0fddbef1
+Finalizing artifact upload
+Artifact autofix.ci.zip successfully finalized. Artifact ID 5343153672
+##[error]✅ Autofix task started.
+[command]/usr/bin/git diff --staged
+diff --git a/src/language-js/print/class-body.js b/src/language-js/print/class-body.js
+index 3ac1066..8fab3e4 100644
+--- a/src/language-js/print/class-body.js
++++ b/src/language-js/print/class-body.js
+@@ -177,9 +177,9 @@ function printClassMemberSemicolon(path, options) {
+   const { parent } = path;
+ 
+   if (path.callParent(isClassBody)) {
+-    return parent.type === "ObjectTypeAnnotation"?";":
+-       printSemicolon(options)
+-      
++    return parent.type === "ObjectTypeAnnotation"
++      ? ";"
++      : printSemicolon(options);
+   }
+ 
+   if (parent.type === "TSTypeLiteral") {
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/15a836cd-e7de-446d-b6c3-7908df1e1a19' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git.path
+/home/runner/work/_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git.path /home/runner/work/_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/prettier/prettier/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-d1e23612-b291-43be-bfdd-5113ea3a2dea.config'
+Cleaning up orphan processes

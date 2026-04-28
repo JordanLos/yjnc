@@ -1,0 +1,149 @@
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+[command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+[command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/mocha/mocha/.git.path /home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +609de211fb1257ffac64e5ce9752abde330c117d:refs/remotes/pull/5709/merge
+From https://github.com/mochajs/mocha
+ * [new ref]         609de211fb1257ffac64e5ce9752abde330c117d -> pull/5709/merge
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/5709/merge
+Note: switching to 'refs/remotes/pull/5709/merge'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 609de21 Merge 336390899db989d42f32e5e72467b93805b69a1b into c7b00b0e4f03583c4dcc407f28a5453df436f32b
+##[endgroup]
+[command]/usr/bin/git log -1 --format=%H
+609de211fb1257ffac64e5ce9752abde330c117d
+##[group]Removing auth
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+includeif.gitdir:/home/runner/work/mocha/mocha/.git.path
+includeif.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path
+includeif.gitdir:/github/workspace/.git.path
+includeif.gitdir:/github/workspace/.git/worktrees/*.path
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mocha/mocha/.git.path
+/home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mocha/mocha/.git.path /home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path
+/home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/mocha/mocha/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+/github/runner_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+/github/runner_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Removing credentials config '/home/runner/work/_temp/git-credentials-f7bf2abc-d370-44e1-88f6-a856140acdab.config'
+##[endgroup]
+##[group]Run actions/setup-node@v6
+with:
+  node-version: 22
+  cache: npm
+  check-latest: false
+  token: ***
+  package-manager-cache: true
+##[endgroup]
+Found in cache @ /opt/hostedtoolcache/node/22.22.0/x64
+##[group]Environment details
+node: v22.22.0
+npm: 10.9.4
+yarn: 1.22.22
+##[endgroup]
+[command]/opt/hostedtoolcache/node/22.22.0/x64/bin/npm config get cache
+/home/runner/.npm
+npm cache is not found
+##[group]Run npm ci --ignore-scripts
+[36;1mnpm ci --ignore-scripts[0m
+shell: /usr/bin/bash -e {0}
+##[endgroup]
+npm warn deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+npm warn deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+
+added 1086 packages, and audited 1088 packages in 8s
+
+233 packages are looking for funding
+  run `npm fund` for details
+
+8 low severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+##[group]Run npm run format:check
+[36;1mnpm run format:check[0m
+shell: /usr/bin/bash -e {0}
+env:
+  BROWSER: 
+  COVERAGE: false
+  NODE_OPTIONS: --trace-warnings
+##[endgroup]
+
+> mocha@12.0.0-beta-9 format:check
+> prettier --check .
+
+Checking formatting...
+[[33mwarn[39m] lib/nodejs/parallel-buffered-runner.js
+[[33mwarn[39m] test/integration/multiple-runs.spec.js
+[[33mwarn[39m] test/integration/plugins/root-hooks.spec.js
+[[33mwarn[39m] test/node-unit/mocha.spec.js
+[[33mwarn[39m] test/unit/mocha.spec.js
+[[33mwarn[39m] Code style issues found in 5 files. Run Prettier with --write to fix.
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version 2.52.0
+Temporarily overriding HOME='/home/runner/work/_temp/2e2b79a3-2236-4c76-b7f8-80349e18991b' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/mocha/mocha
+Removing SSH command configuration
+[command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Removing HTTP extra header
+[command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Removing includeIf entries pointing to credentials config files
+[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Cleaning up orphan processes

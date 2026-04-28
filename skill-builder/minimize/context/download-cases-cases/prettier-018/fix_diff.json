@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/location/comparison.js"
+  ],
+  "patch": "--- a/src/language-js/location/comparison.js\n+++ b/src/language-js/location/comparison.js\n@@ -1,5 +1,5 @@\n-import { locEnd } from \"./end.js\";\n import { isIndex } from \"./is-index.js\";\n+import { locEnd } from \"./overrides.js\";\n import { locStart } from \"./start.js\";\n \n /**"
+}

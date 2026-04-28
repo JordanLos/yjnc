@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/language-js/parse/postprocess/merge-nestled-jsdoc-comments.js"
+  ],
+  "patch": "--- a/src/language-js/parse/postprocess/merge-nestled-jsdoc-comments.js\n+++ b/src/language-js/parse/postprocess/merge-nestled-jsdoc-comments.js\n@@ -31,12 +31,10 @@ function mergeNestledJsdocComments(comments) {\n       const commentLines = indentableLines(comment);\n       const followingCommentLines = indentableLines(followingComment);\n       commentLines.push(\n-        commentLines.pop() + \"//\" + followingCommentLines.shift(),\n-      );\n-      indentableLinesCache.set(\n-        comment,\n-        commentLines.concat(followingCommentLines),\n+        `${commentLines.pop()}//${followingCommentLines.shift()}`,\n+        ...followingCommentLines,\n       );\n+      indentableLinesCache.set(comment, commentLines);\n     }\n \n     /* c8 ignore next 3 */"
+}

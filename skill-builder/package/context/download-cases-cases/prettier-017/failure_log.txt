@@ -1,0 +1,150 @@
+[94m➤[39m [90mYN0000[39m: └ Completed in 0s 365ms
+[94m➤[39m [90mYN0000[39m: ┌ Link step
+##[group]Link step
+[94m➤[39m YN0007: │ [38;5;173mesbuild[39m[38;5;111m@[39m[38;5;111mnpm:0.27.2[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m YN0007: │ [38;5;173munrs-resolver[39m[38;5;111m@[39m[38;5;111mnpm:1.11.1[39m must be built because it never has been before or the last one failed
+[94m➤[39m [90mYN0000[39m: │ [38;5;173mpuppeteer[39m[38;5;111m@[39m[38;5;111mnpm:24.36.1[39m [32mSTDOUT[39m **INFO** Skipping downloading browsers as instructed.
+##[endgroup]
+[94m➤[39m [90mYN0000[39m: └ Completed in 15s 746ms
+[93m➤[39m YN0000: · Done with warnings in 23s 420ms
+##[group]Run yarn test
+[36;1myarn test[0m
+shell: /bin/bash -e {0}
+env:
+  ENABLE_CODE_COVERAGE: 
+  FULL_TEST: 
+##[endgroup]
+(node:5977) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5977) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
+PASS tests/integration/__tests__/config-resolution.js (6.758 s)
+PASS tests/integration/__tests__/file-info.js (6.49 s)
+PASS tests/integration/__tests__/public-utilities.js
+PASS tests/integration/__tests__/patterns-dirs.js (42.074 s)
+PASS tests/integration/__tests__/infer-parser.js (12.485 s)
+PASS tests/unit/syntax-transform.js
+PASS tests/integration/__tests__/config-invalid.js (7.865 s)
+PASS tests/integration/__tests__/infer-plugins-ext-dir.js
+PASS tests/format/js/explicit-resource-management/format.test.js
+PASS tests/integration/__tests__/with-config-precedence.js (14.938 s)
+PASS tests/format/typescript/_errors_/modifiers/format.test.js
+PASS tests/format/html/whitespace/format.test.js
+PASS tests/integration/__tests__/stdin-filepath.js
+PASS tests/format/js/babel-plugins/format.test.js
+PASS tests/integration/__tests__/debug-api.js
+PASS tests/format/json/_errors_/format.test.js
+PASS tests/integration/__tests__/log-level.js (7.088 s)
+PASS tests/unit/whitespace-utilities.js
+PASS tests/integration/__tests__/patterns-glob.js (14.419 s)
+PASS tests/format/json/json-superset/format.test.js
+PASS tests/unit/doc-builders.js
+PASS tests/integration/__tests__/piped-output.js (9.277 s)
+PASS tests/integration/__tests__/experimental-cli.js
+PASS tests/unit/ast-path.js
+PASS tests/format/handlebars/html-whitespace-sensitivity/format.test.js
+PASS tests/format/jsx/whitespace/format.test.js
+PASS tests/format/js/comments/trailing-spaces/format.test.js
+PASS tests/integration/__tests__/with-parser-inference.js
+PASS tests/integration/__tests__/config-file-typescript.js
+PASS tests/unit/editorconfig-to-prettier.js
+PASS tests/integration/__tests__/plugin-api-embed.js
+PASS tests/unit/get-printer-plugin-by-ast-format.js
+PASS tests/unit/get-parser-plugin-by-parser-name.js
+PASS tests/integration/__tests__/format-ast.js
+PASS tests/integration/__tests__/arg-parsing.js (11.986 s)
+PASS tests/dts/unit/run.js
+PASS tests/format/js/export-default/parentheses/format.test.js
+PASS tests/format/yaml/yaml-test-suite/format.test.js
+PASS tests/integration/__tests__/patterns.js (7.077 s)
+PASS tests/integration/__tests__/format.js
+PASS tests/integration/__tests__/ignore-path.js (5.441 s)
+PASS tests/format/markdown/auto-link/format.test.js
+PASS tests/integration/__tests__/plugin-resolution.js
+PASS tests/integration/__tests__/performance-flags.js
+PASS tests/format/js/cursor/format.test.js
+PASS tests/unit/make-string.js
+PASS tests/integration/__tests__/early-exit.js
+PASS tests/integration/__tests__/parser-api.js
+PASS tests/format/markdown/trim-space/format.test.js
+PASS tests/integration/__tests__/plugin-options-string.js
+PASS tests/format/markdown/splitCjkText/format.test.js
+PASS tests/integration/__tests__/ignore-in-subdirectories.js
+PASS tests/integration/__tests__/plugin-options.js
+PASS tests/integration/__tests__/doc-builders.js
+PASS tests/integration/__tests__/doc-utilities-clean-doc.js
+PASS tests/unit/visitor-keys.js
+PASS tests/integration/__tests__/plugin-override-builtin-printers.js
+PASS tests/format/js/_errors_/format.test.js
+PASS tests/format/misc/parser-inference/format.test.js
+PASS tests/integration/__tests__/cache.js (200.446 s)
+PASS tests/integration/__tests__/ignore-unknown.js (5.096 s)
+PASS tests/integration/__tests__/doc-trim.js
+PASS tests/unit/resolve-parser.js
+PASS tests/integration/__tests__/printer-and-parser.js
+PASS tests/integration/__tests__/debug-check.js (5.225 s)
+PASS tests/unit/traverse-doc.js
+PASS tests/unit/doc-printer.js
+FAIL tests/unit/create-oxc-parser-options.js
+createOxcParserOptions > returns an object with valid parser options
+    Error: expect(received).toStrictEqual(expected) // deep equality
+    
+    - Expected  - 3
+    + Received  + 1
+    
+    - Object {
+    -   "experimentalRawTransfer": Any<Boolean>,
+    - }
+    + Object {}
+        at file:///Users/runner/work/prettier/prettier/tests/unit/create-oxc-parser-options.js?1770661493792:12:66
+        at async onMessage (file:///Users/runner/work/prettier/prettier/node_modules/tinypool/dist/esm/entry/process.js:51:20)
+
+PASS tests/integration/__tests__/check.js
+PASS tests/format/markdown/commonmark-test-suite-legacy/format.test.js
+PASS tests/format/js/optional-chaining-assignment/format.test.js
+PASS tests/unit/builtin-plugins.js
+PASS tests/integration/__tests__/plugin-name.js
+PASS tests/unit/is-empty-doc.js
+PASS tests/integration/__tests__/with-node-modules.js (5.398 s)
+PASS tests/integration/__tests__/doc-mark-as-root.js
+PASS tests/format/js/directives/format.test.js
+PASS tests/integration/__tests__/list-different.js (5.202 s)
+PASS tests/format/js/directives/comments/format.test.js
+PASS tests/integration/__tests__/resolve-config-file.js
+PASS tests/unit/get-descendants.js
+PASS tests/format/handlebars/_errors_/format.test.js
+PASS tests/integration/__tests__/support-info.js
+PASS tests/integration/__tests__/cursor-offset.js
+PASS tests/integration/__tests__/print-doc-to-string.js
+PASS tests/integration/__tests__/line-suffix-boundary.js
+PASS tests/unit/print-doc-to-string.js
+PASS tests/unit/massage-ast.js
+PASS tests/format/vue/comments/trailing-spaces-in-js-comment/format.test.js
+PASS tests/format/typescript/_errors_/tuple/format.test.js
+PASS tests/integration/__tests__/doc-printer.js
+PASS tests/format/misc/empty/format.test.js
+PASS tests/format/misc/_errors_/front-matter/format.test.js
+PASS tests/format/markdown/gfm-test-suite/format.test.js
+PASS tests/integration/__tests__/plugins.js
+PASS tests/integration/__tests__/plugin-default-options.js
+PASS tests/integration/__tests__/error-on-unmatched-pattern.js
+PASS tests/format/handlebars/element-node/format.test.js
+PASS tests/format/typescript/_errors_/empty-type-arguments-parameters/format.test.js
+PASS tests/format/js/_errors_/async-await/format.test.js
+PASS tests/format/json/json-test-suite/format.test.js
+PASS tests/format/js/_errors_/invalid/format.test.js
+PASS tests/format/yaml/block-value/format.test.js
+PASS tests/format/js/source-phase-imports/format.test.js
+PASS tests/integration/__tests__/special-characters-in-path.js
+PASS tests/format/typescript/_errors_/enum/format.test.js
+PASS tests/format/typescript/_errors_/invalid-interface-extends/format.test.js
+PASS tests/format/markdown/commonmark-test-suite/format.test.js
+PASS tests/format/js/ternaries/format.test.js (5.4 s)
+PASS tests/format/js/_errors_/for-of/format.test.js
+PASS tests/integration/__tests__/write.js
+PASS tests/integration/__tests__/line-after-filepath-with-errors.js
+PASS tests/format/js/_errors_/reserved-word/format.test.js
+PASS tests/integration/__tests__/plugin-cache.js
+PASS tests/unit/errors.js
+PASS tests/format/js/empty/format.test.js
+PASS tests/integration/__tests__/invalid-ignore.js
