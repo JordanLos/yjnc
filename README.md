@@ -55,7 +55,7 @@ The **root**:
   checks/       shared check scripts (lint.sh, vitest.sh, ...)
   <unit-a>/
   <unit-b>/
-  .juc/         runner state and logs (invisible to authors)
+  .juc/         work log — runner state, run logs, cache (commit this)
 ```
 
 ---
